@@ -1,0 +1,34 @@
+"""Status constants and error types."""
+
+# Wrapper statuses.
+ONE_COMMAND_DEMO_COMPLETED = "ONE_COMMAND_DEMO_COMPLETED"
+FAILED_CONFIG_INVALID = "FAILED_CONFIG_INVALID"
+FAILED_CONNECTED_DEMO_RUN = "FAILED_CONNECTED_DEMO_RUN"
+FAILED_CONNECTED_DEMO_VERIFY = "FAILED_CONNECTED_DEMO_VERIFY"
+FAILED_REQUIRED_STATUS_MISSING = "FAILED_REQUIRED_STATUS_MISSING"
+FAILED_TRUTH_BOUNDARY = "FAILED_TRUTH_BOUNDARY"
+FAILED_CHECKSUMS_INVALID = "FAILED_CHECKSUMS_INVALID"
+
+WRAPPER_STATUSES = frozenset({
+    ONE_COMMAND_DEMO_COMPLETED, FAILED_CONFIG_INVALID, FAILED_CONNECTED_DEMO_RUN,
+    FAILED_CONNECTED_DEMO_VERIFY, FAILED_REQUIRED_STATUS_MISSING,
+    FAILED_TRUTH_BOUNDARY, FAILED_CHECKSUMS_INVALID,
+})
+
+# Step statuses.
+COMPLETED = "COMPLETED"
+FAILED = "FAILED"
+SKIPPED_AFTER_FAILURE = "SKIPPED_AFTER_FAILURE"
+
+
+class CheckError(Exception):
+    """A wrapper-stage failure carrying a wrapper status."""
+
+    def __init__(self, status, message):
+        super().__init__(message)
+        self.status = status
+        self.message = message
+
+
+class VerifyError(Exception):
+    """Raised when wrapper-output verification fails."""

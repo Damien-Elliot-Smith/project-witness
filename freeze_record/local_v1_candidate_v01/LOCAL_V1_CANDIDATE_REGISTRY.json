@@ -1,0 +1,84 @@
+{
+  "candidate_runnable_artifact": {
+    "duplicate_entries": 0,
+    "embedded_baseline_sha256": "0f1d56ac199a788168e24540c9f347010a3f01e8ea17732d4bdbc756040445bc",
+    "filename": "Project_Witness_Local_Demo_Pack_v01_1_blue_team_repair.zip",
+    "has_local_demo_verifier": true,
+    "has_start_here_readme": true,
+    "role": "Current runnable/reviewable local demo pack",
+    "sha256": "f9122b92b03c4c1d6959a080f78e758b7f9dc6509c2c6069b2303d47f31c4707",
+    "size_bytes": 12640234,
+    "zip_integrity": "PASS"
+  },
+  "candidate_type": "Local v1 Candidate, not final Local v1 Release",
+  "created_utc": "2026-06-28T21:09:12Z",
+  "embedded_baseline": {
+    "component_zip_count": 36,
+    "sha256": "0f1d56ac199a788168e24540c9f347010a3f01e8ea17732d4bdbc756040445bc",
+    "sha_record_count": 36,
+    "sha_record_validation": "PASS"
+  },
+  "external_artifacts_not_embedded": {
+    "clean_error_messages_v01.zip": {
+      "embedded": false,
+      "filename": "clean_error_messages_v01.zip",
+      "sha256": "0a361d19d2d3a4e102999659e3ff6d8463e3434bbd41f15294e394b94f94a7de",
+      "size_bytes": 302771035
+    },
+    "example_reviewer_walkthrough_v01.zip": {
+      "embedded": false,
+      "filename": "example_reviewer_walkthrough_v01.zip",
+      "sha256": "68a9da30e20ffca31f76ef530eaf6e514c88866392266036cc928b82c49f49f0",
+      "size_bytes": 100913144
+    },
+    "full_stack_component_version_freeze_v01.zip": {
+      "embedded": false,
+      "filename": "full_stack_component_version_freeze_v01.zip",
+      "sha256": "e97e4d6dbd40254439506dea43b02e5cd87623d45ecbd6df153e6cd9568e1333",
+      "size_bytes": 50421064
+    },
+    "human_readable_reports_v01.zip": {
+      "embedded": false,
+      "filename": "human_readable_reports_v01.zip",
+      "sha256": "6892e84750fd530386657680c2cc1f213cfec9f8020e540f11c00ca1be75739d",
+      "size_bytes": 100949167
+    },
+    "independent_verification_script_v01.zip": {
+      "embedded": false,
+      "filename": "independent_verification_script_v01.zip",
+      "sha256": "d470a5863ae550a732e00ef3b7b34ffc15c88978ebe11d0a47afd328370e2c30",
+      "size_bytes": 50447770
+    }
+  },
+  "included_artifacts": {
+    "move49_download_safe": {
+      "filename": "move49_clean_error_messages_DOWNLOAD_SAFE.zip",
+      "sha256": "dd414897269fa2df8675747a7bcc18524d4784ad3043ad4bb0fd604a824aea62",
+      "size_bytes": 21507
+    },
+    "roadmap": {
+      "filename": "project_witness_70_step_roadmap_clean.pdf",
+      "sha256": "fb1c13a021f82126d0bc8b709ffaaa0ffcf89e6a29cb6a4f16caa0baafbfd27b",
+      "size_bytes": 5009
+    },
+    "runnable_local_demo": {
+      "filename": "Project_Witness_Local_Demo_Pack_v01_1_blue_team_repair.zip",
+      "sha256": "f9122b92b03c4c1d6959a080f78e758b7f9dc6509c2c6069b2303d47f31c4707",
+      "size_bytes": 12640234
+    }
+  },
+  "limits": [
+    "This is a Local v1 Candidate, not final Local v1 Release.",
+    "Moves 51-70 remain future work.",
+    "This does not prove truth.",
+    "This does not verify external reality.",
+    "This does not prove source trust.",
+    "This is not production-ready.",
+    "This is not signed.",
+    "This is not externally anchored."
+  ],
+  "package_name": "Project Witness Local v1 Candidate v0.1",
+  "roadmap_move": 50,
+  "roadmap_move_name": "Freeze Local v1 Candidate",
+  "status_after_package": "Project Witness Part One is complete through Move 50. Moves 51-70 remain future work."
+}
