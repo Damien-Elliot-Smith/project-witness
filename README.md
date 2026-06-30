@@ -12,11 +12,11 @@ Status: **Local v1 Candidate**. This is **not** the final Local v1 Release, and 
 
 ## What this is
 
-A runnable local working stack for review, testing, and breakage attempts. The current package includes component tests, handoff validation, independent verification, Local v1 candidate verification, Termux instructions verification, Linux desktop instructions, Windows notes, and a live end-to-end demo path.
+A runnable local working stack for review, testing, and breakage attempts. The current package includes component tests, handoff validation, independent verification, Local v1 candidate verification, and end-to-end demonstration. All components use Python standard library only — no external dependencies.
 
 ## What this is not
 
-This does not prove external truth. It does not authenticate real-world identity. It does not sign or externally anchor outputs. It is not production-ready. It is not a hosted service, cloud product, GUI app, mobile app, or Windows-native port.
+This does not prove external truth. It does not authenticate real-world identity. It does not sign or externally anchor outputs. It is not production-ready. It is not a hosted service, cloud product, or final release. See `HANDOFF_NOTES.md` and `master_known_limitations_v01` (in the archive) for full boundary conditions.
 
 ## Start here
 
@@ -44,11 +44,14 @@ Linux users should also read `LINUX_DESKTOP_RUN_INSTRUCTIONS.md`.
 
 Windows users should read `WINDOWS_NOTES.md`. Native Windows support is not claimed; WSL2 is the recommended route unless native Windows is directly tested later.
 
-## Licence status
+## Licence
 
-No final licence has been chosen for this snapshot. See `LICENSE_DECISION_NEEDED.md`.
+This project is licensed under the **Apache License 2.0**. See the `LICENSE` file for details.
 
-Do not assume public, commercial, redistribution, or derivative-work rights until a licence is explicitly added.
+Apache 2.0 provides:
+- Permissive use and redistribution rights
+- Explicit patent grant protection
+- Clear attribution and contribution terms
 
 ## Current roadmap status
 
