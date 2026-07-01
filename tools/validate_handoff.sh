@@ -6,42 +6,53 @@
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 TOOLS="$ROOT/tools"
 
-# Ordered list of "label|script" stages.
-STAGES="
-component_tests|run_all_tests.sh
-independent_verify|run_independent_verify.sh
-local_v1_verify|run_local_v1_verify.sh
-termux_verify|run_termux_verify.sh
-live_end_to_end_demo|run_demo.sh
-"
-
 overall=0
-summary=""
-
-echo "=========================================="
-echo " Project Witness — handoff validation"
-echo "=========================================="
-
-# Use a temp file to accumulate the summary so the subshell loop changes persist.
 tmpsum=$(mktemp)
-echo "$STAGES" | while IFS='|' read -r label script; do
-  [ -z "$label" ] && continue
+
+cleanup_generated_python_artifacts() {
+  find "$ROOT" -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+  find "$ROOT" -type f -name '*.pyc' -delete 2>/dev/null || true
+}
+
+run_stage() {
+  label="$1"
+  script="$2"
+
   echo ""
   echo ">>> STAGE: $label  ($script)"
   echo "------------------------------------------"
+
   if [ ! -f "$TOOLS/$script" ]; then
     echo "MISSING: $TOOLS/$script"
     echo "$label MISSING" >> "$tmpsum"
-    continue
+    return
   fi
-  sh "$TOOLS/$script"
+
+  # Remove generated Python cache artifacts between stages so validation is
+  # repeatable from fresh extractions and after test runs.
+  cleanup_generated_python_artifacts
+
+  # Close stdin for child scripts so no child process can accidentally wait on or
+  # consume wrapper input. Stages are called directly, not from a pipe-fed loop.
+  sh "$TOOLS/$script" < /dev/null
   code=$?
+  cleanup_generated_python_artifacts
   if [ "$code" -eq 0 ]; then
     echo "$label PASS" >> "$tmpsum"
   else
     echo "$label FAIL(exit $code)" >> "$tmpsum"
   fi
-done
+}
+
+echo "=========================================="
+echo " Project Witness - handoff validation"
+echo "=========================================="
+
+run_stage component_tests run_all_tests.sh
+run_stage independent_verify run_independent_verify.sh
+run_stage local_v1_verify run_local_v1_verify.sh
+run_stage termux_verify run_termux_verify.sh
+run_stage live_end_to_end_demo run_demo.sh
 
 echo ""
 echo "=========================================="
@@ -57,7 +68,8 @@ while read -r line; do
 done < "$tmpsum"
 rm -f "$tmpsum"
 
-find "$ROOT" -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+find "$ROOT" -type d -name __pycache__ -prune -exec rm -rf {} + 2>/dev/null || true
+find "$ROOT" -type f -name '*.pyc' -delete 2>/dev/null || true
 
 echo "------------------------------------------"
 if [ "$overall" -eq 0 ]; then

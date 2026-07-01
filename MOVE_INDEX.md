@@ -1,6 +1,6 @@
-# Move Index — Roadmap Steps 1–51
+# Move Index - Roadmap Steps 1-60
 
-Every roadmap step from 1 to 51 mapped to the artifact that fulfils it, and where
+Every completed roadmap step from 1 to 60 mapped to the artifact that fulfils it, and where
 that artifact now lives: **W** = `Project_Witness_WORKING_STACK/`, **A** =
 `Project_Witness_ARCHIVE/`.
 
@@ -61,25 +61,23 @@ frozen state of their component, noted as "(freeze of …)".
 | 49 | Clean Error Messages | move49_clean_error_messages | A `04_hardening_rounds` |
 | 50 | Freeze Local v1 Candidate | local_v1_candidate_v01 | W `freeze_record/` |
 | 51 | Build Termux Run Instructions | termux_run_instructions_v01 | W `freeze_record/` |
+| 52 | Linux Desktop Run Instructions | LINUX_DESKTOP_RUN_INSTRUCTIONS.md + `tools/check_linux_desktop_instructions.sh` | W (repo root) |
+| 53 | Windows Notes | WINDOWS_NOTES.md + `tools/check_windows_notes.sh` | W (repo root) |
+| 54 | Clean GitHub Repository Structure | README.md, REPOSITORY_STRUCTURE.md, LICENSE + `tools/check_repository_structure.sh` | W (repo root) |
+| 55 | Build Private Reviewer Package | PRIVATE_REVIEWER_PACKAGE.md, PRIVATE_REVIEWER_FEEDBACK_TEMPLATE.md + `tools/check_private_reviewer_package.sh` | W (repo root) |
+| 56 | Build Public-Facing Short Explanation | PUBLIC_EXPLANATION.md + `tools/check_public_explanation.sh` | W (repo root) |
+| 57 | Build Five-Minute Demo Script | FIVE_MINUTE_DEMO_SCRIPT.md + `tools/check_five_minute_demo_script.sh` | W (repo root) |
+| 58 | Run Reviewer Feedback Round | REVIEWER_FEEDBACK_ROUND.md, REVIEWER_FEEDBACK_LEDGER.md, REVIEWER_FEEDBACK_TRIAGE.md + `tools/check_reviewer_feedback_round.sh` | W (repo root) |
+| 59 | Repair Release Blockers | RELEASE_BLOCKER_REGISTER.md, RELEASE_BLOCKER_REPAIR_LEDGER.md + `tools/check_release_blockers.sh` | W (repo root) |
+| 60 | Freeze Local v1 Release | LOCAL_V1_RELEASE.md, freeze_record/local_v1_release_v01/ + `tools/check_local_v1_release.sh` | W (repo root + `freeze_record/`) |
 
 ---
 
 ## Status
 
-- Roadmap **complete through Move 51** (Build Termux Run Instructions).
-- Moves **52–70 remain future work** (Linux/Windows notes, GitHub structure,
-  private reviewer package, public explanation, reviewer feedback round, final
-  Local v1 release, and post-v1 directions).
-- This is a Local v1 **Candidate**, not a final Local v1 **Release**. Do not
-  describe the 70-step roadmap as complete.
+- Roadmap **complete through Move 60** (Freeze Local v1 Release).
+- Moves **61-70 remain future work**.
+- This is a Local v1 Release, not a production system.
+- Do **not** describe the 70-step roadmap as complete.
 
----
-
-## Notes on duplicates removed during tidy-up
-
-The original folder contained several loose copies of the same frozen artifact
-(for example a top-level `Atlas Registry v0.1/` folder *and* the same zip inside
-the Move 40 demo pack). For each working component the loose frozen zip was
-confirmed **byte-identical** to the verified Move 40/45 baseline before being used
-as the canonical copy. Reviewer-convenience duplicates and the large nested demo
-packs are preserved in the archive rather than the working stack.
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
