@@ -15,7 +15,7 @@ Environment: standard library only, no network, stdlib `unittest` runner.
 > The instruction check passes (`LINUX_DESKTOP_INSTRUCTIONS_CHECK: PASS`) and the
 > existing `validate_handoff.sh` still passes (`HANDOFF_VALIDATION: PASS`). No
 > component behaviour, schema, or architecture changed; no roadmap features added.
-> Roadmap complete through Move 52; Moves 53–70 remain future work. See
+> (Roadmap status as of this note is recorded in `CHANGELOG_MOVE_52.md`.) See
 > `CHANGELOG_MOVE_52.md`.
 
 > **Move 53 — Windows notes (2026-06-29):** added `WINDOWS_NOTES.md` and
@@ -24,8 +24,92 @@ Environment: standard library only, no network, stdlib `unittest` runner.
 > `validate_handoff.sh` still pass. Native Windows execution has **not** been
 > directly tested — the notes recommend WSL2 + Ubuntu and do not claim native
 > support. No component behaviour, schema, or architecture changed; no roadmap
-> features added; Step 54 not started. Roadmap complete through Move 53; Moves
-> 54–70 remain future work. See `CHANGELOG_MOVE_53.md`.
+> features added; Step 54 not started at that time.
+> (Roadmap status as of this note is recorded in `CHANGELOG_MOVE_53.md`.) See
+> `CHANGELOG_MOVE_53.md`.
+
+
+> **Move 55 — private reviewer package (2026-06-30):** added
+> `PRIVATE_REVIEWER_PACKAGE.md`, `PRIVATE_REVIEWER_FEEDBACK_TEMPLATE.md`, and
+> `tools/check_private_reviewer_package.sh`. The package defines what to send to
+> a private reviewer, what commands to run, what boundaries to judge, and how to
+> report back. The private reviewer package check passes
+> (`PRIVATE_REVIEWER_PACKAGE_CHECK: PASS`); the repository-structure check and
+> existing validation still pass. `tools/validate_handoff.sh` now closes stdin for
+> child stages so they cannot consume the wrapper's stage-list pipe; no validation
+> stage was removed or weakened. No component behaviour, schema, architecture, or
+> feature changed; Step 56 was not started at that time. (Roadmap status as of
+> that note is recorded in `CHANGELOG_MOVE_55.md`.) See `CHANGELOG_MOVE_55.md`.
+
+> **Move 54 — clean GitHub repository structure (2026-06-29):** added
+> `README.md`, `REPOSITORY_STRUCTURE.md`, `LICENSE` (Apache 2.0), and
+> `tools/check_repository_structure.sh`; updated top-level docs for the
+> repository-structure cleanup. The repository-structure check passed
+> (`REPOSITORY_STRUCTURE_CHECK: PASS`) and the existing validation commands were
+> not weakened (`HANDOFF_VALIDATION: PASS`, `LINUX_DESKTOP_INSTRUCTIONS_CHECK: PASS`,
+> `WINDOWS_NOTES_CHECK: PASS`). No component behaviour, schema, or architecture
+> changed; no features added. See `CHANGELOG_MOVE_54.md` for the historical Move
+> 54 record.
+
+
+> **Move 56 - public explanation (2026-06-30):** added
+> `PUBLIC_EXPLANATION.md` and `tools/check_public_explanation.sh`; updated
+> top-level docs so public readers get a bounded plain-language explanation before
+> review. The public explanation check passes (`PUBLIC_EXPLANATION_CHECK: PASS`);
+> the private-reviewer package check, repository-structure check, platform-note
+> checks, and existing handoff validation still pass. `tools/validate_handoff.sh`
+> now calls stages directly instead of through a pipe-fed loop; no validation
+> stage was removed or weakened. No component behaviour, schema, architecture, or
+> feature changed; later Move 59 repaired stale roadmap wording in current docs.
+> See `CHANGELOG_MOVE_56.md` for the historical Move 56 record.
+
+> **Move 57 - Five-minute demo script (2026-06-30):** added
+> `FIVE_MINUTE_DEMO_SCRIPT.md` and `tools/check_five_minute_demo_script.sh`.
+> The demo-script check passes (`FIVE_MINUTE_DEMO_SCRIPT_CHECK: PASS`); the
+> public explanation, private reviewer, repository structure, Linux, Windows, and
+> full handoff checks still pass. No component behaviour, schema, architecture,
+> or feature changed; Step 58 was not started at that time.
+> See `CHANGELOG_MOVE_57.md` for the historical Move 57 record.
+
+
+> **Move 58 - reviewer feedback round (2026-06-30):** added
+> `REVIEWER_FEEDBACK_ROUND.md`, `REVIEWER_FEEDBACK_LEDGER.md`,
+> `REVIEWER_FEEDBACK_TRIAGE.md`, and `tools/check_reviewer_feedback_round.sh`.
+> The feedback-round check passes (`REVIEWER_FEEDBACK_ROUND_CHECK: PASS`); the
+> five-minute demo, public explanation, private reviewer, repository structure,
+> Linux, Windows, and full handoff checks still pass. The ledger explicitly states
+> that zero external reviewer feedback entries are recorded in this package. No
+> component behaviour, schema, architecture, or feature changed; Step 59 was not
+> started. Roadmap complete through Move 60; Moves 61-70 remain future work. See
+> `CHANGELOG_MOVE_58.md`.
+
+
+
+> **Move 59 - repair release blockers (2026-06-30):** added
+> `RELEASE_BLOCKER_REGISTER.md`, `RELEASE_BLOCKER_REPAIR_LEDGER.md`, and
+> `tools/check_release_blockers.sh`. Repaired release-blocking documentation/status
+> drift in current top-level reviewer docs, including stale future-move ranges,
+> stale package names in active reviewer instructions, the current bottom status in
+> this file, and the duplicate status fragment in `MOVE_INDEX.md`. No external
+> reviewer blockers are claimed or invented; `REVIEWER_FEEDBACK_LEDGER.md` still
+> records zero external feedback entries. The release-blocker check passes
+> (`RELEASE_BLOCKERS_CHECK: PASS`); the feedback-round, five-minute demo, public
+> explanation, private reviewer, repository structure, Linux, Windows, and full
+> handoff checks still pass. No component behaviour, schema, architecture, or
+> feature changed; Step 60 was not started at that time. See `CHANGELOG_MOVE_59.md`.
+
+
+
+> **Move 60 - freeze Local v1 release (2026-07-01):** added `LOCAL_V1_RELEASE.md`,
+> `freeze_record/local_v1_release_v01/`, and `tools/check_local_v1_release.sh`.
+> Current reviewer/status docs now state Local v1 Release and `Roadmap complete through Move 60; Moves 61-70 remain future work`. The
+> Local v1 release check passes (`LOCAL_V1_RELEASE_CHECK: PASS`); the release
+> blocker, feedback, demo, public explanation, private reviewer, repository
+> structure, Linux, Windows, and full handoff checks still pass. No component
+> behaviour, schema, architecture, Sentinel action, signing, anchoring, GUI, app,
+> cloud, networking, autonomy, or LLM integration changed. No external reviewer
+> approval is claimed; `REVIEWER_FEEDBACK_LEDGER.md` still records zero external
+> feedback entries. See `CHANGELOG_MOVE_60.md`.
 
 This record states only what was actually run and observed. No result is implied
 or carried over from documentation; every line below was reproduced directly
@@ -110,5 +194,7 @@ verify_ok = true
 
 This stack does not prove external truth, authenticate sources, sign outputs,
 externally anchor outputs, or claim production readiness. It is a Local v1
-Candidate, not a final Local v1 Release. Roadmap moves beyond 51 remain future
-work.
+Release, not a production system. No external reviewer approval is claimed;
+`REVIEWER_FEEDBACK_LEDGER.md` records `NO_EXTERNAL_FEEDBACK_RECORDED`.
+
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.

@@ -131,5 +131,10 @@ When run via the verified path (WSL2 or Linux), the expected markers are:
   conditions only. It does not prove external truth, authenticate real-world
   identity, or establish source trust.
 - It is not production-ready. It is a Local v1 **Candidate**, not a final Local v1
-  Release. The roadmap is complete **through Move 53** (this document); Moves
-  54–70 remain future work. The 70-step roadmap is not complete.
+  Release. The roadmap is complete **through Move 58**; Moves
+  57-70 remain future work. The 70-step roadmap is not complete.
+
+
+## Current release status
+
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.

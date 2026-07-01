@@ -104,7 +104,7 @@ If you want to run the stages individually instead of the single validator:
 ```sh
 sh tools/run_all_tests.sh           # all 18 component unittest suites (1234 tests)
 sh tools/run_independent_verify.sh  # independent check of the Move 45 freeze
-sh tools/run_local_v1_verify.sh     # Move 50 Local v1 Candidate freeze record
+sh tools/run_local_v1_verify.sh     # Move 50 Local v1 Release freeze record
 sh tools/run_termux_verify.sh       # Move 51 Termux instructions package
 ```
 
@@ -158,5 +158,10 @@ tested local conditions. It does **not**:
 - provide a GUI, network service, or cloud component.
 
 It is **not** production-ready. It is a Local v1 **Candidate**, not a final Local
-v1 Release. The roadmap is complete **through Move 52** (this document); Moves
-53–70 remain future work. Do not describe the 70-step roadmap as complete.
+v1 Release. The roadmap is complete **through Move 58**; Moves
+59-70 remain future work. Do not describe the 70-step roadmap as complete.
+
+
+## Current release status
+
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.

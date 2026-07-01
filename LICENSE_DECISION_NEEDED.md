@@ -1,5 +1,11 @@
 # Licence Decision Needed
 
+> **RESOLVED (Move 54, 2026-06-29):** the licence decision has been made. This
+> repository is released under the **Apache License 2.0** — see the top-level
+> `LICENSE` file. The notes below are retained for history only.
+
+---
+
 This package does **not** yet carry a licence. That is intentional, not an
 oversight.
 
@@ -40,3 +46,6 @@ with real stakes, confirm with a qualified person.
 No `LICENSE` was added automatically because permissive public-release intent has
 not been confirmed for this specific package, and the MIT-vs-Apache-2.0 choice has
 real consequences (notably the patent grant) that should be a deliberate decision.
+
+
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.

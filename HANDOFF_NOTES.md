@@ -4,52 +4,46 @@ Scope and boundary notes for anyone receiving this package.
 
 ## What this package is
 
-This is the **runnable working stack** of Project Witness: the current latest
-version of each component, plus the frozen verification artifacts and the scripts
-to run them. It is meant to be extracted and run as-is.
+This is the **Project Witness Local v1 Release**: the current runnable working
+stack, the frozen verification artifacts, the release freeze record, and the
+scripts needed to run the checks locally.
 
-## Relationship to the archive
+## Relationship to earlier freeze records
 
-`MOVE_INDEX.md` indexes the whole stack across roadmap moves 1–51. Some of those
-moves point at items that live in a **separate** historical archive
-(`Project_Witness_ARCHIVE`), not in this zip — for example superseded component
-versions, red/blue adversarial packs, review/documentation packs, the hardening
-rounds, and the large review bundles. If the archive was not delivered alongside
-this zip, those `MOVE_INDEX.md` entries will refer to items you do not have
-locally. That is expected; nothing in this zip depends on the archive to run.
+`freeze_record/local_v1_candidate_v01/` remains the Move 50 candidate record.
+`freeze_record/termux_run_instructions_v01/` remains the Move 51 Termux record.
+`freeze_record/local_v1_release_v01/` is the Move 60 release freeze record.
 
-## Component-local documentation
+Historical records are not rewritten to pretend they were release records. The
+release is documented by `LOCAL_V1_RELEASE.md` and the Move 60 freeze record.
 
-Each component carries its own README and a `_frozen/` folder containing the
-original frozen zip, checksum sidecar, and that component's TEST_RESULTS /
-REPAIR_LEDGER. Those component-local documents describe the **freeze-time state**
-of that specific component and were written when it was frozen. They are accurate
-for that component but are not the overall stack index.
+## Authoritative current index
 
-## Authoritative index
+`MOVE_INDEX.md` is the current overall stack index. Where an older component-local
+or freeze-time document differs in scope, the older document describes that older
+component/freeze state; `MOVE_INDEX.md` and `LOCAL_V1_RELEASE.md` describe the
+assembled current release package.
 
-`MOVE_INDEX.md` is the current overall stack index. Where a component-local
-document and `MOVE_INDEX.md` appear to differ in scope, `MOVE_INDEX.md` describes
-the assembled stack; the component doc describes that one component at its freeze.
+## Roadmap status
 
-## Roadmap status — read carefully
-
-- The roadmap is complete **through Move 51** (Build Termux Run Instructions).
-- Moves **52–70 remain future work** and are not present or verified here, unless
-  a specific later move has been explicitly added and independently verified in a
-  future package.
-- Do **not** describe "Roadmap One" / the 70-step roadmap as complete.
-- This is a Local v1 **Candidate**, not a final Local v1 **Release**.
+- Roadmap complete through **Move 60** (Freeze Local v1 Release).
+- Moves **61-70 remain future work**.
+- Do **not** describe the 70-step roadmap as complete.
+- Local v1 Release does not mean production-ready. It is not production-ready.
 
 ## Honesty boundary
 
 This stack verifies structured provenance relationships under tested local
 conditions. It does not prove external truth, authenticate real-world identity,
-establish source trust, sign outputs, or externally anchor outputs. It is not
-production-ready. Treat every PASS marker as "the structural checks held under
-local test conditions," nothing more.
+establish source trust, sign outputs, or externally anchor outputs. Treat every
+PASS marker as "the structural checks held under local test conditions," nothing
+more.
+
+No external reviewer approval is claimed. The feedback ledger records
+`NO_EXTERNAL_FEEDBACK_RECORDED`.
 
 ## Licence
 
-No licence has been chosen yet. See `LICENSE_DECISION_NEEDED.md`. Public release
-requires an explicit licensing decision first.
+Apache License 2.0. See `LICENSE`.
+
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.

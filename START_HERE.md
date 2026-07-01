@@ -1,50 +1,43 @@
-# Project Witness — Working Stack
+# Project Witness - Start Here
 
-This folder is the clean, runnable working set: the **latest canonical version of
-every component**, extracted and ready to read, run, and edit. Everything that is
-superseded, adversarial, documentary, or a large review bundle lives in the
-separate `Project_Witness_ARCHIVE/` folder.
+This folder is the clean, runnable working set: the latest canonical version of
+every component, extracted and ready to read, run, and verify.
 
 Standard library only. No network. No signing. No external anchoring.
 
-**External reviewer?** Start with `REVIEWER_QUICKSTART.md` — it covers checksum
-verification, safe extraction, the exact commands, and the expected PASS markers.
-**On a Linux desktop/laptop?** See `LINUX_DESKTOP_RUN_INSTRUCTIONS.md` for the
-full step-by-step. **On Windows?** See `WINDOWS_NOTES.md` — native Windows is not
-directly verified, so WSL2 + Ubuntu (then the Linux instructions) is the
-recommended route.
+Status: **Local v1 Release**. Roadmap complete through Move 60; Moves 61-70 remain future work. The 70-step roadmap is not complete.
 
----
+## First files to read
+
+1. `LOCAL_V1_RELEASE.md` - what the Local v1 Release does and does not claim.
+2. `REVIEWER_QUICKSTART.md` - exact commands and expected PASS markers.
+3. `STACK_STATUS.md` - verification record.
+4. `MOVE_INDEX.md` - roadmap moves mapped to artifacts.
+5. `REPOSITORY_STRUCTURE.md` - layout and file meanings.
+6. `HANDOFF_NOTES.md` - scope and honesty boundary.
 
 ## Layout
 
-```
+```text
 Project_Witness_WORKING_STACK/
-  START_HERE.md            <- you are here
-  STACK_STATUS.md          <- verification record (what was run, what passed)
-  MOVE_INDEX.md            <- all 51 roadmap moves mapped to artifacts
-  project_witness_70_step_roadmap.pdf
-  src/                     <- the working code, in pipeline order (01..18)
-    01_sentinel_core/      ... 18_one_command_demo/
-      <component code>
-      _frozen/             <- original frozen .zip + .sha256 + TEST_RESULTS + REPAIR_LEDGER
-  verify/                  <- independent verifier + the Move 45 full-stack freeze it checks
-  freeze_record/           <- Move 50 Local v1 Candidate freeze + Move 51 Termux instructions
-  tools/
-    run_all_tests.sh       <- runs every component's unittest suite
-    run_live_e2e_demo.sh   <- runs the whole core pipeline live, end to end
+  README.md
+  START_HERE.md
+  LOCAL_V1_RELEASE.md
+  STACK_STATUS.md
+  MOVE_INDEX.md
+  REPOSITORY_STRUCTURE.md
+  REVIEWER_QUICKSTART.md
+  HANDOFF_NOTES.md
+  src/                     <- working component code, in pipeline order
+  verify/                  <- independent verifier + Move 45 freeze it checks
+  freeze_record/           <- Move 50 candidate, Move 51 Termux, Move 60 release freeze
+  tools/                   <- tests, verifiers, demo, and documentation/release checks
 ```
 
-Each `src/NN_*/` folder holds the working code at top level. The matching frozen
-artifact (zip + sidecar) and its test/repair documentation sit in that folder's
-`_frozen/` subfolder, so the integrity copy travels with the code.
+## Pipeline order
 
----
-
-## Pipeline order (src/)
-
-```
-01 sentinel_core            action gate: ALLOW / BLOCK / DRY_RUN + tamper-evident receipts
+```text
+01 sentinel_core            action gate: ALLOW / BLOCK / DRY_RUN + receipts
 02 histor_lite              append-only case store
 03 aletheia_evidence_bundle evidence packaging + manifest
 04 aletheia_odin_bridge     evidence manifest -> ODIN claim format
@@ -55,7 +48,7 @@ artifact (zip + sidecar) and its test/repair documentation sit in that folder's
 09 atlas_registry           read-only controlled vocabulary
 10 atlas_release_gate       validates Coordinator output against Atlas
 11 coordinator_workflow_v032 orchestrates the full lower stack
-12 companion_cli_v031       human-facing entry point (drives Coordinator)
+12 companion_cli_v031       human-facing entry point
 13 unified_case_manifest    cross-component manifest
 14 stack_verifier           end-to-end stack output verifier
 15 stack_selfcheck_v012     stack inventory / documentation selfcheck
@@ -64,33 +57,39 @@ artifact (zip + sidecar) and its test/repair documentation sit in that folder's
 18 one_command_demo         one-command beginner demo wrapper
 ```
 
----
-
 ## How to run
 
-From this folder. One command runs everything and fails closed:
+From this folder:
 
 ```sh
-sh tools/validate_handoff.sh     # all tests + all verifiers + live demo
+sh tools/check_local_v1_release.sh
+sh tools/validate_handoff.sh
 ```
 
-Expected final line: `HANDOFF_VALIDATION: PASS` (exit 0).
+Expected final markers:
 
-Or run each stage on its own:
+```text
+LOCAL_V1_RELEASE_CHECK: PASS
+HANDOFF_VALIDATION: PASS
+```
+
+Optional individual checks:
 
 ```sh
-sh tools/run_all_tests.sh           # all 18 component test suites (1234 tests)
-sh tools/run_independent_verify.sh  # independent check of the Move 45 freeze
-sh tools/run_local_v1_verify.sh     # Move 50 Local v1 Candidate freeze record
-sh tools/run_termux_verify.sh       # Move 51 Termux instructions package
-sh tools/run_demo.sh                # live end-to-end pipeline run + verify
+sh tools/check_release_blockers.sh
+sh tools/check_reviewer_feedback_round.sh
+sh tools/check_five_minute_demo_script.sh
+sh tools/check_public_explanation.sh
+sh tools/check_private_reviewer_package.sh
+sh tools/check_repository_structure.sh
+sh tools/check_linux_desktop_instructions.sh
+sh tools/check_windows_notes.sh
+sh tools/run_all_tests.sh
+sh tools/run_independent_verify.sh
+sh tools/run_local_v1_verify.sh
+sh tools/run_termux_verify.sh
+sh tools/run_demo.sh
 ```
-
-Each script prints a clear `RESULT:`/`verify_ok` marker and exits 0 on pass,
-non-zero on failure (failure output is shown, not hidden). Expected markers are
-listed in `REVIEWER_QUICKSTART.md`.
-
----
 
 ## Truth boundary
 
@@ -99,8 +98,6 @@ files, hashes, manifests, receipts, statuses, and declared workflow outputs unde
 tested local conditions.
 
 It does **not** prove external truth, authenticate sources, sign outputs,
-externally anchor outputs, or claim production readiness. The full limitation set
-is preserved in `Project_Witness_ARCHIVE/03_review_and_documentation/master_known_limitations_v01/`.
+externally anchor outputs, or claim production readiness.
 
-This is a **Local v1 Candidate**, not a final Local v1 Release. The 70-step
-roadmap is **not** complete — see `MOVE_INDEX.md`.
+Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
