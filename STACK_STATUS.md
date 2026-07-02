@@ -1,5 +1,41 @@
 # Stack Status — Verification Record
 
+## Roadmap One final status - 2026-07-02
+
+Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack.
+
+Final package:
+
+releases/roadmap_one_complete/move_70_final/Project_Witness_WORKING_STACK_v20_MOVE_70.zip
+
+SHA-256:
+
+1248bc46fa555cc50ed7b63c9284baffd1e95a6972cdfbc4a40a0201fea81aba
+
+Move 70 verifier result:
+
+MOVE_70_LOCAL_V1_FINAL_REVIEW_VERIFIED
+verify_ok = true
+
+Final transcript:
+
+releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md
+
+Current boundary:
+
+- Roadmap One complete as a local review/demo stack.
+- Not production-ready.
+- Does not prove real-world truth.
+- No external reviewer approval is claimed.
+- Move 65 signing is test-only and not production-valid.
+- Move 66 anchoring is local simulation only, not real external anchoring.
+- Move 67 UI is read-only.
+- Moves 68 and 69 are planning-only.
+- No cloud operation or autonomy claim.
+
+Older Move 60 status notes below are historical records, not the current final Roadmap One status.
+
+
 Date verified: 2026-06-29
 Environment: standard library only, no network, stdlib `unittest` runner.
 
@@ -80,7 +116,7 @@ Environment: standard library only, no network, stdlib `unittest` runner.
 > Linux, Windows, and full handoff checks still pass. The ledger explicitly states
 > that zero external reviewer feedback entries are recorded in this package. No
 > component behaviour, schema, architecture, or feature changed; Step 59 was not
-> started. Roadmap complete through Move 60; Moves 61-70 remain future work. See
+> started. Historical status at that time: Roadmap was complete through Move 60 only. See
 > `CHANGELOG_MOVE_58.md`.
 
 
@@ -102,7 +138,7 @@ Environment: standard library only, no network, stdlib `unittest` runner.
 
 > **Move 60 - freeze Local v1 release (2026-07-01):** added `LOCAL_V1_RELEASE.md`,
 > `freeze_record/local_v1_release_v01/`, and `tools/check_local_v1_release.sh`.
-> Current reviewer/status docs now state Local v1 Release and `Roadmap complete through Move 60; Moves 61-70 remain future work`. The
+> At that historical point, current reviewer/status docs stated Local v1 Release and Roadmap complete through Move 60 only. The
 > Local v1 release check passes (`LOCAL_V1_RELEASE_CHECK: PASS`); the release
 > blocker, feedback, demo, public explanation, private reviewer, repository
 > structure, Linux, Windows, and full handoff checks still pass. No component
@@ -197,4 +233,4 @@ externally anchor outputs, or claim production readiness. It is a Local v1
 Release, not a production system. No external reviewer approval is claimed;
 `REVIEWER_FEEDBACK_LEDGER.md` records `NO_EXTERNAL_FEEDBACK_RECORDED`.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Historical status exact marker: Roadmap was complete through Move 60 only at the time of the Move 60 record.

@@ -1,80 +1,104 @@
 # Project Witness - Working Stack
 
-A local, deterministic, standard-library-only integrity-verification stack. It
-preserves and verifies structured provenance relationships between files, hashes,
-manifests, receipts, statuses, and declared workflow outputs under tested local
-conditions.
+A local, deterministic, standard-library-only integrity-verification stack.
 
-This repository is the **runnable working stack**. It is the **Local v1 Release**.
-The 70-step roadmap is **not** complete - it is complete **through Move 60**
-(Freeze Local v1 Release); Moves 61-70 remain future work.
+Project Witness preserves and verifies structured provenance relationships between files, hashes, manifests, receipts, statuses, and declared workflow outputs under tested local conditions.
+
+This repository is the runnable Project Witness working stack.
+
+## Roadmap One status
+
+Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack.
+
+Final Roadmap One package:
+
+releases/roadmap_one_complete/move_70_final/Project_Witness_WORKING_STACK_v20_MOVE_70.zip
+
+SHA-256:
+
+1248bc46fa555cc50ed7b63c9284baffd1e95a6972cdfbc4a40a0201fea81aba
+
+Main completion documents:
+
+- ROADMAP_ONE_COMPLETE.md
+- ROADMAP_ONE_COMPLETION_MATRIX.md
+- releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md
+- releases/roadmap_one_complete/move_70_final/CHANGELOG_MOVE_70.md
 
 ## What it is
 
-- Pure standard-library Python. No third-party packages, no network, no build step.
-- A pipeline of small components (Sentinel, Histor-lite, Aletheia, the
-  Aletheia-to-ODIN bridge, ODIN, importers, Case Bundle, Atlas, Coordinator,
-  Companion) plus verifiers and a self-check.
-- Reproducible: every claim in `STACK_STATUS.md` can be re-run from the scripts in
-  `tools/`.
-- Demonstrable: `FIVE_MINUTE_DEMO_SCRIPT.md` gives a short, bounded demo path
-  without adding new runtime capability.
-- Frozen for Local v1 in `LOCAL_V1_RELEASE.md` and
-  `freeze_record/local_v1_release_v01/`.
+- Pure standard-library Python.
+- No third-party packages.
+- No network requirement for the checked local stack.
+- No build step.
+- A completed local review/demo stack for Roadmap One.
+- A pipeline of small components including Sentinel, Histor-lite, Aletheia, ODIN, Atlas, Coordinator, Companion, verifiers, and self-checks.
+- Reproducible through the included scripts and verification transcripts.
+- Packaged with final Move 70 completion material.
 
-## What it is NOT
+## What it is not
 
-- It does **not** prove external truth or that any evidence is factually correct.
-- It does **not** authenticate real-world identity or source trust.
-- It does **not** sign outputs or anchor them to any external timestamp/ledger.
-- It is **not** production-ready, and has no GUI, app, network service, or cloud
-  component.
-- It does **not** claim external reviewer approval. The feedback ledger records
-  `NO_EXTERNAL_FEEDBACK_RECORDED`.
+- It does not prove external truth or that evidence is factually correct.
+- It does not authenticate real-world identity or source trust.
+- It is not production-ready.
+- It does not claim external reviewer approval.
+- Move 65 signing is test-only and not production-valid.
+- Move 66 anchoring is local simulation only, not real external anchoring.
+- Move 67 web UI is read-only and does not execute actions.
+- Moves 68 and 69 are planning packs only.
+- No Android app has been built.
+- No Windows app has been built.
+- It has no cloud operation claim.
+- It has no autonomy claim.
 
 ## Read these first
 
-1. `LOCAL_V1_RELEASE.md` - release boundary, validation commands, and limits.
-2. `START_HERE.md` - orientation and layout.
-3. `FIVE_MINUTE_DEMO_SCRIPT.md` - short demo script and safe spoken wording.
-4. `RELEASE_BLOCKER_REGISTER.md` - release-blocker register and repair outcome.
-5. `REVIEWER_FEEDBACK_ROUND.md` - feedback-round instructions and honesty boundary.
-6. `REVIEWER_QUICKSTART.md` - checksum, extraction, exact commands, expected markers.
-7. `PUBLIC_EXPLANATION.md` - plain-language public explanation and safe wording.
-8. `REPOSITORY_STRUCTURE.md` - what every top-level directory and file is.
-9. `PRIVATE_REVIEWER_PACKAGE.md` - how a private reviewer should inspect and report back.
-10. Platform notes: `LINUX_DESKTOP_RUN_INSTRUCTIONS.md`, `WINDOWS_NOTES.md`.
+1. ROADMAP_ONE_COMPLETE.md - final Roadmap One completion note.
+2. ROADMAP_ONE_COMPLETION_MATRIX.md - Steps 1-70 completion matrix.
+3. releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md - final Move 70 verification transcript.
+4. LOCAL_V1_RELEASE.md - Local v1 release boundary, validation commands, and limits.
+5. START_HERE.md - orientation and layout.
+6. FIVE_MINUTE_DEMO_SCRIPT.md - short demo script and safe spoken wording.
+7. RELEASE_BLOCKER_REGISTER.md - release-blocker register and repair outcome.
+8. REVIEWER_FEEDBACK_ROUND.md - feedback-round instructions and honesty boundary.
+9. REVIEWER_QUICKSTART.md - checksum, extraction, exact commands, expected markers.
+10. PUBLIC_EXPLANATION.md - plain-language public explanation and safe wording.
+11. REPOSITORY_STRUCTURE.md - top-level directory and file map.
+12. PRIVATE_REVIEWER_PACKAGE.md - private reviewer inspection instructions.
+13. LINUX_DESKTOP_RUN_INSTRUCTIONS.md and WINDOWS_NOTES.md - platform notes.
 
 ## Quick run
 
-From the repository root, with `python3` and a POSIX shell:
+From the repository root, with python3 and a POSIX shell:
 
-```sh
 sh tools/check_local_v1_release.sh
-sh tools/validate_handoff.sh
-```
 
-Expected final lines: `LOCAL_V1_RELEASE_CHECK: PASS` and
-`HANDOFF_VALIDATION: PASS`. Individual commands and expected markers are in
-`REVIEWER_QUICKSTART.md`.
+sh tools/validate_handoff.sh
+
+Expected historical Local v1 marker:
+
+LOCAL_V1_RELEASE_CHECK: PASS
+
+For final Roadmap One completion, see:
+
+releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md
 
 ## Layout
 
-- `src/` - the latest version of each component, in pipeline order.
-- `verify/` - independent verifier and the frozen full-stack component freeze.
-- `freeze_record/` - the Move 50 candidate record, Move 51 Termux instructions,
-  and the Move 60 Local v1 Release freeze record.
-- `tools/` - runnable shell wrappers for tests, verifiers, demo, review checks,
-  release-blocker checks, and the Local v1 release check.
+- src/ - latest version of each component, in pipeline order.
+- verify/ - independent verifier and frozen full-stack component freeze.
+- freeze_record/ - candidate and release freeze records.
+- tools/ - runnable shell wrappers for tests, verifiers, demo, review checks, and release checks.
+- releases/roadmap_one_complete/move_70_final/ - final Roadmap One package, checksum, changelog, and verification transcript.
 
-See `REPOSITORY_STRUCTURE.md` for the full breakdown.
+See REPOSITORY_STRUCTURE.md for the full breakdown.
 
 ## Licence
 
-Apache License 2.0 - see `LICENSE`.
+Apache License 2.0 - see LICENSE.
 
 ## Status
 
-Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain future work. Do not describe the 70-step roadmap as complete.
+Roadmap One complete: Steps 1-70.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Roadmap One complete as a local review/demo stack. Not production-ready. Does not prove external truth. No external reviewer approval is claimed.
