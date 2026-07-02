@@ -1,6 +1,6 @@
-# Move Index - Roadmap Steps 1-60
+# Move Index - Roadmap Steps 1-70
 
-Every completed roadmap step from 1 to 60 mapped to the artifact that fulfils it, and where
+Every completed Roadmap One step from 1 to 70 mapped to the artifact that fulfils it, and where
 that artifact now lives: **W** = `Project_Witness_WORKING_STACK/`, **A** =
 `Project_Witness_ARCHIVE/`.
 
@@ -70,14 +70,29 @@ frozen state of their component, noted as "(freeze of …)".
 | 58 | Run Reviewer Feedback Round | REVIEWER_FEEDBACK_ROUND.md, REVIEWER_FEEDBACK_LEDGER.md, REVIEWER_FEEDBACK_TRIAGE.md + `tools/check_reviewer_feedback_round.sh` | W (repo root) |
 | 59 | Repair Release Blockers | RELEASE_BLOCKER_REGISTER.md, RELEASE_BLOCKER_REPAIR_LEDGER.md + `tools/check_release_blockers.sh` | W (repo root) |
 | 60 | Freeze Local v1 Release | LOCAL_V1_RELEASE.md, freeze_record/local_v1_release_v01/ + `tools/check_local_v1_release.sh` | W (repo root + `freeze_record/`) |
+| 61 | Decide Next Product Direction | move_61_next_direction_part_two_v01 | final package / releases |
+| 62 | Add Second Sentinel Action | move_62_create_text_file_action_v01 | final package / releases |
+| 63 | Add Additional Evidence Types | move_63_additional_evidence_types_v01 | final package / releases |
+| 64 | Build Signing Design Document | move_64_signing_design_document_v01 | final package / releases |
+| 65 | Build Signing Prototype | move_65_signing_prototype_v01 | final package / releases |
+| 66 | Build External Anchoring Prototype | move_66_external_anchoring_prototype_v01 | final package / releases |
+| 67 | Build Simple Local Web UI | move_67_simple_local_web_ui_v01 | final package / releases |
+| 68 | Plan Android Wrapper | move_68_android_wrapper_plan_v01 | final package / releases |
+| 69 | Plan Windows Wrapper | move_69_windows_wrapper_plan_v01 | final package / releases |
+| 70 | Run Project Witness Local v1.0 Final Review | move_70_local_v1_final_review_v01 | `releases/roadmap_one_complete/move_70_final/` |
 
 ---
 
 ## Status
 
-- Roadmap **complete through Move 60** (Freeze Local v1 Release).
-- Moves **61-70 remain future work**.
-- This is a Local v1 Release, not a production system.
-- Do **not** describe the 70-step roadmap as complete.
+- Roadmap One complete: Steps 1-70.
+- Complete as a local review/demo stack.
+- Not production-ready.
+- Does not prove external truth.
+- No external reviewer approval is claimed.
+- Move 65 signing is test-only.
+- Move 66 anchoring is local simulation only.
+- Move 67 UI is read-only.
+- Moves 68 and 69 are planning-only.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Roadmap One complete as a local review/demo stack. Not production-ready. Does not prove external truth.
