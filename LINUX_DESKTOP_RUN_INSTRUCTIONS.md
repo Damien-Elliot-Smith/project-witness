@@ -1,16 +1,19 @@
 # Linux Desktop Run Instructions
 
-How to verify and run the Project Witness working stack on an ordinary Linux
-desktop or laptop. Plain and technical. No hype.
+How to verify and run the inherited Roadmap One Python/POSIX working stack on an
+ordinary Linux desktop or laptop. These instructions do **not** establish Linux
+build/runtime support for the adopted Rust verifier. Plain and technical. No hype.
 
-This is roadmap **Move 52**. It adds instructions only. It does not change any
-component, schema, or behaviour, and it does not complete the 70-step roadmap.
+Historical Move 52 context: this document was added as instructions only. It
+changed no component, schema, or behaviour. At that time the later Roadmap One
+moves had not yet been completed; that historical status is not the current
+publication state.
 
 ---
 
-## Supported environment
+## Supported environment — inherited Roadmap One Python/POSIX path
 
-An ordinary Linux desktop or laptop (for example Ubuntu, Debian, Fedora, Arch, or
+For the inherited Roadmap One Python/POSIX path, an ordinary Linux desktop or laptop (for example Ubuntu, Debian, Fedora, Arch, or
 similar). No special hardware. No root required. No network required.
 
 ## Required tools
@@ -37,7 +40,7 @@ If `unzip` is missing, install it with your package manager, e.g.
 
 ## No network, no extra Python packages
 
-The stack is standard-library Python only. Nothing here downloads anything, opens
+The inherited Roadmap One path is standard-library Python only. Nothing here downloads anything, opens
 a socket, or needs `pip install`. You can run it fully offline. If any command
 ever reports a missing third-party module, stop and report it — that would be a
 defect, not an expected step.
@@ -154,14 +157,21 @@ tested local conditions. It does **not**:
 
 - prove external truth or that any evidence is factually correct,
 - authenticate real-world identity or source trust,
-- sign outputs or anchor them to any external timestamp or ledger,
+- provide production-valid signing or real external anchoring (Move 65 signing is test-only; Move 66 anchoring is local simulation only),
 - provide a GUI, network service, or cloud component.
 
-It is **not** production-ready. It is a Local v1 **Candidate**, not a final Local
-v1 Release. The roadmap is complete **through Move 58**; Moves
-59-70 remain future work. Do not describe the 70-step roadmap as complete.
+It is **not** production-ready. The statements in the original Move 52 version
+that called this a Local v1 Candidate, said the roadmap was complete only through
+Move 58, and treated Moves 59-70 as future work are **historical Move 52 status**.
+Current publication state: Roadmap One Steps 1-70 are complete as a local
+review/demo stack, Move 70.6 and RT-004 are adopted repairs, Move 71 is adopted,
+and Rust-hardening Moves 72-85 are adopted.
+
+For the Rust verifier, this Linux document is not an established build/runtime
+route. Held evidence establishes Android/Termux AArch64 only; Linux x86_64 and
+Linux AArch64 remain unestablished.
 
 
 ## Current release status
 
-Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.

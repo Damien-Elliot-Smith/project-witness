@@ -2,9 +2,11 @@
 
 ## Roadmap One final status - 2026-07-02
 
-Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Part Two has started.
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 Single authoritative current-state document: CURRENT_RELEASE_STATE.md
+
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 Final package:
 
@@ -34,6 +36,8 @@ Current boundary:
 - Move 67 UI is read-only.
 - Moves 68 and 69 are planning-only.
 - No cloud operation or autonomy claim.
+- Rust-hardening Moves 72-85 are adopted; the held Rust build/runtime evidence establishes Android/Termux AArch64 only.
+- Rust clean-bundle measurements remain INCONCLUSIVE / exit 3; Python/Rust behavioural equivalence is not claimed.
 
 Older Move 60 status notes below are historical records, not the current final Roadmap One status.
 

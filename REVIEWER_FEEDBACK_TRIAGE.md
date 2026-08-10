@@ -1,6 +1,6 @@
 # Reviewer Feedback Triage
 
-Status: Roadmap One (Steps 1-70) complete as a local review/demo stack. Not production-ready. Part Two has started.
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 This file defines how real feedback should be triaged after it is received. The
 current feedback ledger records `NO_EXTERNAL_FEEDBACK_RECORDED`.
@@ -23,4 +23,4 @@ current feedback ledger records `NO_EXTERNAL_FEEDBACK_RECORDED`.
 Do not claim Move 59 or Move 60 repaired invented external blockers. If feedback
 arrives later, record it first, then repair it in a future move or patch.
 
-Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.

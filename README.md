@@ -1,6 +1,6 @@
 # Project Witness - Working Stack
 
-A local, deterministic, standard-library-only integrity-verification stack.
+A local, deterministic integrity-verification stack: an inherited standard-library-only Python Roadmap One stack plus an adopted Rust-hardening block.
 
 Project Witness preserves and verifies structured provenance relationships between files, hashes, manifests, receipts, statuses, and declared workflow outputs under tested local conditions.
 
@@ -8,10 +8,10 @@ This repository is the runnable Project Witness working stack.
 
 ## Roadmap One status
 
-Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Part Two has started.
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 Single authoritative current-state document: CURRENT_RELEASE_STATE.md
-Authoritative current-state checker: tools/check_current_release_state.sh
+Inherited checker: tools/check_current_release_state.sh (it contains pre-Move-85 publication assertions and is not the publication authority).
 
 Final Roadmap One package:
 
@@ -30,10 +30,10 @@ Main completion documents:
 
 ## What it is
 
-- Pure standard-library Python.
-- No third-party packages.
+- The inherited Roadmap One stack is pure standard-library Python.
+- The Roadmap One Python path requires no third-party Python packages and no build step.
 - No network requirement for the checked local stack.
-- No build step.
+- The adopted Rust verifier is source-built from the `rust/` workspace with Cargo/Rust; the held build/runtime evidence establishes Android/Termux AArch64 only.
 - A completed local review/demo stack for Roadmap One.
 - A pipeline of small components including Sentinel, Histor-lite, Aletheia, ODIN, Atlas, Coordinator, Companion, verifiers, and self-checks.
 - Reproducible through the included scripts and verification transcripts.
@@ -56,23 +56,29 @@ Main completion documents:
 
 ## Read these first
 
-1. ROADMAP_ONE_COMPLETE.md - final Roadmap One completion note.
-2. ROADMAP_ONE_COMPLETION_MATRIX.md - Steps 1-70 completion matrix.
-3. releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md - final Move 70 verification transcript.
-4. LOCAL_V1_RELEASE.md - Local v1 release boundary, validation commands, and limits.
-5. START_HERE.md - orientation and layout.
-6. FIVE_MINUTE_DEMO_SCRIPT.md - short demo script and safe spoken wording.
-7. RELEASE_BLOCKER_REGISTER.md - release-blocker register and repair outcome.
-8. REVIEWER_FEEDBACK_ROUND.md - feedback-round instructions and honesty boundary.
-9. REVIEWER_QUICKSTART.md - checksum, extraction, exact commands, expected markers.
-10. PUBLIC_EXPLANATION.md - plain-language public explanation and safe wording.
-11. REPOSITORY_STRUCTURE.md - top-level directory and file map.
-12. PRIVATE_REVIEWER_PACKAGE.md - private reviewer inspection instructions.
-13. LINUX_DESKTOP_RUN_INSTRUCTIONS.md and WINDOWS_NOTES.md - platform notes.
+1. CURRENT_RELEASE_STATE.md - current adopted publication state and evidence boundaries.
+2. START_HERE.md - orientation, prerequisites, and current review path.
+3. HANDOFF_MOVES_71_TO_85.md - adopted Rust-hardening handoff, exact build/run route, known divergences, and platform evidence.
+4. REVIEWER_QUICKSTART.md - Roadmap One review route plus the current Rust-hardening review route.
+5. FIVE_MINUTE_DEMO_SCRIPT.md - bounded demonstration wording.
+6. PUBLIC_EXPLANATION.md - plain-language public explanation and safe wording.
+7. REPOSITORY_STRUCTURE.md - top-level directory and file map.
+8. RELEASE_BLOCKER_REGISTER.md and REVIEWER_FEEDBACK_ROUND.md - blocker/feedback records and review process.
+
+## Historical Roadmap One material
+
+These remain important provenance for the completed Roadmap One stack; they are not the current Move 85 publication-state authority:
+
+- ROADMAP_ONE_COMPLETE.md - final Roadmap One completion note.
+- ROADMAP_ONE_COMPLETION_MATRIX.md - Steps 1-70 completion matrix.
+- releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md - final Move 70 verification transcript.
+- LOCAL_V1_RELEASE.md - historical Move 60 Local v1 release boundary.
+- PRIVATE_REVIEWER_PACKAGE.md - reviewer instructions that retain the Roadmap One package route.
+- LINUX_DESKTOP_RUN_INSTRUCTIONS.md and WINDOWS_NOTES.md - inherited platform notes, now explicitly scoped where needed.
 
 ## Quick run
 
-From the repository root, with python3 and a POSIX shell:
+For the inherited Roadmap One Python/POSIX checks, from the repository root with `python3` and a POSIX shell:
 
 sh tools/check_local_v1_release.sh
 
@@ -86,10 +92,13 @@ For final Roadmap One completion, see:
 
 releases/roadmap_one_complete/move_70_final/VERIFICATION_TRANSCRIPT_MOVE_70.md
 
+For the adopted Rust-hardening block, read `HANDOFF_MOVES_71_TO_85.md`. The supported build route builds from source in the `rust/` workspace with Cargo. Held build/runtime evidence establishes Android/Termux AArch64 only; Linux x86_64, Linux AArch64, and Windows x86_64 remain unestablished.
+
 ## Layout
 
 - src/ - latest version of each component, in pipeline order.
-- verify/ - independent verifier and frozen full-stack component freeze.
+- verify/ - inherited verifier material plus adopted Rust-hardening fixtures, demonstrations, reports, comparison material, and `audit_pack_v01/`.
+- rust/ - Cargo workspace containing the source-built `witness-verify` verifier.
 - freeze_record/ - candidate and release freeze records.
 - tools/ - runnable shell wrappers for tests, verifiers, demo, review checks, and release checks.
 - releases/roadmap_one_complete/move_70_final/ - final Roadmap One package, checksum, changelog, and verification transcript.
@@ -104,5 +113,8 @@ Apache License 2.0 - see LICENSE.
 
 Roadmap One complete: Steps 1-70.
 
-Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+Move 85 v08 technical-authority SHA-256: `f512cc9933153d2a6a97c3158515766fc3c9db0a226153cbb010b37fccb59665`
+Frozen technical-authority commit: `0ae018bc00b5a59f6dcbb6629a2706cb9059280b`
+
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 

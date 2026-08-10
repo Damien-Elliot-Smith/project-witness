@@ -10,14 +10,14 @@ native Windows port. See the boundary statement below.
 
 ## Tested-environment boundary (read first)
 
-Native Windows execution has **not** been directly tested. The environments that
-have actually been run and verified are Termux (Android) and Linux-style POSIX
-shells. Nothing in this document should be read as a guarantee that the stack runs
-natively on Windows. Windows native support is **not claimed** here because it has
-not been tested. If and when it is tested directly, this document will be updated
-to say so explicitly.
+For the inherited Roadmap One Python/POSIX path, native Windows execution was
+not directly tested by the historical Move 53 work; that work used Termux and
+Linux-style POSIX shells. For the adopted Rust verifier, the current held
+build/runtime evidence establishes Android/Termux AArch64 only. Linux x86_64,
+Linux AArch64, and Windows x86_64 remain unestablished. Nothing in this document
+should be read as a native Windows support claim.
 
-Until then, treat Windows as: **safe to inspect; recommended to run via WSL2.**
+For the inherited Roadmap One Python/POSIX path, Windows is safe to inspect and the historical recommendation is WSL2. WSL2 does not establish native Windows or adopted Rust-verifier support.
 
 ## What Windows users can inspect safely
 
@@ -32,10 +32,10 @@ Windows:
 
 None of this executes any code.
 
-## Recommended path: WSL2 + Ubuntu
+## Historical Roadmap One/Python recommendation: WSL2 + Ubuntu
 
-The reliable way to actually run and verify the stack on a Windows machine is the
-Windows Subsystem for Linux (**WSL2**):
+For the inherited Roadmap One Python/POSIX stack, the Move 53 recommendation was
+the Windows Subsystem for Linux (**WSL2**):
 
 1. Install WSL2 with an Ubuntu distribution (Microsoft documents the current
    `wsl --install` procedure).
@@ -44,8 +44,9 @@ Windows Subsystem for Linux (**WSL2**):
    the POSIX shell, `python3`, `unzip`, and `sha256sum` that those instructions
    assume, so the stack behaves as it does on Linux.
 
-This is the recommended route precisely because it uses the already-verified
-Linux/POSIX path rather than an untested native one.
+That recommendation applies to the inherited Roadmap One Python/POSIX path. It
+does not establish Linux or Windows build/runtime support for the adopted Rust
+verifier.
 
 ## Verify the checksum on Windows
 
@@ -97,14 +98,13 @@ instead.
 
 ## Network and packages
 
-- **No network is required.** The stack is fully offline.
-- **No external Python packages are required** unless proven otherwise. It is
-  standard-library Python only. If any command reports a missing third-party
+- **No network is required** for the inherited Roadmap One checks documented here.
+- **No external Python packages are required** for the inherited Roadmap One path; it is standard-library Python. If any command reports a missing third-party
   module, stop and report it — that would be a defect, not an expected step.
 
-## Known PASS markers (from the existing validator, via WSL2/Linux)
+## Historical Roadmap One PASS markers (via WSL2/Linux)
 
-When run via the verified path (WSL2 or Linux), the expected markers are:
+For the inherited Roadmap One Python/POSIX route, the documented markers are:
 
 | Command | Expected marker |
 |---|---|
@@ -126,16 +126,19 @@ When run via the verified path (WSL2 or Linux), the expected markers are:
 
 ## Expected limitations
 
-- No GUI, no app, no network service, no cloud, no signing, no external anchoring.
+- No production GUI/app, network service, cloud, production-valid signing, or real external anchoring is claimed. Move 65 signing is test-only; Move 66 anchoring is local simulation only; Move 67 web UI is read-only.
 - This stack verifies structured provenance relationships under tested local
   conditions only. It does not prove external truth, authenticate real-world
   identity, or establish source trust.
 - It is not production-ready. Roadmap One (Steps 1-70) is complete as a local
-  review/demo stack. Part Two has started. (This file previously carried
-  Move 58-era wording; that wording was historical, not the current state.)
+  review/demo stack. Move 71 and Rust-hardening Moves 72-85 are adopted.
+  (Earlier Move 53/58-era status wording is historical, not current.)
+- For the Rust verifier, Android/Termux AArch64 is the only platform established
+  by held build/runtime evidence; Linux x86_64, Linux AArch64, and Windows x86_64
+  remain unestablished.
 
 
 ## Current release status
 
-Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 

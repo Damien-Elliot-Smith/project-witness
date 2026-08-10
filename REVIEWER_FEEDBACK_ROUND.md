@@ -1,6 +1,6 @@
 # Reviewer Feedback Round
 
-Status: Roadmap One (Steps 1-70) complete as a local review/demo stack. Not production-ready. Part Two has started.
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 This file defines how feedback should be collected. It does not claim that
 feedback has been received.
@@ -11,7 +11,7 @@ feedback has been received.
 No external reviewer approval is claimed. No external reviewer blocker is claimed
 as repaired.
 
-## Package under review
+## Historical Roadmap One package used for this feedback round
 
 - `Project_Witness_WORKING_STACK_v20_MOVE_70.zip`
 - `Project_Witness_WORKING_STACK_v20_MOVE_70.zip.sha256`
@@ -42,4 +42,4 @@ sh tools/validate_handoff.sh
 Only real findings from real reviewers go into the ledger. Do not invent feedback
 to make the release look more reviewed than it is.
 
-Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
