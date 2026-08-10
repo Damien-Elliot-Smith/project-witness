@@ -1,7 +1,7 @@
 # Release Blocker Register - Move 59 carried into Move 60
 
 Roadmap: Step 59 = Repair Release Blockers. Step 60 = Freeze Local v1 Release.
-Status: Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status: Roadmap One (Steps 1-70) complete as a local review/demo stack. Not production-ready. Part Two has started.
 
 Move 59 repaired internal release blockers found before the Local v1 release
 freeze. Move 60 freezes the release after those blocker checks pass.
@@ -30,4 +30,14 @@ Feedback state: `NO_EXTERNAL_FEEDBACK_RECORDED`.
 Move 60 is accepted only if `tools/check_local_v1_release.sh`,
 `tools/check_release_blockers.sh`, and the existing validation commands pass.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+## Blockers found by external review (2026-07-03), repairs in candidate state
+
+These repairs are packaged as candidates (Move 70.6 reconciliation and the
+RT-004 repair candidate) and are not adopted until the owner verifies them.
+
+| ID | Type | Status | Repair summary |
+|---|---|---|---|
+| RB-EXT-001 | Live src/ diverged from declared final release package (18 files; no checker compared them) | REPAIR CANDIDATE | Move 70.6: live `src/` reconciled to the declared v20 package; `tools/check_src_matches_release.sh` added (path + SHA-256, fails on missing/extra/changed; negative-tested in all three directions). |
+| RB-EXT-002 | RT-004: `companion verify` accepted tampered runs — nested evidence bytes changed, deleted, added unexpectedly, or checksum/manifest fix-up all returned verify_ok=true (blind spot recorded in `rt_004_repair/before_repair_verdicts.json`) | REPAIR CANDIDATE | Companion v0.3.2 deep verification: nested checksum recursion, Aletheia manifest binding, Sentinel source-run binding, evidence-directory completeness; 28 new tests; all four tamper classes now rejected with distinct reasons (`rt_004_repair/after_repair_verdicts.json`). |
+
+Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.

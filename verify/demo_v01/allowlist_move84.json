@@ -1,0 +1,26 @@
+{
+ "_purpose": "Move 84 permitted-change allowlist relative to the adopted Move 83 v13 baseline. check_move84_inherited.py enforces this mechanically against the REAL verified Move 83 v13 ZIP bytes supplied at run time.",
+ "_additive_only": "Move 84 modifies NO inherited file. modified_paths is empty and the checker fails if it is not. Move 83's single additive main.rs modification was a one-off authorisation that does not extend to this move; rust/ remains byte-identical to adopted Move 83 v13 in its entirety.",
+ "_no_prebuilt_executable": "Every Move 84 addition is text. No prebuilt witness-verify executable is packaged.",
+ "_inherited_kept_byte_identical": [
+  "rust/ (the entire workspace, including witness-verify/src and Cargo.toml)",
+  "src/ (frozen Part One Python, including the companion CLI the demo executes)",
+  "freeze_record/ (the frozen reference bundle the demo fixtures derive from)",
+  "verify/agreement_harness_v01/, verify/corrupted_bundle_pack_v01/",
+  "verify/structured_verdict_v01/, verify/portable_build_v01/, verify/report_v01/",
+  "Move 79, Move 80, Move 81, Move 82 and Move 83 gates",
+  "MOVE_INDEX.md and CURRENT_RELEASE_STATE.md"
+ ],
+ "modified_paths": [],
+ "added_paths": [
+  "CHANGELOG_MOVE_84.md",
+  "tools/check_move84_demo_adoption.sh",
+  "verify/demo_v01/EXPECTED_TEST_COUNT.txt",
+  "verify/demo_v01/README.md",
+  "verify/demo_v01/allowlist_move84.json",
+  "verify/demo_v01/build_demo_fixtures.py",
+  "verify/demo_v01/check_move84_inherited.py",
+  "verify/demo_v01/demo.py",
+  "verify/demo_v01/demo_tests.py"
+ ]
+}

@@ -1,0 +1,10 @@
+Aletheia Evidence Bundle Import Report
+import_status: IMPORTED_VERIFIED_ALETHEIA
+case_id: case_34fc50a5759dbb1a
+evidence_id: evidence_freeze_71
+source_evidence_status: VERIFIED_PRESENT
+source_file_sha256: 607e80b9c33a115605f435029b493de8b38723ca32facd3554b9d1b0b82def5e
+bundled_file_sha256: 607e80b9c33a115605f435029b493de8b38723ca32facd3554b9d1b0b82def5e
+truth_claim: none
+
+This import verifies Aletheia evidence integrity metadata only. It does not prove the evidence contents are true.

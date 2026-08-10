@@ -1,0 +1,65 @@
+{
+ "cases": [
+  {
+   "case": "clean_control",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "delete_nested_listed_file",
+   "error": "file listed in coordinator_output/workflow_checksums.txt is missing: 'bridge_output/odin_claims.json'",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "delete_top_level_checksums",
+   "error": "missing required file: companion_checksums.txt",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "evidence_added_unexpectedly",
+   "error": "unlisted file(s) in evidence directory: ['planted_evidence.bin']",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "evidence_byte_flip",
+   "error": "deep checksum mismatch for 'evidence/evidence_001.bin' (listed in coordinator_output/aletheia_bundle/evidence_checksums.txt)",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "evidence_flip_with_checksum_fixup",
+   "error": "manifest bundled_file_sha256 does not match bundled file 'evidence/evidence_001.bin'",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "malformed_report_json",
+   "error": "checksum mismatch for coordinator_output/workflow_report.json",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "tamper_source_run",
+   "error": "recorded source hash in coordinator_output/case_bundle_v02/sentinel_case/checksums.txt does not match 'sentinel_run.json'",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "tamper_top_level_report",
+   "error": "companion_report not canonical",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "unknown_top_level_entry",
+   "error": "unknown top-level entries: ['stray.txt']",
+   "exit_code": 1,
+   "verify_ok": false
+  }
+ ],
+ "verifier_command": "python3 src/12_companion_cli_v031/companion.py verify --run <case>"
+}

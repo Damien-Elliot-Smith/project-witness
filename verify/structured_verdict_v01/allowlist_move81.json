@@ -1,0 +1,25 @@
+{
+ "_purpose": "Move 81 permitted-change allowlist: the COMPLETE set of paths a Move 81 candidate may add relative to the adopted Move 80 v07 baseline. Additions only -- no inherited path may change. check_move81_inherited.py enforces this mechanically against the REAL verified Move 80 v07 ZIP bytes supplied at run time (a candidate-contained inventory is self-authenticating and is deliberately not used).",
+ "_inherited_kept_byte_identical": [
+  "src/",
+  "rust/",
+  "freeze_record/",
+  "verify/agreement_harness_v01/",
+  "verify/corrupted_bundle_pack_v01/",
+  "all adopted Move <=80 gates and tools",
+  "adopted artifacts and evidence",
+  "MOVE_INDEX.md and CURRENT_RELEASE_STATE.md (left untouched historical snapshots; see ROADMAP_TWO_MOVE_81_CLARIFICATION.md)"
+ ],
+ "added_paths": [
+  "CHANGELOG_MOVE_81.md",
+  "ROADMAP_TWO_MOVE_81_CLARIFICATION.md",
+  "tools/check_move81_structured_verdict_adoption.sh",
+  "verify/structured_verdict_v01/EXPECTED_TEST_COUNT.txt",
+  "verify/structured_verdict_v01/README.md",
+  "verify/structured_verdict_v01/adapter.py",
+  "verify/structured_verdict_v01/allowlist_move81.json",
+  "verify/structured_verdict_v01/check_move81_inherited.py",
+  "verify/structured_verdict_v01/schema.py",
+  "verify/structured_verdict_v01/structured_tests.py"
+ ]
+}

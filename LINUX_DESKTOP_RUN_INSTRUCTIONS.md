@@ -164,4 +164,4 @@ v1 Release. The roadmap is complete **through Move 58**; Moves
 
 ## Current release status
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.

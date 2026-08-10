@@ -138,3 +138,63 @@ def evaluate_create_directory(target_path: str, allowed_root: str) -> PolicyResu
                         {"resolved_root": real_root, "resolved_parent": real_parent,
                          "resolved_target": resolved_target},
                         resolved_target=resolved_target)
+
+
+def evaluate_create_text_file(target_path: str, allowed_root: str,
+                              allowed_path_prefix: str) -> PolicyResult:
+    """Evaluate whether creating a TEXT FILE at target_path is permitted.
+
+    Move 62. Path-leaf safety for a new file is IDENTICAL to a new directory
+    (target must be absent, parent must exist and be a real directory, and the
+    resolved target must sit strictly inside the manifest-authoritative
+    allowed_root with no lexical traversal, no absolute escape, and no symlink
+    escape). We therefore reuse evaluate_create_directory verbatim for those
+    checks — it is read-only and creates nothing — then add the CREATE_TEXT_FILE
+    prefix rule on top.
+
+    allowed_path_prefix is interpreted RELATIVE to the manifest allowed_root
+    (exactly like target_path), NOT as an absolute path. This is deliberate:
+      * it keeps the request root-independent, so a saved run replays into a
+        sandbox unchanged (the v1.1.0 property that removed request-carried
+        absolute roots), and
+      * it makes the prefix a NARROW-ONLY sub-area of the authoritative root —
+        it can never widen the boundary.
+    Use "." for "the whole allowed_root". An absolute prefix, or one that uses
+    traversal to escape the root, fails closed as BLOCK_OUTSIDE_ALLOWED_ROOT.
+    The resolved target must then sit inside the resolved prefix.
+    """
+    base = evaluate_create_directory(target_path, allowed_root)
+    if not base.ok:
+        return base
+
+    real_root = os.path.realpath(allowed_root)
+    resolved_target = base.resolved_target
+
+    # An absolute prefix would name a root of its own; refuse it (fail closed)
+    # rather than let a request widen or repoint the boundary.
+    if os.path.isabs(allowed_path_prefix):
+        return PolicyResult(False, BLOCK_OUTSIDE_ALLOWED_ROOT,
+                            {"reason": "allowed_path_prefix must be relative to allowed_root",
+                             "allowed_path_prefix": allowed_path_prefix, "resolved_root": real_root})
+
+    prefix_lexical = os.path.normpath(os.path.join(real_root, allowed_path_prefix))
+    if not _within(real_root, prefix_lexical):
+        return PolicyResult(False, BLOCK_OUTSIDE_ALLOWED_ROOT,
+                            {"reason": "allowed_path_prefix escapes allowed_root (traversal)",
+                             "lexical_prefix": prefix_lexical, "resolved_root": real_root})
+
+    real_prefix = os.path.realpath(prefix_lexical)
+    # A symlinked prefix must still resolve inside the root.
+    if not _within(real_root, real_prefix):
+        return PolicyResult(False, BLOCK_OUTSIDE_ALLOWED_ROOT,
+                            {"reason": "allowed_path_prefix escapes allowed_root (symlink)",
+                             "resolved_prefix": real_prefix, "resolved_root": real_root})
+    # The target must sit inside the declared (root-contained) prefix.
+    if not _within(real_prefix, resolved_target):
+        return PolicyResult(False, BLOCK_OUTSIDE_ALLOWED_ROOT,
+                            {"reason": "target outside allowed_path_prefix",
+                             "resolved_target": resolved_target, "resolved_prefix": real_prefix})
+
+    detail = dict(base.detail)
+    detail["resolved_prefix"] = real_prefix
+    return PolicyResult(True, None, detail, resolved_target=resolved_target)

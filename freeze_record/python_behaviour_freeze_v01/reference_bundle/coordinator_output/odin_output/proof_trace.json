@@ -1,0 +1,1 @@
+{"case_id":"case_34fc50a5759dbb1a","proof_trace_version":"0.1.0","steps":[{"claim_id":"claim_001","reason":"CLAIM_SCHEMA_VALID_AND_SUPPORT_PRESENT","step_id":"step_001","step_type":"CLAIM_ACCEPTED"},{"claim_id":"claim_002","reason":"CLAIM_SCHEMA_VALID_AND_SUPPORT_PRESENT","step_id":"step_002","step_type":"CLAIM_ACCEPTED"}]}

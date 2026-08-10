@@ -2,7 +2,9 @@
 
 ## Roadmap One final status - 2026-07-02
 
-Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack.
+Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Part Two has started.
+
+Single authoritative current-state document: CURRENT_RELEASE_STATE.md
 
 Final package:
 

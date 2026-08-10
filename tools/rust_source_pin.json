@@ -1,0 +1,57 @@
+{
+ "excluded": [
+  "rust/README.md and all documentation (it MUST change each Rust move; enforced instead by tools/check_rust_workspace.sh)",
+  "rust/target/ (build output)"
+ ],
+ "pinned_path_count": 10,
+ "pinned_paths": [
+  "rust/Cargo.toml",
+  "rust/witness-verify/Cargo.toml",
+  "rust/witness-verify/src/canonical.rs",
+  "rust/witness-verify/src/hashes.rs",
+  "rust/witness-verify/src/json.rs",
+  "rust/witness-verify/src/main.rs",
+  "rust/witness-verify/src/manifest.rs",
+  "rust/witness-verify/src/receipts.rs",
+  "rust/witness-verify/src/sha256.rs",
+  "rust/witness-verify/src/zipguard.rs"
+ ],
+ "provenance": {
+  "adopted_baseline": {
+   "artifact": "project-witness-MOVE_78_candidate_v10.zip",
+   "sha256": "6030148c2c1bb373ad69393563e8e2e3078dff93e9f446d728edd18ea3c45252"
+  },
+  "baseline_file_sha256": {
+   "rust/Cargo.toml": "2fa9b71170210e8d5326b39ba6e7af35fdba233d30fb5eb11719694d2decfabb",
+   "rust/witness-verify/Cargo.toml": "4debd27a4ae0cb0c37e0ccee5c383bd04e33bbe66687b3101ccf1e983d2da651",
+   "rust/witness-verify/src/canonical.rs": "402ae9afeced18535dbe541467cce7768e608b290ae9ef122155b1b108693f76",
+   "rust/witness-verify/src/hashes.rs": "cfcab8c1336814796e27070face4d89049061cdedf42f64939aafadc39378142",
+   "rust/witness-verify/src/json.rs": "e1a246e941d124ca1d221b17c2702d9b71d9e5c2f294409cef13c9eb11638b80",
+   "rust/witness-verify/src/main.rs": "2a9d336369c05e1f5ee55896e202cf49248151a7871aa1d7212f93e11a4ad08b",
+   "rust/witness-verify/src/manifest.rs": "1eac589523338a25eec4faa7b91b0a8b510dc2de780b1bc58faffd9bc8487d2e",
+   "rust/witness-verify/src/receipts.rs": "b7f21c1e0f35526271e603d96187e499f81e102f2504dae3e2a8a029c78131a5",
+   "rust/witness-verify/src/sha256.rs": "61cfc516a6755a96056759ce951fb298b9c84b6d63bc70b38a189bac36e811d3",
+   "rust/witness-verify/src/zipguard.rs": "090d804a5bc08295356ac636dce1cf1dbbb1f85702bb9482753ab67efa1832eb"
+  },
+  "candidate_file_sha256": {
+   "rust/Cargo.toml": "2fa9b71170210e8d5326b39ba6e7af35fdba233d30fb5eb11719694d2decfabb",
+   "rust/witness-verify/Cargo.toml": "81eb0cbd18ba9bed385e6543d5d33b428be4b2df9ae31039cf5f2f124c13678a",
+   "rust/witness-verify/src/canonical.rs": "402ae9afeced18535dbe541467cce7768e608b290ae9ef122155b1b108693f76",
+   "rust/witness-verify/src/hashes.rs": "cfcab8c1336814796e27070face4d89049061cdedf42f64939aafadc39378142",
+   "rust/witness-verify/src/json.rs": "e1a246e941d124ca1d221b17c2702d9b71d9e5c2f294409cef13c9eb11638b80",
+   "rust/witness-verify/src/main.rs": "0b6a589add667ca6ee0b934a6a4542e4e16c295bafe6f8f57fd6267a1c202ce1",
+   "rust/witness-verify/src/manifest.rs": "1eac589523338a25eec4faa7b91b0a8b510dc2de780b1bc58faffd9bc8487d2e",
+   "rust/witness-verify/src/receipts.rs": "b7f21c1e0f35526271e603d96187e499f81e102f2504dae3e2a8a029c78131a5",
+   "rust/witness-verify/src/sha256.rs": "61cfc516a6755a96056759ce951fb298b9c84b6d63bc70b38a189bac36e811d3",
+   "rust/witness-verify/src/zipguard.rs": "090d804a5bc08295356ac636dce1cf1dbbb1f85702bb9482753ab67efa1832eb"
+  },
+  "derivation": "DERIVED, not self-certified. This pin = the ADOPTED Move 78 v10 Rust source + the reviewed Move 79 delta. Each pinned file is recorded with its adopted-baseline hash and its candidate hash, so a reviewer can verify every byte of difference without trusting the pin's author.",
+  "files_changed_from_baseline": [
+   "rust/witness-verify/Cargo.toml",
+   "rust/witness-verify/src/main.rs"
+  ],
+  "reviewed_delta": "Cargo.toml: version 0.0.7 -> 0.0.8. main.rs: VERSION -> 0.0.8-step79-diagnostics; additive verdict_line_with_count() emitting a read-only entry_count field; one new test. NO verdict logic, precedence, or check ordering changed (the Move 79 authorization for a read-only diagnostic)."
+ },
+ "rust_source_sha256": "7e2e199fb576a1d45862c3ddc13ac2ff37026b51f6f74f38efd23615bb04c9ed",
+ "scope": "behaviour-determining Rust source only (*.rs, Cargo.toml)"
+}

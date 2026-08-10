@@ -1,0 +1,8 @@
+Replaying run: coordinator_run_6822aef67de0  (source: /home/claude/m71_a/coordinator_output/sentinel_run/sentinel_run.json, mode: closed/audit)
+Saved receipts: 3
+Saved chain: verified OK (hashes, linkage, versions, INTENT/RESULT pairing)
+  MATCH  #0000: INTENT ALLOW INTENT_CREATE_DIRECTORY [OPEN->OPEN]
+  MATCH  #0001: RESULT ALLOW ALLOW_CREATE_DIRECTORY [OPEN->OPEN]
+  MATCH  #0002: SESSION_CLOSE ALLOW ALLOW_SESSION_CLOSE [OPEN->CLOSED_BY_OPERATOR]
+REPLAY VERDICT: PASS_STRICT
+PASS_STRICT -- all 3 receipts strictly re-derived.

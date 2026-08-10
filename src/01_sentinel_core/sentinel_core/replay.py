@@ -45,8 +45,9 @@ from sentinel_core.persistence import VolatileTestBackend
 from sentinel_core.reason_codes import (
     ALLOW_CREATE_DIRECTORY, DRY_RUN_CREATE_DIRECTORY, BLOCK_TARGET_ALREADY_EXISTS,
     INTENT_CREATE_DIRECTORY,
+    ALLOW_CREATE_TEXT_FILE, DRY_RUN_CREATE_TEXT_FILE, INTENT_CREATE_TEXT_FILE,
 )
-from sentinel_core.action_schema import ACTION_CREATE_DIRECTORY
+from sentinel_core.action_schema import ACTION_CREATE_DIRECTORY, ACTION_CREATE_TEXT_FILE
 
 MAX_REPLAY_RECEIPTS = 10000
 MAX_RUN_FILE_BYTES = 10 * 1024 * 1024
@@ -104,6 +105,7 @@ def _incompatible(report: str) -> ReplayResult:
 _IMPLIES_PARENT_EXISTED = frozenset({
     INTENT_CREATE_DIRECTORY, ALLOW_CREATE_DIRECTORY,
     DRY_RUN_CREATE_DIRECTORY, BLOCK_TARGET_ALREADY_EXISTS,
+    INTENT_CREATE_TEXT_FILE, ALLOW_CREATE_TEXT_FILE, DRY_RUN_CREATE_TEXT_FILE,
 })
 
 
@@ -149,7 +151,10 @@ def _reconstruct_context(sandbox_root: str, original_root: str, saved_receipt) -
     there before this runs.
     """
     req = saved_receipt.request
-    if type(req) is not dict or req.get("action_type") != ACTION_CREATE_DIRECTORY:
+    if type(req) is not dict:
+        return
+    action_type = req.get("action_type")
+    if action_type not in (ACTION_CREATE_DIRECTORY, ACTION_CREATE_TEXT_FILE):
         return
     target = req.get("target_path", "")
     if target == "":
@@ -161,7 +166,14 @@ def _reconstruct_context(sandbox_root: str, original_root: str, saved_receipt) -
         os.makedirs(parent, exist_ok=True)
     if saved_receipt.reason_code == BLOCK_TARGET_ALREADY_EXISTS:
         os.makedirs(parent, exist_ok=True)
-        os.makedirs(full_target, exist_ok=True)
+        if action_type == ACTION_CREATE_TEXT_FILE:
+            # A pre-existing FILE at the target reproduces the block for the
+            # text-file action (a directory would for the directory action).
+            if not os.path.lexists(full_target):
+                with open(full_target, "w", encoding="utf-8") as _f:
+                    _f.write("preexisting")
+        else:
+            os.makedirs(full_target, exist_ok=True)
 
 
 def _replay_data(raw_data: dict, source_label: str, allow_open: bool,

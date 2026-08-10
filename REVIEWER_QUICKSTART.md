@@ -4,12 +4,13 @@ A one-page guide for an external reviewer. Plain and technical. No hype.
 
 ## What this zip is
 
-The runnable **Project Witness Local v1 Release** working stack: the latest version
-of each component under `src/`, frozen verification artifacts, the Move 60 release
-freeze record, and shell scripts to run the checks. Standard-library Python only.
+The runnable **Project Witness Roadmap One** working stack: the latest version
+of each component under `src/`, frozen verification artifacts, historical freeze
+records (including the earlier Move 60 "Local v1 Release" milestone), and shell
+scripts to run the checks. Standard-library Python only.
 No network, no third-party packages, no build step.
 
-Roadmap complete through Move 60; Moves 61-70 remain future work. The 70-step roadmap is not complete.
+Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Part Two has started. Complete as a local review/demo stack does not mean production-ready.
 
 ## What this is NOT
 
@@ -25,19 +26,19 @@ Roadmap complete through Move 60; Moves 61-70 remain future work. The 70-step ro
 From the directory containing the zip and sidecar:
 
 ```sh
-sha256sum -c Project_Witness_WORKING_STACK_v11_MOVE_60.zip.sha256
+sha256sum -c Project_Witness_WORKING_STACK_v20_MOVE_70.zip.sha256
 ```
 
 Expected:
 
 ```text
-Project_Witness_WORKING_STACK_v11_MOVE_60.zip: OK
+Project_Witness_WORKING_STACK_v20_MOVE_70.zip: OK
 ```
 
 If `sha256sum` is unavailable, use:
 
 ```sh
-shasum -a 256 Project_Witness_WORKING_STACK_v11_MOVE_60.zip
+shasum -a 256 Project_Witness_WORKING_STACK_v20_MOVE_70.zip
 ```
 
 and compare the digest in the `.sha256` sidecar by eye.
@@ -46,7 +47,7 @@ and compare the digest in the `.sha256` sidecar by eye.
 
 ```sh
 mkdir pw_review && cd pw_review
-unzip ../Project_Witness_WORKING_STACK_v11_MOVE_60.zip
+unzip ../Project_Witness_WORKING_STACK_v20_MOVE_70.zip
 cd Project_Witness_WORKING_STACK
 ```
 
@@ -111,4 +112,4 @@ Each script exits 0 on pass and non-zero on failure.
 - `HANDOFF_NOTES.md` - scope and honesty boundary.
 - `src/NN_*/` - each component's working code, with freeze-time docs in `_frozen/`.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.

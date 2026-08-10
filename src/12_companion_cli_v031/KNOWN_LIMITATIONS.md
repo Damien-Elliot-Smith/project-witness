@@ -1,5 +1,25 @@
 # Known Limitations — Companion CLI v0.3
 
+## Verification depth (v0.3.2)
+
+Before v0.3.2, `companion verify` hash-checked only the eight top-level
+required files and did not recurse into nested component checksum files,
+so tampered evidence bytes inside the run verified as ok at this layer
+(RT-004). v0.3.2 adds deep verification: every nested `*checksums.txt` is
+re-verified, the Aletheia manifest's `bundled_file_sha256` binding is
+enforced, and Sentinel `source_run_sha256` records are bound to the source
+run file when present. Remaining limits of deep verification:
+
+- recorded provenance hashes whose source file is absent from the run
+  folder are recorded-only and cannot be re-verified here
+- deep verification proves hash consistency of the recorded run only; it
+  does not prove evidence contents are true
+- the evidence directory is verified as a closed set: files present there
+  without a checksum entry fail verification (evidence added unexpectedly)
+- whole-folder fabrication remains possible without signing (unchanged)
+
+## Prior limitations
+
 - one workflow type only (CREATE_EVIDENCE_REASONING_CASE)
 - one evidence file only
 - one Coordinator run only

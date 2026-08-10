@@ -1,0 +1,164 @@
+{
+ "_schema": "witness-adopted-facts/1",
+ "_status": "CLAIM MANIFEST ONLY. Nothing in this file is evidence. Every entry names the EXTERNAL authority that establishes it and the method by which the Move 85 gate must check it. The gate compares this file AGAINST those authorities; it must never compare an authority against this file, and it must never treat a value here as established because this file contains it.",
+ "_baseline": {
+  "artifact": "project-witness-MOVE_84_candidate_v07.zip",
+  "claimed_sha256": "0c06017a871adc23b50bdfda272a30fb6843dbb50fbb4632284b037090e7e880",
+  "authority": "REAL_MOVE84, supplied externally at adoption time",
+  "how_verified": "recompute the SHA-256 of the externally supplied artifact and compare with the externally pinned expected value held in the gate; this file's copy is checked against that result, never the reverse"
+ },
+ "_status_vocabulary": {
+  "historically_established": "established by adopted evidence in an earlier move; Move 85 does not re-establish it",
+  "freshly_reproduced_by_move_85": "measured again by this move's own gate run",
+  "established_android_termux_aarch64_only": "measured, and only on that platform",
+  "source_level_contract": "a structural property of the adopted source, machine-checkable from adopted bytes; NOT a runtime or reachability proof",
+  "known_limitation": "a real limit of the system, deliberately preserved and visible",
+  "unestablished": "not established by any evidence this project holds",
+  "not_claimed": "deliberately not asserted"
+ },
+ "claims": [
+  {
+   "id": "rust_no_pass_verdict_constant",
+   "statement": "The adopted Rust source defines exactly two verdict constants, VERDICT_FAIL and VERDICT_INCONCLUSIVE. No PASS verdict constant exists.",
+   "status": "source_level_contract",
+   "authority": "adopted rust/witness-verify/src/main.rs bytes",
+   "how_verified": "enumerate `const VERDICT_*` declarations from the adopted source and require the set to be exactly {VERDICT_FAIL, VERDICT_INCONCLUSIVE}",
+   "does_not_establish": "This is a structural fact about declared constants. It is NOT a proof that no reachable PASS-producing path exists anywhere in the program. No such global reachability proof is claimed."
+  },
+  {
+   "id": "rust_no_pass_observed",
+   "statement": "No Rust PASS verdict was observed across the adopted tested corpus and the Move 85 audit-pack surfaces.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "fresh execution of the freshly built verifier over every audit-pack case",
+   "how_verified": "capture every Rust stdout in the pack and require that none carries a PASS verdict and that no Rust invocation exits 0",
+   "does_not_establish": "Finite execution establishes what was observed on the tested surfaces only. It does not establish global reachability."
+  },
+  {
+   "id": "clean_bundle_rust_inconclusive",
+   "statement": "A clean bundle yields Rust INCONCLUSIVE with exit code 3.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "fresh execution over the frozen reference bundle",
+   "how_verified": "run the freshly built verifier and compare against the adopted Move 84 authority binary built from the externally supplied adopted archive"
+  },
+  {
+   "id": "clean_bundle_python_pass",
+   "statement": "A clean bundle yields Python PASS with exit code 0.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "fresh execution of the adopted companion CLI",
+   "how_verified": "run it and record the exact bytes and exit code"
+  },
+  {
+   "id": "toplevel_tamper_rust_detects",
+   "statement": "A single-byte tamper to a top-level declared file is detected by the Rust verifier, which reports FAIL with exit code 1.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "fresh execution; the reason code is read from that execution and never predicted",
+   "how_verified": "run the verifier over the tampered fixture and record the reason code observed"
+  },
+  {
+   "id": "nested_evidence_tamper_rust_blind",
+   "statement": "A single-byte tamper to the nested evidence payload is NOT detected by the Rust verifier. Its output is byte-identical to the clean bundle.",
+   "status": "known_limitation",
+   "authority": "fresh execution, plus the adopted Move 80 case M80-CHANGED-EVIDENCE-001",
+   "how_verified": "require the Rust output for this case to be byte-identical to the clean case; the gate FAILS if the blindness is not observed, so the limitation cannot silently disappear"
+  },
+  {
+   "id": "nested_evidence_tamper_python_detects",
+   "statement": "The same nested tamper IS detected by the Python lane, which fails at its nested-checksum stage.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "fresh execution of the adopted companion CLI",
+   "how_verified": "require a non-zero exit and an error naming the nested evidence file"
+  },
+  {
+   "id": "adopted_divergence_ids",
+   "statement": "Exactly two adopted behavioural divergence IDs remain: stage_manifest_json_invalid and stage_report_field_missing_repaired.",
+   "status": "known_limitation",
+   "authority": "the adopted Move 79 gate bytes, tools/check_move79_instrument_adoption.sh, which exports EXPECT_DIV_IDS",
+   "how_verified": "parse EXPECT_DIV_IDS out of the adopted gate at run time and require this file's list to equal it exactly; the adopted gate is the authority and this list is never the authority"
+  },
+  {
+   "id": "system_agreement_markers_visible",
+   "statement": "The generic system-agreement markers remain visible and are not concealed.",
+   "status": "known_limitation",
+   "authority": "the Move 84 child gate's own retained output",
+   "how_verified": "require SYSTEM_AGREEMENT_RESULT: FAIL and SYSTEM_AGREEMENT_REASON: BEHAVIOURAL_DIVERGENCE_DETECTED in the child transcript"
+  },
+  {
+   "id": "python_rust_behavioural_equivalence",
+   "statement": "Python and Rust are behaviourally equivalent.",
+   "status": "not_claimed",
+   "authority": "none",
+   "how_verified": "not applicable; the two divergences above are preserved precisely because this is false"
+  },
+  {
+   "id": "verifier_version_string",
+   "statement": "The verifier reports the version string 0.0.8-step79-diagnostics, which is distinct from the Cargo package version 0.0.8.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "the freshly built binary's own output",
+   "how_verified": "parse the version from real output using the adopted reader; the Cargo version is read from the adopted manifest bytes"
+  },
+  {
+   "id": "binary_target_android_termux_aarch64",
+   "statement": "The verifier builds and runs on Android/Termux AArch64.",
+   "status": "established_android_termux_aarch64_only",
+   "authority": "the gate's own clean build and the adopted binary inspector",
+   "how_verified": "compare the inspector's measured ELF class, endianness and machine against the detected rustc host triple"
+  },
+  {
+   "id": "rust_unit_suite_passes",
+   "statement": "The Rust unit suite passes.",
+   "status": "established_android_termux_aarch64_only",
+   "authority": "cargo test executed by the gate",
+   "how_verified": "run it and require a successful result line with a non-zero test count"
+  },
+  {
+   "id": "platform_linux_x86_64",
+   "statement": "Linux x86_64 runtime support.",
+   "status": "unestablished",
+   "authority": "none",
+   "how_verified": "the gate requires that no Move 85 material claims it"
+  },
+  {
+   "id": "platform_linux_aarch64",
+   "statement": "Linux AArch64 runtime support.",
+   "status": "unestablished",
+   "authority": "none",
+   "how_verified": "the gate requires that no Move 85 material claims it; an Android/Termux AArch64 binary is NOT a generic Linux AArch64 binary"
+  },
+  {
+   "id": "platform_windows_x86_64",
+   "statement": "Windows x86_64 runtime support.",
+   "status": "unestablished",
+   "authority": "none",
+   "how_verified": "the gate requires that no Move 85 material claims it"
+  },
+  {
+   "id": "reproducible_builds",
+   "statement": "The provenance record proves reproducible builds.",
+   "status": "not_claimed",
+   "authority": "none",
+   "how_verified": "provenance records measured facts about ONE build; the gate requires that no Move 85 material claims reproducibility of binaries or builds"
+  },
+  {
+   "id": "audit_pack_representation_deterministic",
+   "statement": "The Move 85 audit-pack representation regenerates byte-for-byte from the same inputs.",
+   "status": "freshly_reproduced_by_move_85",
+   "authority": "two independent generations compared byte-for-byte by the gate",
+   "how_verified": "generate the pack twice from the same inputs and compare MANIFEST.json, INSTRUCTIONS.md, KNOWN_LIMITS.md and SHA256SUMS byte-for-byte",
+   "does_not_establish": "This is a determinism claim about the Move 85 pack representation ONLY. It is NOT a claim that Rust binaries or builds are reproducible."
+  },
+  {
+   "id": "binary_is_shipped",
+   "statement": "An executable verifier is shipped inside the source archive.",
+   "status": "not_claimed",
+   "authority": "the packaged bytes",
+   "how_verified": "the gate requires zero ELF members in the candidate archive; the binary is produced by the gate and published separately"
+  },
+  {
+   "id": "move_85_establishes_history_by_documenting_it",
+   "statement": "Move 85 establishes historical facts by recording them.",
+   "status": "not_claimed",
+   "authority": "none",
+   "how_verified": "documentation records; the adopted gates establish. Every historical hash is recomputed from the externally supplied adopted artifact and compared with the externally pinned expected value"
+  }
+ ]
+}

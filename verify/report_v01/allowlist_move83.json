@@ -1,0 +1,33 @@
+{
+ "_purpose": "Move 83 permitted-change allowlist relative to the adopted Move 82 v07 baseline. check_move83_inherited.py enforces this mechanically against the REAL verified Move 82 v07 ZIP bytes supplied at run time.",
+ "_modification_note": "Move 83 is the FIRST move authorised to modify an inherited file. Exactly one is declared: rust/witness-verify/src/main.rs. The modification is required to be STRICTLY ADDITIVE \u2014 the checker reproduces the adopted file's every line, in order, from the live file, so no adopted line may be changed or removed under cover of an addition. The change is two hunks: a `mod report;` declaration, and two new `report-bundle` / `report-archive` arms placed AFTER both adopted arms and BEFORE the usage fallback. The adopted `verify` and `inspect-archive` arms and the adopted usage text are untouched.",
+ "_no_prebuilt_executable": "Every Move 83 addition is text. No prebuilt witness-verify executable is packaged.",
+ "_inherited_kept_byte_identical": [
+  "rust/witness-verify/src/ (every file except the declared main.rs modification)",
+  "rust/Cargo.toml",
+  "src/ (frozen Part One Python)",
+  "freeze_record/",
+  "verify/agreement_harness_v01/ (including reason_map.json and the corpora)",
+  "verify/corrupted_bundle_pack_v01/ (Move 80 fixture pack)",
+  "verify/structured_verdict_v01/ (Move 81 adapter, schema and tests)",
+  "verify/portable_build_v01/ (Move 82 portable-build tooling)",
+  "Move 79, Move 80, Move 81 and Move 82 gates",
+  "MOVE_INDEX.md and CURRENT_RELEASE_STATE.md"
+ ],
+ "modified_paths": [
+  "rust/witness-verify/src/main.rs"
+ ],
+ "added_paths": [
+  "CHANGELOG_MOVE_83.md",
+  "rust/witness-verify/src/report.rs",
+  "tools/check_move83_report_adoption.sh",
+  "verify/report_v01/EXPECTED_TEST_COUNT.txt",
+  "verify/report_v01/README.md",
+  "verify/report_v01/allowlist_move83.json",
+  "verify/report_v01/check_focused_result.py",
+  "verify/report_v01/check_move83_inherited.py",
+  "verify/report_v01/report_schema.py",
+  "verify/report_v01/report_tests.py",
+  "verify/report_v01/rust_source_check.py"
+ ]
+}

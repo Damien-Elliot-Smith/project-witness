@@ -1,8 +1,14 @@
-# Local v1 Release - Project Witness
+# Local v1 Release - Project Witness (HISTORICAL - Move 60 milestone)
+
+> **HISTORICAL DOCUMENT.** This file records the Move 60 "Local v1 Release"
+> milestone as it stood on 2026-07-01. It is preserved unedited below this
+> banner and no longer describes the current state. Roadmap One (Steps 1-70)
+> has since been completed as a local review/demo stack; Part Two has not
+> started. For the current state, read `CURRENT_RELEASE_STATE.md`.
 
 Date: 2026-07-01
 Roadmap: Step 60 = Freeze Local v1 Release.
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Historical status marker (superseded): Roadmap complete through Move 60; Moves 61-70 remain future work.
 
 ## Release statement
 
@@ -75,8 +81,10 @@ WINDOWS_NOTES_CHECK: PASS
 HANDOFF_VALIDATION: PASS
 ```
 
-## Future work boundary
+## Future work boundary (historical, as of Move 60)
 
-Moves 61-70 remain future work. Do not describe the 70-step roadmap as complete.
+At the time of this Move 60 record, Moves 61-70 remained future work and the
+70-step roadmap was not complete. Moves 61-70 have since been completed; see
+`CURRENT_RELEASE_STATE.md`.
 Do not start product-direction work, second Sentinel actions, signing, anchoring,
 GUI, Android, Windows wrappers, or final review inside this Move 60 package.

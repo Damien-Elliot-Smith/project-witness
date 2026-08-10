@@ -11,8 +11,10 @@ bad() { printf "  FAIL  %s\n" "$1"; missing=$((missing + 1)); }
 contains() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then ok "$label"; else bad "$label"; fi; }
 forbid() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then bad "$label"; else ok "$label"; fi; }
 
-current_marker="Roadmap complete through Move 60; Moves 61-70 remain future work"
-current_zip="Project_Witness_WORKING_STACK_v11_MOVE_60.zip"
+# Move 70.5: marker updated to the Roadmap One completion state.
+# The authoritative current-state checker is tools/check_current_release_state.sh.
+current_marker="Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack."
+current_zip="Project_Witness_WORKING_STACK_v20_MOVE_70.zip"
 
 echo "Local v1 release check"
 echo "----------------------"
@@ -33,7 +35,8 @@ for d in src verify freeze_record tools; do
 done
 
 echo "Status consistency:"
-for f in LOCAL_V1_RELEASE.md README.md START_HERE.md REVIEWER_QUICKSTART.md STACK_STATUS.md MOVE_INDEX.md HANDOFF_NOTES.md REPOSITORY_STRUCTURE.md PRIVATE_REVIEWER_PACKAGE.md PUBLIC_EXPLANATION.md FIVE_MINUTE_DEMO_SCRIPT.md REVIEWER_FEEDBACK_ROUND.md REVIEWER_FEEDBACK_LEDGER.md REVIEWER_FEEDBACK_TRIAGE.md RELEASE_BLOCKER_REGISTER.md RELEASE_BLOCKER_REPAIR_LEDGER.md; do
+contains "$ROOT/LOCAL_V1_RELEASE.md" "HISTORICAL DOCUMENT" "LOCAL_V1_RELEASE.md is marked historical"
+for f in README.md START_HERE.md REVIEWER_QUICKSTART.md STACK_STATUS.md MOVE_INDEX.md HANDOFF_NOTES.md REPOSITORY_STRUCTURE.md PRIVATE_REVIEWER_PACKAGE.md PUBLIC_EXPLANATION.md FIVE_MINUTE_DEMO_SCRIPT.md REVIEWER_FEEDBACK_ROUND.md REVIEWER_FEEDBACK_LEDGER.md REVIEWER_FEEDBACK_TRIAGE.md RELEASE_BLOCKER_REGISTER.md RELEASE_BLOCKER_REPAIR_LEDGER.md; do
   path="$ROOT/$f"
   [ -f "$path" ] || { bad "status doc missing: $f"; continue; }
   contains "$path" "$current_marker" "$f has current marker"

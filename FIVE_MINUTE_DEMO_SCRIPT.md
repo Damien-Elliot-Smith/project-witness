@@ -1,6 +1,6 @@
 # Five-Minute Demo Script
 
-Status: Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain future work. The 70-step roadmap is not complete.
+Status: Roadmap One (Steps 1-70) complete as a local review/demo stack. Not production-ready. Part Two has started.
 
 This is a short, bounded demonstration route. It does not add runtime capability.
 It tells a reviewer what to run and what not to claim.
@@ -8,20 +8,20 @@ It tells a reviewer what to run and what not to claim.
 ## Setup commands
 
 ```sh
-sha256sum -c Project_Witness_WORKING_STACK_v11_MOVE_60.zip.sha256
-unzip -q Project_Witness_WORKING_STACK_v11_MOVE_60.zip
+sha256sum -c Project_Witness_WORKING_STACK_v20_MOVE_70.zip.sha256
+unzip -q Project_Witness_WORKING_STACK_v20_MOVE_70.zip
 cd Project_Witness_WORKING_STACK
 ```
 
 Expected checksum marker:
 
 ```text
-Project_Witness_WORKING_STACK_v11_MOVE_60.zip: OK
+Project_Witness_WORKING_STACK_v20_MOVE_70.zip: OK
 ```
 
 ## Say this before running anything
 
-> This is Project Witness Local v1 Release. It is a local verification and
+> This is the Project Witness Roadmap One final package. It is a local verification and
 > provenance working stack. It does not prove external truth, authenticate people,
 > sign outputs, or anchor anything externally. The demo only shows that the local
 > package's own structural checks pass under tested conditions.
@@ -74,4 +74,9 @@ HANDOFF_VALIDATION: PASS
 > statuses, and workflow outputs are internally consistent under the included
 > local checks.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+The stack is not production-ready, and a passing demo
+does not prove real-world truth: it does not prove that any evidence is
+factually correct, only that the recorded run is internally consistent.
+
+Status exact marker: Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack. Post-completion repairs Move 70.6 and RT-004 are adopted. The Move 71 Python behaviour freeze is adopted. Rust Moves 72-78 are adopted, including ZipGuard archive safety. Part Two has started. Move 79 (verification-only Python/Rust agreement harness) is the current candidate; no full bundle verification capability exists or is claimed.
+

@@ -1,0 +1,3 @@
+[workspace]
+members = ["witness-verify"]
+resolver = "2"

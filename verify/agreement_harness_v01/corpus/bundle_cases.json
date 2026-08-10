@@ -1,0 +1,423 @@
+{
+ "cases": [
+  {
+   "case_id": "clean_control",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "ACCEPTED",
+    "python": {
+     "exit_code": 0,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "PASS"
+    },
+    "rust": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "clean bundle; Python PASS/0 vs Rust INCONCLUSIVE/3, same normalized outcome",
+    "reference": "clean_control",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "delete_top_level_checksums",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "REQUIRED_FILE_MISSING",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "REQUIRED_FILE_MISSING",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "both require companion_checksums.txt",
+    "reference": "delete_top_level_checksums",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "unknown_top_level_entry",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "UNKNOWN_TOP_LEVEL_ENTRY",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "UNKNOWN_TOP_LEVEL_ENTRY",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "both reject unknown top-level entries",
+    "reference": "unknown_top_level_entry",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "malformed_report_json",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "DECLARED_HASH_MISMATCH",
+     "stage": "hashes",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "DECLARED_HASH_MISMATCH",
+     "stage": "hashes",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "hashes NOT repaired: both reject at the hashes stage",
+    "reference": "malformed_report_json",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "stage_manifest_json_invalid",
+   "category": "KNOWN_DIVERGENCE_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "REPORT_NOT_CANONICAL",
+     "stage": "canonical_report",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "MANIFEST_MALFORMED",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    }
+   },
+   "expected_divergence": {
+    "python_class": "REPORT_NOT_CANONICAL",
+    "python_stage": "canonical_report",
+    "rust_class": "MANIFEST_MALFORMED",
+    "rust_stage": "manifest"
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "B2: truncated report WITH declared hashes repaired, so both reach report/manifest parsing. Python rejects at report canonicality; Rust rejects at manifest JSON parse. Both reject the same defect at DIFFERENT stages - a documented divergence, REPORTED and non-passing (never agreement).",
+    "reference": "stage_manifest_json_invalid",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "stage_report_field_missing_repaired",
+   "category": "KNOWN_DIVERGENCE_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "REPORT_NOT_CANONICAL",
+     "stage": "canonical_report",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "REQUIRED_FIELD_MISSING",
+     "stage": "manifest",
+     "verdict": "FAIL"
+    }
+   },
+   "expected_divergence": {
+    "python_class": "REPORT_NOT_CANONICAL",
+    "python_stage": "canonical_report",
+    "rust_class": "REQUIRED_FIELD_MISSING",
+    "rust_stage": "manifest"
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "B1: required field removed WITH hashes repaired. Python rejects at report canonicality; Rust at manifest required-field. Documented divergence: REPORTED, counted, and NON-PASSING. Neither result is wrong under the adopted contracts, so no implementation is reopened.",
+    "reference": "stage_report_field_missing_repaired",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "stage_receipt_linkage_broken",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python_observed": {
+     "exit_code": 0,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "PASS"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "RECEIPT_LINKAGE_BROKEN",
+     "stage": "receipts",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "RUST-ONLY gap: Companion verify has NO receipt-chain logic and ACCEPTS this bundle; Rust rejects. prior_hash mismatch",
+    "reference": "stage_receipt_linkage_broken",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "out_of_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "stage_receipt_sequence_broken",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python_observed": {
+     "exit_code": 0,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "PASS"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "RECEIPT_SEQUENCE_BROKEN",
+     "stage": "receipts",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "RUST-ONLY gap: Companion verify has NO receipt-chain logic and ACCEPTS this bundle; Rust rejects. receipt_id out of sequence",
+    "reference": "stage_receipt_sequence_broken",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "out_of_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "stage_canonical_recompute_mismatch",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python_observed": {
+     "exit_code": 0,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "PASS"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "RECEIPT_HASH_RECOMPUTATION_MISMATCH",
+     "stage": "canonical_recompute",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "RUST-ONLY gap: Companion verify has NO receipt-chain logic and ACCEPTS this bundle; Rust rejects. payload changed without updating canonical_hash",
+    "reference": "stage_canonical_recompute_mismatch",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "out_of_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "evidence_byte_flip",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "NESTED_CHECKSUM_MISMATCH",
+     "stage": "nested_checksums",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep verification not implemented in Rust at Move 78; Rust is expected to ACCEPT these bundles (its declared-hash and receipt checks all pass).",
+    "reference": "evidence_byte_flip",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  },
+  {
+   "case_id": "evidence_flip_with_checksum_fixup",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "MANIFEST_BINDING_MISMATCH",
+     "stage": "manifest_binding",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep verification not implemented in Rust at Move 78; Rust is expected to ACCEPT these bundles (its declared-hash and receipt checks all pass).",
+    "reference": "evidence_flip_with_checksum_fixup",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  },
+  {
+   "case_id": "evidence_added_unexpectedly",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "EVIDENCE_DIR_UNLISTED_FILE",
+     "stage": "deep_evidence",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep verification not implemented in Rust at Move 78; Rust is expected to ACCEPT these bundles (its declared-hash and receipt checks all pass).",
+    "reference": "evidence_added_unexpectedly",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  },
+  {
+   "case_id": "delete_nested_listed_file",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "REFERENCED_FILE_MISSING",
+     "stage": "nested_checksums",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep verification not implemented in Rust at Move 78; Rust is expected to ACCEPT these bundles (its declared-hash and receipt checks all pass).",
+    "reference": "delete_nested_listed_file",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  },
+  {
+   "case_id": "tamper_source_run",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "SOURCE_RUN_HASH_MISMATCH",
+     "stage": "source_run_binding",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep verification not implemented in Rust at Move 78; Rust is expected to ACCEPT these bundles (its declared-hash and receipt checks all pass).",
+    "reference": "tamper_source_run",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  },
+  {
+   "case_id": "tamper_top_level_report",
+   "category": "SINGLE_IMPLEMENTATION_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "REPORT_NOT_CANONICAL",
+     "stage": "canonical_report",
+     "verdict": "FAIL"
+    },
+    "rust_observed": {
+     "exit_code": 3,
+     "reason_class": "OK",
+     "stage": "complete",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "bundle",
+   "provenance": {
+    "justification": "PYTHON-ONLY gap: RT-004 deep report-canonicality not implemented in Rust at Move 78. The fixture appends one noncanonical byte to companion_report.json and REPAIRS its declared hash to a fixpoint, so the shared declared-hash stage PASSES and the case reaches its intended stage: Python rejects at report-canonicality (REPORT_NOT_CANONICAL / canonical_report, FAIL/1) while Rust — whose declared-hash and receipt checks all pass — reaches its documented out-of-scope INCONCLUSIVE completion (OK / complete, exit 3). Without the hash repair the case died early at the shared DECLARED_HASH_MISMATCH stage.",
+    "reference": "tamper_top_level_report",
+    "source_contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "out_of_scope"
+  }
+ ],
+ "contract": "Move 71 adopted Python behaviour freeze + observed Companion scope / Moves 74-77 adopted Rust contract",
+ "lane": "bundle"
+}

@@ -1,0 +1,35 @@
+{
+ "cases": [
+  {
+   "case": "clean_control",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "evidence_bytes_changed",
+   "error": "deep checksum mismatch for 'evidence/evidence_001.bin' (listed in coordinator_output/aletheia_bundle/evidence_checksums.txt)",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "evidence_file_deleted",
+   "error": "file listed in coordinator_output/aletheia_bundle/evidence_checksums.txt is missing: 'evidence/evidence_001.bin'",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "evidence_file_added_unexpectedly",
+   "error": "unlisted file(s) in evidence directory: ['planted_evidence.bin']",
+   "exit_code": 1,
+   "verify_ok": false
+  },
+  {
+   "case": "checksum_manifest_mismatch_fixup",
+   "error": "manifest bundled_file_sha256 does not match bundled file 'evidence/evidence_001.bin'",
+   "exit_code": 1,
+   "verify_ok": false
+  }
+ ],
+ "note": "verdicts of the REPAIRED stack on the same tamper corpus; every tamper must be rejected with a distinct reason and the clean control must still pass"
+}

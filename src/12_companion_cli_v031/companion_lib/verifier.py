@@ -3,7 +3,8 @@
 import os
 import re
 
-from . import canonical, checksums, steps as steps_mod, versions, coordinator_output
+from . import (canonical, checksums, deep_checksums, steps as steps_mod,
+               versions, coordinator_output)
 from .errors import (
     VerifyError, COMPANION_COMPLETED, WORKFLOW_COMPLETED, ATLAS_VALIDATED,
     REGISTRY_VERIFIED, ODIN_CONSISTENT, ODIN_CONTRADICTION, CASE_BUNDLE_VERIFIED,
@@ -145,6 +146,11 @@ def verify(out_dir, coordinator_root=None):
     step_statuses = _check_steps(steps_obj)
     present = checksums.present_paths(out_dir)
     checksums.verify_checksums(out_dir, present)
+    # v0.3.2 (RT-004 repair): recurse into every nested component checksum
+    # file and enforce the Aletheia manifest's bundled-file hash binding, so
+    # tampered evidence bytes fail at the Companion layer instead of only at
+    # the component layer.
+    deep_checksums.verify_deep(out_dir)
     _scan_truth(report, steps_obj)
 
     if companion_status != COMPANION_COMPLETED:
