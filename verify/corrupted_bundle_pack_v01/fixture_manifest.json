@@ -1,0 +1,174 @@
+{
+ "fixtures": {
+  "M80-BAD-RECEIPT-HASH-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_bad_receipt_hash_001",
+   "fixture_id": "M80-BAD-RECEIPT-HASH-001",
+   "fixture_sha256": "f370fbee11637e6a54a8607fe1b9562fe59281d0851cf4b96df80834ff8be12b",
+   "kind": "dir"
+  },
+  "M80-CHANGED-EVIDENCE-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_changed_evidence_001",
+   "fixture_id": "M80-CHANGED-EVIDENCE-001",
+   "fixture_sha256": "e1757a256968cc292cd35ad8ee0a6b1342c4f5b1dee7087bb8eb43eb983b85cd",
+   "kind": "dir"
+  },
+  "M80-CLEAN-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_clean_001",
+   "fixture_id": "M80-CLEAN-001",
+   "fixture_sha256": "3a7ad566696155cd86a4ebe707927715495253eee4b404041eb5d4bc8cfcbb19",
+   "kind": "dir"
+  },
+  "M80-DUPLICATE-RECEIPT-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_duplicate_receipt_001",
+   "fixture_id": "M80-DUPLICATE-RECEIPT-001",
+   "fixture_sha256": "81271ac6fb2673514575c124d9e838e622fcb568171a77b8ae50f7fe0ebd6175",
+   "kind": "dir"
+  },
+  "M80-MALFORMED-JSON-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_malformed_json_001",
+   "fixture_id": "M80-MALFORMED-JSON-001",
+   "fixture_sha256": "9109de6833c8cca935cfb7d0abac069618713e4c1beee91040f19307b11d8e49",
+   "kind": "dir"
+  },
+  "M80-MISSING-MANIFEST-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_missing_manifest_001",
+   "fixture_id": "M80-MISSING-MANIFEST-001",
+   "fixture_sha256": "21bc71bd689b3f865cc2fd09c8bb4a74401519909fb03156de5c01972ba8167b",
+   "kind": "dir"
+  },
+  "M80-PATH-TRAVERSAL-001": {
+   "commands": {
+    "python_oracle": "verify/agreement_harness_v01/oracles/zipguard_oracle.inspect_archive(<fixture>)",
+    "rust": [
+     "<rust-bin>",
+     "inspect-archive",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_path_traversal_001.zip",
+   "fixture_id": "M80-PATH-TRAVERSAL-001",
+   "fixture_sha256": "286e137fe2fba65daf7b050654cf79555277dff3e2ead027ea831ec133ff109b",
+   "kind": "zip"
+  },
+  "M80-UNKNOWN-SCHEMA-001": {
+   "commands": {
+    "python": [
+     "<python3>",
+     "-B",
+     "src/12_companion_cli_v031/companion.py",
+     "verify",
+     "--run",
+     "<fixture>"
+    ],
+    "rust": [
+     "<rust-bin>",
+     "verify",
+     "<fixture>"
+    ]
+   },
+   "filename": "m80_unknown_schema_001",
+   "fixture_id": "M80-UNKNOWN-SCHEMA-001",
+   "fixture_sha256": "e29845c0ea7691cb8fe55fda60622ac1ec3fc59407a3687105d05716b8128ad6",
+   "kind": "dir"
+  }
+ },
+ "seed": {
+  "seed_entry_tree_hash_v1": "3a7ad566696155cd86a4ebe707927715495253eee4b404041eb5d4bc8cfcbb19",
+  "seed_entry_tree_hash_v1_algorithm": "fixture-identity algorithm: sha256 over sorted entries of relpath NUL type(F|D) NUL sha256(file bytes; empty for directories) NUL; permission bits deliberately excluded from the pin (checked against the seed by the undeclared-mutation comparison instead)",
+  "seed_path": "freeze_record/python_behaviour_freeze_v01/reference_bundle",
+  "seed_sidecar": "freeze_record/python_behaviour_freeze_v01/reference_bundle_hashes.sha256",
+  "seed_sidecar_sha256": "53ad2cbf7c1f62edc0e0e960f2f625c61650388c0724fa848080914d4cf1b3d4",
+  "seed_tree_hash_v0": "70e6e975b3d5fab8d4a513573ef4d0d12ea0ca697ad287d46ea11b789abe7a24",
+  "seed_tree_hash_v0_algorithm": "APPROVED contract-inventory pin: files only, in sorted(os.walk) order with sorted filenames; per file: relpath bytes, NUL, raw file bytes, NUL; SHA-256 of the concatenation"
+ }
+}

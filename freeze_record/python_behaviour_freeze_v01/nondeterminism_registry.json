@@ -1,0 +1,23 @@
+{
+ "cascade_only_variation": "every other varying field is a hash or identifier derived from the root sources (case_id, seal/receipt/manifest hashes, source_*_sha256, all *checksums.txt and *replay_report.txt)",
+ "consequence_for_part_two": "byte-equality across runs is NOT a frozen property and must not be a Rust agreement criterion; frozen properties are (a) internal hash consistency of a single bundle, (b) verdict + reason for the reference bundle and each of the 10 failure-corpus cases, (c) the reason-code vocabulary",
+ "deterministic_files": [
+  "coordinator_output/atlas_registry_copy.json",
+  "coordinator_output/atlas_validation_report.json",
+  "coordinator_output/workflow_steps.json",
+  "coordinator_output/aletheia_bundle/evidence/evidence_001.bin"
+ ],
+ "method": "two full pipeline runs with byte-identical evidence input on the adopted RT-004 base, field-level diff of all 52 output files (2026-07-09, Python 3.12.3): 48 of 52 files differ",
+ "root_nondeterminism_sources": {
+  "caller_supplied_absolute_paths": [
+   "allowed_root",
+   "evidence_file",
+   "source_run_path",
+   "manifest.allowed_root"
+  ],
+  "wall_clock_timestamps": [
+   "created_at_utc",
+   "verified_at_utc"
+  ]
+ }
+}

@@ -1,0 +1,26 @@
+MOVE 80 INHERITED-TREE DIFF / ALLOWLIST REPORT
+comparison source: the REAL adopted baseline artifact supplied at run time (never a candidate-contained inventory)
+baseline ZIP sha256 verified: 4a95767a3f68ca812c1d543894b65183b82d56f3f8f56e9af61b82c19de1f26b
+baseline ZIP safety: no duplicate names, no traversal, no absolute paths, no symlinks, single root project-witness-main/
+inherited baseline file members: 849
+inherited files verified byte-identical to ZIP member bytes: 849
+declared additions (allowlist): 17
+observed additions: 17
+  + CHANGELOG_MOVE_80.md
+  + tools/check_move80_corrupted_bundle_adoption.sh
+  + verify/corrupted_bundle_pack_v01/EXPECTED_TEST_COUNT.txt
+  + verify/corrupted_bundle_pack_v01/MOVE_80_ALLOWLIST_DIFF_REPORT.txt
+  + verify/corrupted_bundle_pack_v01/README.md
+  + verify/corrupted_bundle_pack_v01/allowlist.json
+  + verify/corrupted_bundle_pack_v01/author_pins.py
+  + verify/corrupted_bundle_pack_v01/check_inherited_vs_zip.py
+  + verify/corrupted_bundle_pack_v01/check_move79_evidence.py
+  + verify/corrupted_bundle_pack_v01/expected_results.json
+  + verify/corrupted_bundle_pack_v01/fixture_hashes.json
+  + verify/corrupted_bundle_pack_v01/fixture_manifest.json
+  + verify/corrupted_bundle_pack_v01/generate_fixtures.py
+  + verify/corrupted_bundle_pack_v01/integrity_check.py
+  + verify/corrupted_bundle_pack_v01/move80_tests.py
+  + verify/corrupted_bundle_pack_v01/mutation_ledger.json
+  + verify/corrupted_bundle_pack_v01/run_move80.py
+MOVE_80_ALLOWLIST_DIFF: PASS

@@ -10,8 +10,10 @@ bad() { printf "  FAIL  %s\n" "$1"; missing=$((missing + 1)); }
 contains() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then ok "$label"; else bad "$label"; fi; }
 forbid() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then bad "$label"; else ok "$label"; fi; }
 
-current_marker="Roadmap complete through Move 60; Moves 61-70 remain future work"
-current_zip="Project_Witness_WORKING_STACK_v11_MOVE_60.zip"
+# Move 70.5: marker updated to the Roadmap One completion state.
+# The authoritative current-state checker is tools/check_current_release_state.sh.
+current_marker="Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack."
+current_zip="Project_Witness_WORKING_STACK_v20_MOVE_70.zip"
 
 echo "Release blocker repair check"
 echo "----------------------------"

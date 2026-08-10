@@ -30,7 +30,8 @@
 from sentinel_core.decision import evaluate as evaluate_decision
 from sentinel_core.errors import PersistenceFailure, SessionClosedError, require
 from sentinel_core.journal import Journal
-from sentinel_core.persistence import execute_create_directory
+from sentinel_core.persistence import execute_create_directory, execute_create_text_file
+import hashlib
 from sentinel_core.receipts import build_receipt, Receipt
 from sentinel_core.reason_codes import (
     ALLOW, BLOCK, DRY_RUN, ERROR,
@@ -62,6 +63,15 @@ def _sanitize_for_record(obj, depth=0):
             return f"<unrepresentable float: {obj!r}>"
         return obj
     if isinstance(obj, str):
+        # A str containing lone surrogates (or otherwise non-UTF-8-encodable)
+        # cannot be canonicalised or hashed. Replace it with a faithful tag so a
+        # schema-invalid request that carried such a value is still recordable as
+        # a clean BLOCK receipt, rather than crashing the receipt hasher. This is
+        # fail-closed and only affects inputs that would otherwise raise.
+        try:
+            obj.encode("utf-8")
+        except UnicodeEncodeError:
+            return f"<unrepresentable str: non-UTF-8, len={len(obj)}>"
         if len(obj) > _SANITIZE_MAX_STR:
             return obj[:_SANITIZE_MAX_STR] + "<truncated>"
         return obj
@@ -134,8 +144,9 @@ class Kernel:
                 SessionClosedError)
 
         from sentinel_core.reason_codes import (
-            STAGE_RESULT, STAGE_INTENT, INTENT_CREATE_DIRECTORY,
+            STAGE_RESULT, STAGE_INTENT, INTENT_CREATE_DIRECTORY, INTENT_CREATE_TEXT_FILE,
         )
+        from sentinel_core.action_schema import ACTION_CREATE_TEXT_FILE
 
         pre_session = SESSION_OPEN
         # The boundary is AUTHORITATIVE: from the run manifest, never the request.
@@ -151,16 +162,74 @@ class Kernel:
             return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
                               decision.decision, decision.reason_code, decision.detail, False)
 
-        # ── ALLOW: two-stage INTENT -> (mkdir) -> RESULT ─────────────────────
+        # ── ALLOW: two-stage INTENT -> (execute) -> RESULT ───────────────────
         # Step 1-2 (schema + policy) already done in evaluate_decision.
-        # Step 3-4: build + persist the INTENT receipt BEFORE any mkdir. If
-        # INTENT persistence fails, the journal raises and NOTHING is committed
-        # and NO mkdir runs.
-        intent = self._emit(pre_session, SESSION_OPEN, STAGE_INTENT, recorded_request,
-                            ALLOW, INTENT_CREATE_DIRECTORY, dict(decision.detail), False)
+        # The action_type selects the INTENT reason code and the executor. The
+        # CREATE_DIRECTORY path below is byte-for-byte the pre-Move-62 path.
+        action_type = decision.normalised_request["action_type"]
+        intent_reason = (INTENT_CREATE_TEXT_FILE
+                         if action_type == ACTION_CREATE_TEXT_FILE
+                         else INTENT_CREATE_DIRECTORY)
 
-        # Step 5: only after durable INTENT, execute mkdir.
+        # Step 3-4: build + persist the INTENT receipt BEFORE any mutation. If
+        # INTENT persistence fails, the journal raises and NOTHING is committed
+        # and NO filesystem mutation runs.
+        intent = self._emit(pre_session, SESSION_OPEN, STAGE_INTENT, recorded_request,
+                            ALLOW, intent_reason, dict(decision.detail), False)
+
         resolved_target = decision.resolved_target
+
+        if action_type == ACTION_CREATE_TEXT_FILE:
+            # Step 5: only after durable INTENT, write the file. Content is
+            # re-encoded from the normalised request; the expected hash is bound
+            # here so the postcondition proves the bytes on disk are exactly the
+            # requested text.
+            content_bytes = decision.normalised_request["content"].encode("utf-8")
+            expected_hash = hashlib.sha256(content_bytes).hexdigest()
+            try:
+                execute_create_text_file(resolved_target, content_bytes)
+            except PersistenceFailure as e:
+                detail = dict(decision.detail)
+                detail["execution_error"] = str(e)
+                return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
+                                  ERROR, ERROR_EXECUTION_FAILED, detail, False,
+                                  intent_receipt_id=intent.receipt_id, intent_hash=intent.canonical_hash)
+
+            # Step 6: verify postconditions — file_exists, file_is_utf8_text,
+            # file_content_hash_matches. Any failure is a controlled ERROR.
+            detail = dict(decision.detail)
+            try:
+                if os.path.islink(resolved_target) or not os.path.isfile(resolved_target):
+                    detail["postcondition_error"] = "target is not a regular file after write"
+                    return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
+                                      ERROR, ERROR_POSTCONDITION_FAILED, detail, False,
+                                      intent_receipt_id=intent.receipt_id, intent_hash=intent.canonical_hash)
+                with open(resolved_target, "rb") as f:
+                    on_disk = f.read()
+                on_disk.decode("utf-8", "strict")  # file_is_utf8_text
+                actual_hash = hashlib.sha256(on_disk).hexdigest()
+            except (OSError, UnicodeDecodeError) as e:
+                detail["postcondition_error"] = f"post-write verification failed: {e}"
+                return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
+                                  ERROR, ERROR_POSTCONDITION_FAILED, detail, False,
+                                  intent_receipt_id=intent.receipt_id, intent_hash=intent.canonical_hash)
+            if actual_hash != expected_hash:
+                detail["postcondition_error"] = "file_content_hash_matches failed"
+                detail["expected_content_sha256"] = expected_hash
+                detail["actual_content_sha256"] = actual_hash
+                return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
+                                  ERROR, ERROR_POSTCONDITION_FAILED, detail, False,
+                                  intent_receipt_id=intent.receipt_id, intent_hash=intent.canonical_hash)
+
+            # Step 7-9: success RESULT records the created file's content hash.
+            detail["content_sha256"] = actual_hash
+            detail["content_bytes"] = len(content_bytes)
+            return self._emit(pre_session, SESSION_OPEN, STAGE_RESULT, recorded_request,
+                              ALLOW, decision.reason_code, detail, True,
+                              intent_receipt_id=intent.receipt_id, intent_hash=intent.canonical_hash)
+
+        # ── CREATE_DIRECTORY (unchanged pre-Move-62 path) ────────────────────
+        # Step 5: only after durable INTENT, execute mkdir.
         try:
             execute_create_directory(resolved_target)
         except PersistenceFailure as e:

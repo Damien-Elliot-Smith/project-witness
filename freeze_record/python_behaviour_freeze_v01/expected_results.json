@@ -1,0 +1,30 @@
+{
+ "base": {
+  "adopted_rt_004_candidate_zip_sha256": "999799419704c7b2bbc207be1998dfab20e0d9de7d6a26f6dd057f0cc04f38aa",
+  "declared_current_source_release": "releases/rt_004_repair/Project_Witness_SRC_v21_RT004.zip"
+ },
+ "doc_checks": [
+  "sh tools/check_current_release_state.sh -> PASS",
+  "sh tools/check_local_v1_release.sh -> PASS",
+  "sh tools/check_release_blockers.sh -> PASS",
+  "sh tools/check_repository_structure.sh -> PASS",
+  "sh tools/check_src_matches_release.sh -> PASS"
+ ],
+ "environment": "Python 3.12.3, stdlib only, no network, Linux",
+ "full_stack": {
+  "command": "sh tools/run_all_tests.sh",
+  "components_checked": 18,
+  "components_passed": 18,
+  "result_marker": "ALL_COMPONENT_TESTS_PASSED",
+  "total_tests": 1301
+ },
+ "handoff": {
+  "command": "sh tools/validate_handoff.sh",
+  "result_marker": "HANDOFF_VALIDATION: PASS"
+ },
+ "reference_bundle_verify": {
+  "command": "python3 src/12_companion_cli_v031/companion.py verify --run freeze_record/python_behaviour_freeze_v01/reference_bundle",
+  "exit_code": 0,
+  "verify_ok": true
+ }
+}

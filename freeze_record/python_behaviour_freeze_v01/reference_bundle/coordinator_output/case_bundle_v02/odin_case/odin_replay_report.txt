@@ -1,0 +1,10 @@
+ODIN Reasoning Import Report
+import_status: IMPORTED_VERIFIED_ODIN
+case_id: case_34fc50a5759dbb1a
+source_reasoning_status: CONSISTENT
+claim_count: 2
+contradiction_count: 0
+proof_step_count: 2
+truth_claim: none
+
+This import records ODIN structural reasoning metadata only. It does not prove that any claim is true.

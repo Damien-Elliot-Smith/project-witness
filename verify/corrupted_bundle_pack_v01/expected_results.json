@@ -1,0 +1,165 @@
+{
+ "_provenance": "Move 80 Phase 1 contract inventory against the adopted Move 79 v27 baseline (zip sha256 4a95767a3f68ca812c1d543894b65183b82d56f3f8f56e9af61b82c19de1f26b), decisions ratified by independent hostile review. Expectations are DECLARED from that inventory; they are never regenerated from whatever current code emits.",
+ "_verdict_exit_map": {"PASS": 0, "FAIL": 1, "USAGE": 2, "INCONCLUSIVE": 3},
+ "_evidence_tiers": {
+  "OBSERVED": "directly executed against the v27 baseline during the Phase 1 inventory (frozen Python verifier / Python ZipGuard oracle)",
+  "SOURCE_VERIFIED": "established from the exact v27 source and its tests",
+  "TERMUX_CONFIRMED": "supported by the preserved real v27 Termux adoption evidence (85-case agreement run and/or the 124 cargo unit tests executed inside RUST_WORKSPACE_CHECK)",
+  "REQUIRES_NEW_TERMUX_CONFIRMATION": "cannot be honestly executed off-device; the Move 80 Termux adoption run is the confirming evidence"
+ },
+ "_meaning_of_case_pass": "A case PASSES when every DECLARED per-lane expectation below is met exactly. MOVE_80_REQUIRED_CASES: 8/8 PASS therefore means the verifiers produced the declared expected outcomes for all eight fixtures. It NEVER means the corrupted bundles verified successfully: for seven of the eight fixtures the expected outcome on at least one lane is FAIL, and the Rust verifier cannot emit PASS at all (adopted honesty property; exit 0 unreachable).",
+ "_stderr_contract": "Every verifier/oracle invocation must produce zero stderr bytes; any stderr output fails the case.",
+ "cases": {
+  "M80-CLEAN-001": {
+   "classification": "AGREEMENT_CASE",
+   "normalized_outcome": "ACCEPTED",
+   "python_expected": {
+    "verdict": "PASS", "exit_code": 0,
+    "reason": "companion completed", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "evidence": ["OBSERVED", "TERMUX_CONFIRMED"]
+   },
+   "rust_expected": {
+    "verdict": "INCONCLUSIVE", "exit_code": 3,
+    "reason_code": "RECEIPT_CHAIN_HASHES_RECOMPUTED", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "note": "the adopted Rust verifier can NEVER emit PASS; INCONCLUSIVE/3 is its honest clean-bundle ceiling and must not be described as PASS",
+    "evidence": ["TERMUX_CONFIRMED"]
+   }
+  },
+  "M80-MISSING-MANIFEST-001": {
+   "classification": "BOTH_REJECT_CLASS_SPLIT",
+   "normalized_outcome": "REJECTED",
+   "class_split_note": "the lanes reject at the same stage but under different adopted reason classes (Python REQUIRED_FILE_MISSING vs Rust MANIFEST_MISSING); this split is recorded honestly and the case is NOT added to the frozen 85-case agreement corpus",
+   "python_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason": "missing required file: companion_report.json",
+    "match_type": "exact",
+    "reason_class": "REQUIRED_FILE_MISSING", "stage": "manifest",
+    "evidence": ["OBSERVED"]
+   },
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "MANIFEST_MISSING", "match_type": "exact",
+    "reason_class": "MANIFEST_MISSING", "stage": "manifest",
+    "evidence": ["SOURCE_VERIFIED", "TERMUX_CONFIRMED",
+                 "REQUIRES_NEW_TERMUX_CONFIRMATION"],
+    "evidence_note": "cargo unit test missing_manifest_fails ran on Termux in the v27 gate; this exact fixture bundle still requires the Move 80 Termux run"
+   }
+  },
+  "M80-CHANGED-EVIDENCE-001": {
+   "classification": "PYTHON_ONLY_DETECTION",
+   "normalized_outcome": "REJECTED_BY_PYTHON_ONLY",
+   "capability_limit_note": "the adopted Rust verifier checks only the eight declared top-level/coordinator hashes and does not recurse into nested component checksums; evidence-byte tampering is invisible to it by adopted design. This is a documented capability limit; Move 80 does not modify Rust to inspect nested evidence.",
+   "python_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason": "deep checksum mismatch for 'evidence/evidence_001.bin'",
+    "match_type": "prefix",
+    "reason_class": "NESTED_CHECKSUM_MISMATCH", "stage": "nested_checksums",
+    "evidence": ["OBSERVED", "TERMUX_CONFIRMED"]
+   },
+   "rust_expected": {
+    "verdict": "INCONCLUSIVE", "exit_code": 3,
+    "reason_code": "RECEIPT_CHAIN_HASHES_RECOMPUTED", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "evidence": ["SOURCE_VERIFIED", "REQUIRES_NEW_TERMUX_CONFIRMATION"],
+    "evidence_note": "the frozen corpus declared Rust out of scope for evidence_byte_flip and never executed it; this blindness assertion is first executed on-device by the Move 80 gate"
+   }
+  },
+  "M80-BAD-RECEIPT-HASH-001": {
+   "classification": "RUST_ONLY_DETECTION",
+   "normalized_outcome": "REJECTED_BY_RUST_ONLY",
+   "capability_limit_note": "the frozen Python verifier performs no receipt verification (OBSERVED: PASS/0 on this corruption during the inventory); documented Python blindness",
+   "python_expected": {
+    "verdict": "PASS", "exit_code": 0,
+    "reason": "companion completed", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "evidence": ["OBSERVED"]
+   },
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "RECEIPT_HASH_RECOMPUTATION_MISMATCH",
+    "match_type": "exact",
+    "reason_class": "RECEIPT_HASH_RECOMPUTATION_MISMATCH",
+    "stage": "canonical_recompute",
+    "evidence": ["TERMUX_CONFIRMED"],
+    "evidence_note": "same adopted mutation as corpus case stage_canonical_recompute_mismatch, executed on Termux in the v27 85-case run"
+   }
+  },
+  "M80-DUPLICATE-RECEIPT-001": {
+   "classification": "RUST_ONLY_DETECTION",
+   "normalized_outcome": "REJECTED_BY_RUST_ONLY",
+   "capability_limit_note": "the frozen Python verifier performs no receipt verification (OBSERVED: PASS/0 on this corruption during the inventory); documented Python blindness",
+   "python_expected": {
+    "verdict": "PASS", "exit_code": 0,
+    "reason": "companion completed", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "evidence": ["OBSERVED"]
+   },
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "RECEIPT_ID_SEQUENCE_BROKEN", "match_type": "exact",
+    "reason_class": "RECEIPT_SEQUENCE_BROKEN", "stage": "receipts",
+    "evidence": ["SOURCE_VERIFIED", "TERMUX_CONFIRMED",
+                 "REQUIRES_NEW_TERMUX_CONFIRMATION"],
+    "evidence_note": "receipts.rs requires receipt_id == position, checked inside the per-receipt loop before any seal cross-check, so the appended duplicate fails at its position; the sequence check itself ran on Termux via corpus case stage_receipt_sequence_broken, but this duplicate input requires the Move 80 Termux run"
+   }
+  },
+  "M80-MALFORMED-JSON-001": {
+   "classification": "KNOWN_DIVERGENCE_PATTERN",
+   "normalized_outcome": "REJECTED",
+   "divergence_note": "same corruption as declared divergence stage_manifest_json_invalid: the lanes reject at DIFFERENT stages under DIFFERENT reasons. This per-lane divergence is expected, preserved, and must never be reshaped into fake agreement.",
+   "python_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason": "companion_report not canonical", "match_type": "exact",
+    "reason_class": "REPORT_NOT_CANONICAL", "stage": "canonical_report",
+    "evidence": ["OBSERVED", "TERMUX_CONFIRMED"]
+   },
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "MANIFEST_JSON_INVALID", "match_type": "exact",
+    "reason_class": "MANIFEST_MALFORMED", "stage": "manifest",
+    "evidence": ["TERMUX_CONFIRMED"],
+    "evidence_note": "same adopted mutation as the declared divergence corpus case, executed on Termux in the v27 85-case run"
+   }
+  },
+  "M80-PATH-TRAVERSAL-001": {
+   "classification": "ARCHIVE_AGREEMENT_CASE",
+   "normalized_outcome": "REJECTED",
+   "boundary_note": "the malicious ZIP is passed DIRECTLY to the adopted archive-safety boundary (witness-verify inspect-archive and the Python ZipGuard oracle); no preliminary extraction is performed anywhere. The boundary is read-only by adopted design; the runner nevertheless maintains an outside sentinel and compares the surrounding controlled filesystem before and after execution.",
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "ARCHIVE_PATH_TRAVERSAL", "match_type": "exact",
+    "reason_class": "ARCHIVE_PATH_TRAVERSAL", "stage": "archive",
+    "evidence": ["TERMUX_CONFIRMED"],
+    "evidence_note": "the fixture ZIP is byte-identical to corpus case 'traversal', executed on Termux in the v27 85-case run"
+   },
+   "archive_oracle_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "ARCHIVE_PATH_TRAVERSAL", "match_type": "exact",
+    "reason_class": "ARCHIVE_PATH_TRAVERSAL", "stage": "archive",
+    "evidence": ["OBSERVED", "TERMUX_CONFIRMED"]
+   }
+  },
+  "M80-UNKNOWN-SCHEMA-001": {
+   "classification": "RUST_ONLY_DETECTION",
+   "normalized_outcome": "REJECTED_BY_RUST_ONLY",
+   "capability_limit_note": "the frozen Python verifier never checks companion_cli_version (OBSERVED: PASS/0 on this canonically re-serialized, checksum-repaired mutation during the inventory); documented Python blindness to this field. The coordinator_workflow_version variant is deliberately NOT used: its Python rejection is unmapped in the adopted reason map and would muddy fixture attribution.",
+   "contract_note": "this expectation replaces the initially proposed INCONCLUSIVE/3 because the actual adopted v27 contract treats a declared-but-unsupported schema version as a definite structural violation (Rust FAIL/1); production behaviour is not altered to force INCONCLUSIVE",
+   "python_expected": {
+    "verdict": "PASS", "exit_code": 0,
+    "reason": "companion completed", "match_type": "exact",
+    "reason_class": "OK", "stage": "complete",
+    "evidence": ["OBSERVED"]
+   },
+   "rust_expected": {
+    "verdict": "FAIL", "exit_code": 1,
+    "reason_code": "SCHEMA_VERSION_UNSUPPORTED", "match_type": "exact",
+    "reason_class": "SCHEMA_VERSION_UNSUPPORTED", "stage": "manifest",
+    "evidence": ["SOURCE_VERIFIED", "TERMUX_CONFIRMED",
+                 "REQUIRES_NEW_TERMUX_CONFIRMATION"],
+    "evidence_note": "cargo unit test unsupported_schema_fails ran on Termux in the v27 gate; this exact fixture bundle still requires the Move 80 Termux run"
+   }
+  }
+ }
+}

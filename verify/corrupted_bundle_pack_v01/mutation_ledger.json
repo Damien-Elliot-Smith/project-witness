@@ -1,0 +1,319 @@
+{
+ "fixtures": {
+  "M80-BAD-RECEIPT-HASH-001": {
+   "files": {
+    "added": [],
+    "changed": [
+     {
+      "path": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "seed_sha256": "e96e0ff02729531b9e7c15b5a38c84fdc1d9d0cce02698dd4e710602b304c0cd",
+      "sha256": "95a71ae135581a5bcad4a740650b0fb93ceddf57f188341ad3605ffc518b9096"
+     },
+     {
+      "path": "coordinator_output/case_bundle_v02/sentinel_case/checksums.txt",
+      "seed_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "sha256": "37b7f365ff7bce5fed9e281d0cb22c2030dfd5a70f993793237466115b63c586"
+     },
+     {
+      "path": "coordinator_output/histor_sentinel_case/checksums.txt",
+      "seed_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "sha256": "37b7f365ff7bce5fed9e281d0cb22c2030dfd5a70f993793237466115b63c586"
+     },
+     {
+      "path": "coordinator_output/sentinel_run/sentinel_run.json",
+      "seed_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "sha256": "c1df292f3f87fbea397529fdb9a91b42cd663e74dd26f09d3c755347a501b2a1"
+     }
+    ],
+    "checksum_line_repairs": [
+     {
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "entry_rel": "sentinel_case/checksums.txt",
+      "label": null,
+      "line_no": 4,
+      "new_sha256": "37b7f365ff7bce5fed9e281d0cb22c2030dfd5a70f993793237466115b63c586",
+      "old_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "reason": "declares changed file coordinator_output/case_bundle_v02/sentinel_case/checksums.txt"
+     },
+     {
+      "checksum_file": "coordinator_output/case_bundle_v02/sentinel_case/checksums.txt",
+      "entry_rel": "sentinel_run.json",
+      "label": "source_run_sha256",
+      "line_no": 1,
+      "new_sha256": "c1df292f3f87fbea397529fdb9a91b42cd663e74dd26f09d3c755347a501b2a1",
+      "old_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "reason": "declares changed file coordinator_output/sentinel_run/sentinel_run.json"
+     },
+     {
+      "checksum_file": "coordinator_output/histor_sentinel_case/checksums.txt",
+      "entry_rel": "sentinel_run.json",
+      "label": "source_run_sha256",
+      "line_no": 1,
+      "new_sha256": "c1df292f3f87fbea397529fdb9a91b42cd663e74dd26f09d3c755347a501b2a1",
+      "old_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "reason": "declares changed file coordinator_output/sentinel_run/sentinel_run.json"
+     }
+    ],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "receipts[0].reason_code -> 'TAMPERED_FOR_TEST' in coordinator_output/sentinel_run/sentinel_run.json via the adopted corpus builder stage_canonical_recompute_mismatch, so the declared canonical_hash no longer matches recomputation",
+   "supporting_repairs": "principal mutation: one receipt canonical_hash (index 0) -> fixed invalid 0*64, nothing else changed; then SELECTIVE dependency-closure repair of exactly the entries that declare sentinel_run.json (sentinel_case/checksums.txt:1, histor_sentinel_case/checksums.txt:1) and the one entry that declares the changed sentinel_case/checksums.txt (bundle_checksums.txt:4); the frozen stale bundle_checksums.txt:1 case_manifest.json entry is untouched. sentinel_run.json re-serialized by the adopted corpus _dump byte form (sorted keys, compact separators, trailing newline)"
+  },
+  "M80-CHANGED-EVIDENCE-001": {
+   "files": {
+    "added": [],
+    "changed": [
+     {
+      "path": "coordinator_output/aletheia_bundle/evidence/evidence_001.bin",
+      "seed_sha256": "607e80b9c33a115605f435029b493de8b38723ca32facd3554b9d1b0b82def5e",
+      "sha256": "6a5b770ce32b6af69354011cbb23a8f38020cd4b03281dc5810b5dab194e446f"
+     }
+    ],
+    "checksum_line_repairs": [],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "flip byte at offset 5 (XOR 0xFF) of coordinator_output/aletheia_bundle/evidence/evidence_001.bin via the frozen Move 71 generator's _flip_byte; the stale nested declared hash is deliberately retained \u2014 that mismatch is the corruption under test",
+   "supporting_repairs": "none by design \u2014 the stale declared hash IS the tested fault"
+  },
+  "M80-CLEAN-001": {
+   "files": {
+    "added": [],
+    "changed": [],
+    "checksum_line_repairs": [],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "none (exact seed copy; clean control)",
+   "supporting_repairs": "none"
+  },
+  "M80-DUPLICATE-RECEIPT-001": {
+   "files": {
+    "added": [],
+    "changed": [
+     {
+      "path": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "seed_sha256": "e96e0ff02729531b9e7c15b5a38c84fdc1d9d0cce02698dd4e710602b304c0cd",
+      "sha256": "f57cdcb99859e4a7d669704e25b95ce73111b8f4b7fb99316ffb529ca3d76d39"
+     },
+     {
+      "path": "coordinator_output/case_bundle_v02/sentinel_case/checksums.txt",
+      "seed_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "sha256": "92a054f8d7a08a95c8362dfb1218684768faaae23a12f5864d8a441cd53f8269"
+     },
+     {
+      "path": "coordinator_output/histor_sentinel_case/checksums.txt",
+      "seed_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "sha256": "92a054f8d7a08a95c8362dfb1218684768faaae23a12f5864d8a441cd53f8269"
+     },
+     {
+      "path": "coordinator_output/sentinel_run/sentinel_run.json",
+      "seed_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "sha256": "9438154c4d045175f82584dd5614c716d5911cdbfec5919af3052ac33e2ee821"
+     }
+    ],
+    "checksum_line_repairs": [
+     {
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "entry_rel": "sentinel_case/checksums.txt",
+      "label": null,
+      "line_no": 4,
+      "new_sha256": "92a054f8d7a08a95c8362dfb1218684768faaae23a12f5864d8a441cd53f8269",
+      "old_sha256": "0cfb4e6179e297e6fa7d00d5d4936eaf24e6bfd11db6dfe2e2958968c39ceeca",
+      "reason": "declares changed file coordinator_output/case_bundle_v02/sentinel_case/checksums.txt"
+     },
+     {
+      "checksum_file": "coordinator_output/case_bundle_v02/sentinel_case/checksums.txt",
+      "entry_rel": "sentinel_run.json",
+      "label": "source_run_sha256",
+      "line_no": 1,
+      "new_sha256": "9438154c4d045175f82584dd5614c716d5911cdbfec5919af3052ac33e2ee821",
+      "old_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "reason": "declares changed file coordinator_output/sentinel_run/sentinel_run.json"
+     },
+     {
+      "checksum_file": "coordinator_output/histor_sentinel_case/checksums.txt",
+      "entry_rel": "sentinel_run.json",
+      "label": "source_run_sha256",
+      "line_no": 1,
+      "new_sha256": "9438154c4d045175f82584dd5614c716d5911cdbfec5919af3052ac33e2ee821",
+      "old_sha256": "34fc50a5759dbb1aba0068e7409667197447fd65422f1a3e60c4476b28d30850",
+      "reason": "declares changed file coordinator_output/sentinel_run/sentinel_run.json"
+     }
+    ],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "append an exact duplicate of the final receipt object to the receipts array of coordinator_output/sentinel_run/sentinel_run.json",
+   "supporting_repairs": "same declared transformation and identical selective closure as M80-BAD-RECEIPT-HASH-001: adopted corpus _dump re-serialization of sentinel_run.json (the frozen file is not project-canonical, so no undeclared general canonical rewrite is performed) plus repair of exactly the three declaring entries; the frozen stale bundle_checksums.txt:1 entry is untouched"
+  },
+  "M80-MALFORMED-JSON-001": {
+   "files": {
+    "added": [],
+    "changed": [
+     {
+      "path": "companion_checksums.txt",
+      "seed_sha256": "d8e9a56c15418f42e1c8e6c9c0baa6fd6f1f7a7626aa5af8eb9188af4d0c2cb4",
+      "sha256": "16480f62e326ad61b3aea8df5e1a7f7d3733a01d662312b108d7e16b88c3d755"
+     },
+     {
+      "path": "companion_report.json",
+      "seed_sha256": "81b3f3d00ba598489648e85da46488577190b1ac748c5447b9c2f98c6c71876d",
+      "sha256": "481c2d0589ade085868e9456689ffaa3153e0abf42cae1f1219a8e546023dcdc"
+     }
+    ],
+    "checksum_line_repairs": [
+     {
+      "checksum_file": "companion_checksums.txt",
+      "entry_rel": "companion_report.json",
+      "label": null,
+      "line_no": 2,
+      "new_sha256": "481c2d0589ade085868e9456689ffaa3153e0abf42cae1f1219a8e546023dcdc",
+      "old_sha256": "81b3f3d00ba598489648e85da46488577190b1ac748c5447b9c2f98c6c71876d",
+      "reason": "declares changed file companion_report.json"
+     }
+    ],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "truncate companion_report.json to half its byte length (syntactically invalid JSON) via the adopted corpus builder stage_manifest_json_invalid",
+   "supporting_repairs": "SELECTIVE closure repair of exactly the one entry that declares companion_report.json (companion_checksums.txt:2); no other checksum byte changes; the frozen stale bundle_checksums.txt:1 entry is untouched"
+  },
+  "M80-MISSING-MANIFEST-001": {
+   "files": {
+    "added": [],
+    "changed": [],
+    "checksum_line_repairs": [],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": [
+     {
+      "path": "companion_report.json",
+      "seed_sha256": "81b3f3d00ba598489648e85da46488577190b1ac748c5447b9c2f98c6c71876d"
+     }
+    ]
+   },
+   "principal_mutation": "delete companion_report.json \u2014 the exact file serving the adopted verifiers' manifest boundary (MANIFEST_FILE in rust/witness-verify/src/manifest.rs; first required file the frozen Python verifier demands)",
+   "supporting_repairs": "none \u2014 both engines reach their decisive manifest check before any hash comparison; companion_checksums.txt still lists the deleted file, which is irrelevant at the decisive stage"
+  },
+  "M80-PATH-TRAVERSAL-001": {
+   "files": {
+    "added": [
+     {
+      "note": "standalone ZIP fixture; not seed-derived. Entry list: single entry '../evil'",
+      "path": "m80_path_traversal_001.zip",
+      "sha256": "286e137fe2fba65daf7b050654cf79555277dff3e2ead027ea831ec133ff109b"
+     }
+    ],
+    "changed": [],
+    "removed": []
+   },
+   "principal_mutation": "single-entry ZIP whose entry name is b'../evil', produced by the adopted deterministic archive builder build_archives._one \u2014 byte-identical to the Move 79 TERMUX-confirmed corpus case 'traversal'",
+   "supporting_repairs": "none"
+  },
+  "M80-UNKNOWN-SCHEMA-001": {
+   "files": {
+    "added": [],
+    "changed": [
+     {
+      "path": "companion_checksums.txt",
+      "seed_sha256": "d8e9a56c15418f42e1c8e6c9c0baa6fd6f1f7a7626aa5af8eb9188af4d0c2cb4",
+      "sha256": "57f6a23aa28ac64d31cc4dc809d11adef21f404a0161ba4774d565fab207a485"
+     },
+     {
+      "path": "companion_report.json",
+      "seed_sha256": "81b3f3d00ba598489648e85da46488577190b1ac748c5447b9c2f98c6c71876d",
+      "sha256": "1fbefc2939d3e495fdc479a65cfa2cd9b6ee908a22d508be900a64af96a5640f"
+     }
+    ],
+    "checksum_line_repairs": [
+     {
+      "checksum_file": "companion_checksums.txt",
+      "entry_rel": "companion_report.json",
+      "label": null,
+      "line_no": 2,
+      "new_sha256": "1fbefc2939d3e495fdc479a65cfa2cd9b6ee908a22d508be900a64af96a5640f",
+      "old_sha256": "81b3f3d00ba598489648e85da46488577190b1ac748c5447b9c2f98c6c71876d",
+      "reason": "declares changed file companion_report.json"
+     }
+    ],
+    "preserved_stale_entries": [
+     {
+      "actual_target_sha256": "5757263382f7b4c9edc38c62709dbd52ace113e0606b96d841869e99a112748a",
+      "checksum_file": "coordinator_output/case_bundle_v02/bundle_checksums.txt",
+      "declared_sha256": "cb1fc67c184dbf7039b9900f7994f0bb2e85287bc8a95f296dea3aa746166b50",
+      "entry_rel": "case_manifest.json",
+      "line_no": 1,
+      "status": "pre-existing stale entry in the FROZEN seed; deliberately left byte-identical by the selective closure repair"
+     }
+    ],
+    "removed": []
+   },
+   "principal_mutation": "companion_report.json field companion_cli_version -> '9.9.9', re-serialized in project-canonical bytes by the adopted companion_lib.canonical.canonical_bytes (frozen report is already canonical, so the version value is the only in-report byte change)",
+   "supporting_repairs": "SELECTIVE closure repair of exactly the one entry that declares companion_report.json (companion_checksums.txt:2); the frozen stale bundle_checksums.txt:1 entry is untouched, so the unsupported schema pin is the sole fault"
+  }
+ },
+ "seed": {
+  "seed_entry_tree_hash_v1": "3a7ad566696155cd86a4ebe707927715495253eee4b404041eb5d4bc8cfcbb19",
+  "seed_entry_tree_hash_v1_algorithm": "fixture-identity algorithm: sha256 over sorted entries of relpath NUL type(F|D) NUL sha256(file bytes; empty for directories) NUL; permission bits deliberately excluded from the pin (checked against the seed by the undeclared-mutation comparison instead)",
+  "seed_path": "freeze_record/python_behaviour_freeze_v01/reference_bundle",
+  "seed_sidecar": "freeze_record/python_behaviour_freeze_v01/reference_bundle_hashes.sha256",
+  "seed_sidecar_sha256": "53ad2cbf7c1f62edc0e0e960f2f625c61650388c0724fa848080914d4cf1b3d4",
+  "seed_tree_hash_v0": "70e6e975b3d5fab8d4a513573ef4d0d12ea0ca697ad287d46ea11b789abe7a24",
+  "seed_tree_hash_v0_algorithm": "APPROVED contract-inventory pin: files only, in sorted(os.walk) order with sorted filenames; per file: relpath bytes, NUL, raw file bytes, NUL; SHA-256 of the concatenation"
+ }
+}

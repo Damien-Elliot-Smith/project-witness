@@ -32,6 +32,10 @@ INTENT_CREATE_DIRECTORY = "INTENT_CREATE_DIRECTORY"
 ALLOW_CREATE_DIRECTORY = "ALLOW_CREATE_DIRECTORY"
 ALLOW_SESSION_CLOSE = "ALLOW_SESSION_CLOSE"
 DRY_RUN_CREATE_DIRECTORY = "DRY_RUN_CREATE_DIRECTORY"
+# CREATE_TEXT_FILE (Move 62): second Sentinel action, same receipt protocol.
+INTENT_CREATE_TEXT_FILE = "INTENT_CREATE_TEXT_FILE"
+ALLOW_CREATE_TEXT_FILE = "ALLOW_CREATE_TEXT_FILE"
+DRY_RUN_CREATE_TEXT_FILE = "DRY_RUN_CREATE_TEXT_FILE"
 
 BLOCK_SCHEMA_INVALID = "BLOCK_SCHEMA_INVALID"
 BLOCK_UNKNOWN_ACTION = "BLOCK_UNKNOWN_ACTION"
@@ -52,8 +56,9 @@ ERROR_POSTCONDITION_FAILED = "ERROR_POSTCONDITION_FAILED"
 ERROR_EXECUTION_FAILED = "ERROR_EXECUTION_FAILED"
 
 # ── Registry ───────────────────────────────────────────────────────────────
-_ALLOW_CODES = frozenset({INTENT_CREATE_DIRECTORY, ALLOW_CREATE_DIRECTORY, ALLOW_SESSION_CLOSE})
-_DRY_RUN_CODES = frozenset({DRY_RUN_CREATE_DIRECTORY})
+_ALLOW_CODES = frozenset({INTENT_CREATE_DIRECTORY, ALLOW_CREATE_DIRECTORY, ALLOW_SESSION_CLOSE,
+                         INTENT_CREATE_TEXT_FILE, ALLOW_CREATE_TEXT_FILE})
+_DRY_RUN_CODES = frozenset({DRY_RUN_CREATE_DIRECTORY, DRY_RUN_CREATE_TEXT_FILE})
 _BLOCK_CODES = frozenset({
     BLOCK_SCHEMA_INVALID,
     BLOCK_UNKNOWN_ACTION,
@@ -89,6 +94,9 @@ _DESCRIPTIONS = {
     ALLOW_CREATE_DIRECTORY: "Directory creation passed all checks and was executed.",
     ALLOW_SESSION_CLOSE: "Operator closed the session; the run was sealed.",
     DRY_RUN_CREATE_DIRECTORY: "Directory creation passed all checks; dry-run, not executed.",
+    INTENT_CREATE_TEXT_FILE: "Text-file creation approved; intent recorded before execution.",
+    ALLOW_CREATE_TEXT_FILE: "Text-file creation passed all checks and was executed.",
+    DRY_RUN_CREATE_TEXT_FILE: "Text-file creation passed all checks; dry-run, not executed.",
     BLOCK_SCHEMA_INVALID: "The action request failed schema validation.",
     BLOCK_UNKNOWN_ACTION: "The action_type is not supported by this Sentinel version.",
     BLOCK_PATH_TRAVERSAL: "The target path used traversal to escape allowed_root.",
@@ -152,9 +160,14 @@ def is_session_close_shape(decision, reason_code, request, executed) -> bool:
 
 
 # ── Stage helpers (v0.2) ────────────────────────────────────────────────────
+# The reason codes that mark a receipt as an INTENT (approved, not yet
+# executed). Every two-stage action contributes exactly one INTENT code.
+INTENT_REASON_CODES = frozenset({INTENT_CREATE_DIRECTORY, INTENT_CREATE_TEXT_FILE})
+
+
 def stage_for_reason(reason_code) -> str:
     """The stage a given reason_code must belong to."""
-    if reason_code == INTENT_CREATE_DIRECTORY:
+    if reason_code in INTENT_REASON_CODES:
         return STAGE_INTENT
     if reason_code == ALLOW_SESSION_CLOSE:
         return STAGE_SESSION_CLOSE

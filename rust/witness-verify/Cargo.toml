@@ -1,0 +1,9 @@
+[package]
+name = "witness-verify"
+version = "0.0.8"
+edition = "2021"
+
+# Policy (Part Two design principles): zero external crates. The Rust
+# verification spine is stdlib-only, mirroring the Python stack, so it
+# stays reviewable, buildable offline, and buildable on Termux.
+[dependencies]

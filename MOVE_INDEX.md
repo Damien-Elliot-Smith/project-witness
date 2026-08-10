@@ -83,6 +83,30 @@ frozen state of their component, noted as "(freeze of …)".
 
 ---
 
+## Post-Roadmap-One adopted hardening block — Moves 71-85
+
+The table above is the complete historical Roadmap One Steps 1-70 mapping and is retained unchanged. The adopted post-Roadmap-One block is:
+
+| Move | Adopted hardening work |
+|---:|---|
+| 71 | Final Python Behaviour Freeze |
+| 72 | Rust workspace setup + Part Two state-model update |
+| 73 | `witness-verify` CLI skeleton |
+| 74 | Rust case manifest validator |
+| 75 | Rust file hash verification |
+| 76 | Rust receipt chain verification (declared-value layer) |
+| 77 | Rust strict canonical JSON tool + receipt hash recomputation |
+| 78 | Rust ZipGuard/archive-safety hardening |
+| 79 | Python/Rust agreement harness |
+| 80 | Corrupted Bundle Test Pack |
+| 81 | Full FAIL/INCONCLUSIVE verifier output hardening |
+| 82 | Portable binary build/provenance work |
+| 83 | Rust verifier report output |
+| 84 | Tamper-and-detect demo |
+| 85 | Rust audit pack v1 |
+
+Move 85 v08 is the current adopted technical authority for this publication state. Audit pack v1 is the Move 85 roadmap deliverable; the standalone Android/Termux AArch64 binary and provenance record are supporting measurement artefacts.
+
 ## Status
 
 - Roadmap One complete: Steps 1-70.
@@ -95,4 +119,5 @@ frozen state of their component, noted as "(freeze of …)".
 - Move 67 UI is read-only.
 - Moves 68 and 69 are planning-only.
 
-Status exact marker: Roadmap One complete as a local review/demo stack. Not production-ready. Does not prove external truth.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
+Not production-ready. Does not prove external truth.

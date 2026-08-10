@@ -1,0 +1,136 @@
+{
+  "manifest": {
+    "impl_version": "0.2.0",
+    "receipt_schema_version": "0.2.0",
+    "action_schema_version": "1.1.0",
+    "policy_version": "0.1.1",
+    "reason_registry_version": "0.1.0",
+    "session_version": "0.1.0",
+    "manifest_version": "0.1.0",
+    "run_id": "coordinator_run_6822aef67de0",
+    "allowed_root": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root",
+    "initial_session_state": "OPEN",
+    "manifest_hash": "7530872e8a914f468a5c02a2423519897c9fb6e3fb6fb6be1799b41485eb100b"
+  },
+  "receipts": [
+    {
+      "receipt_id": 0,
+      "prior_hash": "GENESIS",
+      "run_id": "coordinator_run_6822aef67de0",
+      "manifest_hash": "7530872e8a914f468a5c02a2423519897c9fb6e3fb6fb6be1799b41485eb100b",
+      "receipt_schema_version": "0.2.0",
+      "impl_version": "0.2.0",
+      "action_schema_version": "1.1.0",
+      "policy_version": "0.1.1",
+      "reason_registry_version": "0.1.0",
+      "session_version": "0.1.0",
+      "pre_session_state": "OPEN",
+      "post_session_state": "OPEN",
+      "stage": "INTENT",
+      "intent_receipt_id": null,
+      "intent_hash": null,
+      "request": {
+        "request_id": "coordinator_req_6822aef67de0",
+        "action_type": "CREATE_DIRECTORY",
+        "target_path": "case_dir",
+        "dry_run": false,
+        "preconditions": [
+          "inside_allowed_root",
+          "parent_exists",
+          "target_absent"
+        ],
+        "postconditions": [
+          "target_exists",
+          "target_is_directory"
+        ],
+        "schema_version": "1.1.0"
+      },
+      "decision": "ALLOW",
+      "reason_code": "INTENT_CREATE_DIRECTORY",
+      "detail": {
+        "resolved_root": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root",
+        "resolved_parent": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root",
+        "resolved_target": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root/case_dir"
+      },
+      "executed": false,
+      "canonical_hash": "26c5b4ed61891da2bca79796d235ffdf485a00c73bb12f35b0f5bec469f5e58a"
+    },
+    {
+      "receipt_id": 1,
+      "prior_hash": "26c5b4ed61891da2bca79796d235ffdf485a00c73bb12f35b0f5bec469f5e58a",
+      "run_id": "coordinator_run_6822aef67de0",
+      "manifest_hash": "7530872e8a914f468a5c02a2423519897c9fb6e3fb6fb6be1799b41485eb100b",
+      "receipt_schema_version": "0.2.0",
+      "impl_version": "0.2.0",
+      "action_schema_version": "1.1.0",
+      "policy_version": "0.1.1",
+      "reason_registry_version": "0.1.0",
+      "session_version": "0.1.0",
+      "pre_session_state": "OPEN",
+      "post_session_state": "OPEN",
+      "stage": "RESULT",
+      "intent_receipt_id": 0,
+      "intent_hash": "26c5b4ed61891da2bca79796d235ffdf485a00c73bb12f35b0f5bec469f5e58a",
+      "request": {
+        "request_id": "coordinator_req_6822aef67de0",
+        "action_type": "CREATE_DIRECTORY",
+        "target_path": "case_dir",
+        "dry_run": false,
+        "preconditions": [
+          "inside_allowed_root",
+          "parent_exists",
+          "target_absent"
+        ],
+        "postconditions": [
+          "target_exists",
+          "target_is_directory"
+        ],
+        "schema_version": "1.1.0"
+      },
+      "decision": "ALLOW",
+      "reason_code": "ALLOW_CREATE_DIRECTORY",
+      "detail": {
+        "resolved_root": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root",
+        "resolved_parent": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root",
+        "resolved_target": "/home/claude/m71_a/coordinator_output/sentinel_run/_allowed_root/case_dir"
+      },
+      "executed": true,
+      "canonical_hash": "600bf59a7b325a5182166bbe10a9f78fc245c69f70ab98ab846c712aa973ba63"
+    },
+    {
+      "receipt_id": 2,
+      "prior_hash": "600bf59a7b325a5182166bbe10a9f78fc245c69f70ab98ab846c712aa973ba63",
+      "run_id": "coordinator_run_6822aef67de0",
+      "manifest_hash": "7530872e8a914f468a5c02a2423519897c9fb6e3fb6fb6be1799b41485eb100b",
+      "receipt_schema_version": "0.2.0",
+      "impl_version": "0.2.0",
+      "action_schema_version": "1.1.0",
+      "policy_version": "0.1.1",
+      "reason_registry_version": "0.1.0",
+      "session_version": "0.1.0",
+      "pre_session_state": "OPEN",
+      "post_session_state": "CLOSED_BY_OPERATOR",
+      "stage": "SESSION_CLOSE",
+      "intent_receipt_id": null,
+      "intent_hash": null,
+      "request": {
+        "action_type": "CLOSE_SESSION"
+      },
+      "decision": "ALLOW",
+      "reason_code": "ALLOW_SESSION_CLOSE",
+      "detail": {},
+      "executed": false,
+      "canonical_hash": "c0098e0f60668d13d72c41d50544498bf4ee4bab5a4ab66e570073b8ac6ec155"
+    }
+  ],
+  "run_seal": {
+    "seal_version": "0.1.0",
+    "run_id": "coordinator_run_6822aef67de0",
+    "manifest_hash": "7530872e8a914f468a5c02a2423519897c9fb6e3fb6fb6be1799b41485eb100b",
+    "receipt_count": 3,
+    "final_receipt_id": 2,
+    "final_receipt_hash": "c0098e0f60668d13d72c41d50544498bf4ee4bab5a4ab66e570073b8ac6ec155",
+    "final_session_state": "CLOSED_BY_OPERATOR",
+    "seal_hash": "467632ec5751000dbfaa34a3580e4ecfdf652bfeb56757721d8d341caabf50f7"
+  }
+}

@@ -1,6 +1,6 @@
 # Reviewer Feedback Round
 
-Status: Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain future work. The 70-step roadmap is not complete.
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 This file defines how feedback should be collected. It does not claim that
 feedback has been received.
@@ -11,10 +11,10 @@ feedback has been received.
 No external reviewer approval is claimed. No external reviewer blocker is claimed
 as repaired.
 
-## Package under review
+## Historical Roadmap One package used for this feedback round
 
-- `Project_Witness_WORKING_STACK_v11_MOVE_60.zip`
-- `Project_Witness_WORKING_STACK_v11_MOVE_60.zip.sha256`
+- `Project_Witness_WORKING_STACK_v20_MOVE_70.zip`
+- `Project_Witness_WORKING_STACK_v20_MOVE_70.zip.sha256`
 
 ## Reviewer task
 
@@ -30,8 +30,8 @@ Ask reviewers to check:
 ## Commands
 
 ```sh
-sha256sum -c Project_Witness_WORKING_STACK_v11_MOVE_60.zip.sha256
-unzip -q Project_Witness_WORKING_STACK_v11_MOVE_60.zip
+sha256sum -c Project_Witness_WORKING_STACK_v20_MOVE_70.zip.sha256
+unzip -q Project_Witness_WORKING_STACK_v20_MOVE_70.zip
 cd Project_Witness_WORKING_STACK
 sh tools/check_local_v1_release.sh
 sh tools/validate_handoff.sh
@@ -42,4 +42,4 @@ sh tools/validate_handoff.sh
 Only real findings from real reviewers go into the ledger. Do not invent feedback
 to make the release look more reviewed than it is.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.

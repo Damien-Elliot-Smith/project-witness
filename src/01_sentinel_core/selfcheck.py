@@ -97,6 +97,16 @@ def _req(rid, target, dry=False, action="CREATE_DIRECTORY"):
     }
 
 
+def _req_text(rid, target, content="hello\n", prefix=".", dry=False):
+    return {
+        "request_id": rid, "action_type": "CREATE_TEXT_FILE", "target_path": target,
+        "content": content, "allowed_path_prefix": prefix, "dry_run": dry,
+        "preconditions": ["parent_directory_exists", "path_absent", "path_inside_allowed_prefix"],
+        "postconditions": ["file_exists", "file_content_hash_matches", "file_is_utf8_text"],
+        "schema_version": "1.1.0",
+    }
+
+
 def gate_valid_workflow():
     root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
     try:
@@ -138,6 +148,67 @@ def gate_outside_root_blocked():
     finally:
         for d in (root, runs, outside):
             shutil.rmtree(d, ignore_errors=True)
+
+
+def gate_text_file_valid_workflow():
+    root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
+    try:
+        k, _ = _new_kernel("tfwf", root, runs)
+        r = k.process(_req_text("A", "note.txt", "hello world\n"))
+        _ok(r.decision == "ALLOW" and r.reason_code == "ALLOW_CREATE_TEXT_FILE" and r.executed,
+            "Valid CREATE_TEXT_FILE did not ALLOW+execute")
+        p = os.path.join(root, "note.txt")
+        _ok(os.path.isfile(p) and not os.path.islink(p), "Text file was not created as a regular file")
+        with open(p, "rb") as f:
+            _ok(f.read().decode("utf-8") == "hello world\n", "Text file content mismatch")
+    finally:
+        shutil.rmtree(root, ignore_errors=True); shutil.rmtree(runs, ignore_errors=True)
+
+
+def gate_text_file_dry_run_no_create():
+    root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
+    try:
+        k, _ = _new_kernel("tfdr", root, runs)
+        r = k.process(_req_text("A", "ghost.txt", "x\n", dry=True))
+        _ok(r.decision == "DRY_RUN" and r.reason_code == "DRY_RUN_CREATE_TEXT_FILE",
+            "Text-file dry-run did not yield DRY_RUN")
+        _ok(not os.path.exists(os.path.join(root, "ghost.txt")), "Text-file dry-run created a file")
+    finally:
+        shutil.rmtree(root, ignore_errors=True); shutil.rmtree(runs, ignore_errors=True)
+
+
+def gate_text_file_traversal_blocked():
+    root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
+    try:
+        k, _ = _new_kernel("tftv", root, runs)
+        r = k.process(_req_text("A", "../escape.txt", "x\n"))
+        _ok(r.reason_code == "BLOCK_PATH_TRAVERSAL", "Text-file traversal not blocked")
+    finally:
+        shutil.rmtree(root, ignore_errors=True); shutil.rmtree(runs, ignore_errors=True)
+
+
+def gate_text_file_target_exists_blocked():
+    root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
+    try:
+        k, _ = _new_kernel("tfex", root, runs)
+        k.process(_req_text("A", "a.txt", "one\n"))
+        r = k.process(_req_text("B", "a.txt", "two\n"))
+        _ok(r.reason_code == "BLOCK_TARGET_ALREADY_EXISTS", "Text-file overwrite not blocked")
+        with open(os.path.join(root, "a.txt")) as f:
+            _ok(f.read() == "one\n", "Text-file was overwritten")
+    finally:
+        shutil.rmtree(root, ignore_errors=True); shutil.rmtree(runs, ignore_errors=True)
+
+
+def gate_text_file_binary_content_blocked():
+    root = tempfile.mkdtemp(); runs = tempfile.mkdtemp()
+    try:
+        k, _ = _new_kernel("tfbin", root, runs)
+        r = k.process(_req_text("A", "b.txt", "a\x00b"))
+        _ok(r.reason_code == "BLOCK_SCHEMA_INVALID", "Binary (NUL) content not blocked")
+        _ok(not os.path.exists(os.path.join(root, "b.txt")), "Binary-content file was created")
+    finally:
+        shutil.rmtree(root, ignore_errors=True); shutil.rmtree(runs, ignore_errors=True)
 
 
 def _build_closed_run(root, runs, run_id="sc"):
@@ -359,6 +430,11 @@ GATES = [
     ("dry_run_no_create", gate_dry_run_no_create),
     ("traversal_blocked", gate_traversal_blocked),
     ("outside_root_blocked", gate_outside_root_blocked),
+    ("text_file_valid_workflow", gate_text_file_valid_workflow),
+    ("text_file_dry_run_no_create", gate_text_file_dry_run_no_create),
+    ("text_file_traversal_blocked", gate_text_file_traversal_blocked),
+    ("text_file_target_exists_blocked", gate_text_file_target_exists_blocked),
+    ("text_file_binary_content_blocked", gate_text_file_binary_content_blocked),
     ("replay_valid", gate_replay_valid),
     ("deleted_final_receipt_fails", gate_deleted_final_receipt_fails),
     ("deleted_seal_fails", gate_deleted_seal_fails),

@@ -16,6 +16,7 @@ from aletheia_evidence.errors import (  # noqa: E402
     ValidationError, BuildError, VerifyError)
 from aletheia_evidence.verifier import verify_bundle  # noqa: E402
 from aletheia_evidence import versions  # noqa: E402
+from aletheia_evidence import evidence_type  # noqa: E402
 
 
 def cmd_bundle_file(args):
@@ -62,6 +63,26 @@ def cmd_selfcheck(args):
     return selfcheck.main([])
 
 
+def cmd_classify_file(args):
+    result = evidence_type.classify_file(
+        source_file=args.file, case_id=args.case_id, evidence_id=args.evidence_id,
+        evidence_type=args.evidence_type, out_dir=args.out)
+    if result.ok:
+        m = result.report
+        print("Evidence type report created (classification + hash only; not a truth claim)")
+        print(f"  case_id:            {m['case_id']}")
+        print(f"  evidence_id:        {m['evidence_id']}")
+        print(f"  source_file:        {m['source_file_name']} ({m['source_file_size_bytes']} bytes)")
+        print(f"  source_sha256:      {m['source_file_sha256']}")
+        print(f"  evidence_type:      {m['evidence_type']}")
+        print(f"  classification:     {m['classification_status']}")
+        print(f"  report:             {result.report_path}")
+        return 0
+    where = f" (report: {result.report_path})" if result.report_path else ""
+    print(f"REFUSED [{result.status}]: file not classified{where}", file=sys.stderr)
+    return 2
+
+
 def build_parser():
     p = argparse.ArgumentParser(
         prog="aletheia",
@@ -86,6 +107,17 @@ def build_parser():
 
     s = sub.add_parser("selfcheck", help="run in-process invariant gates")
     s.set_defaults(func=cmd_selfcheck)
+
+    c = sub.add_parser("classify-file",
+                       help="classify one local file and emit evidence_type_report.json "
+                            "(classification + hash only; not a truth claim)")
+    c.add_argument("--file", required=True)
+    c.add_argument("--case-id", required=True)
+    c.add_argument("--evidence-id", required=True)
+    c.add_argument("--evidence-type", required=True,
+                   choices=["LOCAL_TEXT_UTF8", "LOCAL_JSON", "LOCAL_BINARY_FILE", "AUTO"])
+    c.add_argument("--out", required=True)
+    c.set_defaults(func=cmd_classify_file)
     return p
 
 

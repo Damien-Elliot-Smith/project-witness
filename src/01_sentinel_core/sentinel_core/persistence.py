@@ -174,3 +174,43 @@ def execute_create_directory(resolved_target: str) -> None:
         raise PersistenceFailure(f"Target already exists at execution time: {e}") from e
     except OSError as e:
         raise PersistenceFailure(f"mkdir failed: {e}") from e
+
+
+def execute_create_text_file(resolved_target: str, content_bytes: bytes) -> None:
+    """Create exactly one new text file at resolved_target with content_bytes.
+
+    Move 62. Fail-closed, no-overwrite, no-symlink-follow file creation:
+      * O_CREAT | O_EXCL  -> the open fails if the target already exists, giving
+        a final atomic guard against a race between the policy check and execution
+        (mirrors os.mkdir's FileExistsError guard for CREATE_DIRECTORY). No path
+        is ever overwritten.
+      * O_WRONLY          -> write only; never truncates an existing file (O_EXCL
+        already guarantees there is no existing file).
+      * O_NOFOLLOW        -> if the final path component is a symlink, the open
+        fails rather than following it out of the allowed area.
+    No shell is invoked. bytes are written, flushed, and fsynced before close.
+    Errors are surfaced as PersistenceFailure so the kernel records a controlled
+    ERROR receipt.
+    """
+    if type(content_bytes) is not bytes:
+        raise PersistenceFailure("execute_create_text_file requires bytes content")
+    flags = os.O_CREAT | os.O_EXCL | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        fd = os.open(resolved_target, flags, 0o644)
+    except FileExistsError as e:
+        raise PersistenceFailure(f"Target already exists at execution time: {e}") from e
+    except OSError as e:
+        raise PersistenceFailure(f"open(O_CREAT|O_EXCL|O_NOFOLLOW) failed: {e}") from e
+    try:
+        try:
+            written = 0
+            while written < len(content_bytes):
+                written += os.write(fd, content_bytes[written:])
+            os.fsync(fd)
+        except OSError as e:
+            raise PersistenceFailure(f"write/fsync failed: {e}") from e
+    finally:
+        try:
+            os.close(fd)
+        except OSError:
+            pass

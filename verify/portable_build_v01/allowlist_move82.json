@@ -1,0 +1,27 @@
+{
+ "_purpose": "Move 82 permitted-change allowlist: the COMPLETE set of paths a Move 82 candidate may add relative to the adopted Move 81 v08 baseline. Additions only -- no inherited path may change. check_move82_inherited.py enforces this mechanically against the REAL verified Move 81 v08 ZIP bytes supplied at run time.",
+ "_no_prebuilt_executable": "Every Move 82 addition listed here is text. No prebuilt witness-verify executable is packaged in the candidate ZIP. The release binary and its build-provenance record are GENERATED during the genuine Termux adoption run and preserved separately from the source candidate.",
+ "_inherited_kept_byte_identical": [
+  "rust/",
+  "src/",
+  "freeze_record/",
+  "verify/agreement_harness_v01/ (including reason_map.json and the agreement corpus)",
+  "verify/corrupted_bundle_pack_v01/ (Move 80 fixture pack)",
+  "verify/structured_verdict_v01/ (Move 81 adapter, schema and tests)",
+  "Move 79, Move 80 and Move 81 gates",
+  "MOVE_INDEX.md and CURRENT_RELEASE_STATE.md"
+ ],
+ "added_paths": [
+  "CHANGELOG_MOVE_82.md",
+  "tools/check_move82_portable_build_adoption.sh",
+  "verify/portable_build_v01/EXPECTED_TEST_COUNT.txt",
+  "verify/portable_build_v01/README.md",
+  "verify/portable_build_v01/allowlist_move82.json",
+  "verify/portable_build_v01/build_binary.py",
+  "verify/portable_build_v01/check_move82_inherited.py",
+  "verify/portable_build_v01/equivalence.py",
+  "verify/portable_build_v01/inspect_binary.py",
+  "verify/portable_build_v01/portable_tests.py",
+  "verify/portable_build_v01/provenance.py"
+ ]
+}

@@ -142,7 +142,7 @@ class Receipt:
         # ── Stage grammar (v0.2) ─────────────────────────────────────────────
         from sentinel_core.reason_codes import (
             STAGE_INTENT, STAGE_RESULT, STAGE_SESSION_CLOSE, VALID_STAGES,
-            INTENT_CREATE_DIRECTORY, stage_for_reason, ERROR, BLOCK, DRY_RUN,
+            INTENT_REASON_CODES, stage_for_reason, ERROR, BLOCK, DRY_RUN,
         )
         require(self.stage in VALID_STAGES, f"Invalid stage: {self.stage!r}", ReceiptError)
         # The stage must match the reason's mandated stage exactly, so a receipt
@@ -153,8 +153,8 @@ class Receipt:
 
         if self.stage == STAGE_INTENT:
             # An INTENT is approved-but-not-executed and references no INTENT.
-            require(self.decision == ALLOW and self.reason_code == INTENT_CREATE_DIRECTORY,
-                    "INTENT stage requires decision=ALLOW, reason=INTENT_CREATE_DIRECTORY",
+            require(self.decision == ALLOW and self.reason_code in INTENT_REASON_CODES,
+                    "INTENT stage requires decision=ALLOW and an INTENT reason code",
                     ReceiptError)
             require(self.executed is False, "INTENT receipt must have executed=False", ReceiptError)
             require(self.post_session_state == SESSION_OPEN,

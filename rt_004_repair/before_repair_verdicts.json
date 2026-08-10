@@ -1,0 +1,35 @@
+{
+ "cases": [
+  {
+   "case": "clean_control",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "evidence_bytes_changed",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "evidence_file_deleted",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "evidence_file_added_unexpectedly",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  },
+  {
+   "case": "checksum_manifest_mismatch_fixup",
+   "error": "companion completed",
+   "exit_code": 0,
+   "verify_ok": true
+  }
+ ],
+ "note": "verdicts of the UNREPAIRED base on the tamper corpus; every accepted tamper here is the RT-004 blind spot"
+}

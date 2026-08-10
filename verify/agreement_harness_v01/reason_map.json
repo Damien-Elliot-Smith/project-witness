@@ -1,0 +1,475 @@
+{
+ "_comment": [
+  "Move 79 reason-code mapping. A shared REASON CLASS vocabulary sits above",
+  "both implementations. Rules (enforced by run_agreement.py):",
+  "  - zero matching mappings  -> harness failure (UNMAPPED_REASON)",
+  "  - >1 matching mapping     -> harness failure (AMBIGUOUS_REASON)",
+  "  - first-match-wins is FORBIDDEN; every reason must match exactly one",
+  "  - exact strings preferred; anchored regex allowed ONLY for variable",
+  "    data such as embedded paths/filenames",
+  "  - raw reason AND mapped class are retained in every result record"
+ ],
+ "_stage_note": "Every mapping carries an explicit STAGE. Two implementations that both reject at DIFFERENT stages are a divergence unless the corpus declares the stage out of scope.",
+ "archive": [
+  {
+   "class": "ARCHIVE_OK",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_SAFETY_OK"
+  },
+  {
+   "class": "ARCHIVE_PATH_TRAVERSAL",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_PATH_TRAVERSAL"
+  },
+  {
+   "class": "ARCHIVE_ABSOLUTE_PATH",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_ABSOLUTE_PATH"
+  },
+  {
+   "class": "ARCHIVE_UNC_PATH",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_UNC_PATH"
+  },
+  {
+   "class": "ARCHIVE_BACKSLASH_PATH",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_BACKSLASH_PATH"
+  },
+  {
+   "class": "ARCHIVE_WINDOWS_DRIVE_PATH",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_WINDOWS_DRIVE_PATH"
+  },
+  {
+   "class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_WINDOWS_NAME_UNSAFE"
+  },
+  {
+   "class": "ARCHIVE_ALTERNATE_DATA_STREAM",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_ALTERNATE_DATA_STREAM"
+  },
+  {
+   "class": "ARCHIVE_CONTROL_CHARACTER",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_CONTROL_CHARACTER"
+  },
+  {
+   "class": "ARCHIVE_BIDI_CHARACTER",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_BIDI_CHARACTER"
+  },
+  {
+   "class": "ARCHIVE_UNICODE_NAME_UNSAFE",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_UNICODE_NAME_UNSAFE"
+  },
+  {
+   "class": "ARCHIVE_DUPLICATE_NAME",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_DUPLICATE_NAME"
+  },
+  {
+   "class": "ARCHIVE_CASE_COLLISION",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_CASE_COLLISION"
+  },
+  {
+   "class": "ARCHIVE_NORMALIZED_NAME_COLLISION",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_NORMALIZED_NAME_COLLISION"
+  },
+  {
+   "class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_FILE_DIRECTORY_COLLISION"
+  },
+  {
+   "class": "ARCHIVE_SYMLINK_ENTRY",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_SYMLINK_ENTRY"
+  },
+  {
+   "class": "ARCHIVE_SPECIAL_FILE_TYPE",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_SPECIAL_FILE_TYPE"
+  },
+  {
+   "class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_LOCAL_HEADER_MISMATCH"
+  },
+  {
+   "class": "ARCHIVE_LOCAL_HEADER_MALFORMED",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_LOCAL_HEADER_MALFORMED"
+  },
+  {
+   "class": "ARCHIVE_LOCAL_HEADER_OFFSET_INVALID",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_LOCAL_HEADER_OFFSET_INVALID"
+  },
+  {
+   "class": "ARCHIVE_LOCAL_LAYOUT_INVALID",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_LOCAL_LAYOUT_INVALID"
+  },
+  {
+   "class": "ARCHIVE_UNREFERENCED_DATA",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_UNREFERENCED_DATA"
+  },
+  {
+   "class": "ARCHIVE_UNSUPPORTED_FEATURE",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_UNSUPPORTED_FEATURE"
+  },
+  {
+   "class": "ARCHIVE_MALFORMED",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_MALFORMED"
+  },
+  {
+   "class": "ARCHIVE_IO_ERROR",
+   "match_type": "exact",
+   "stage": "archive",
+   "value": "ARCHIVE_IO_ERROR"
+  }
+ ],
+ "python_bundle": [
+  {
+   "class": "OK",
+   "match_type": "exact",
+   "stage": "complete",
+   "value": "companion completed"
+  },
+  {
+   "class": "REFERENCED_FILE_MISSING",
+   "match_type": "regex",
+   "stage": "nested_checksums",
+   "value": "^file listed in .+ is missing: .+$"
+  },
+  {
+   "class": "REQUIRED_FILE_MISSING",
+   "match_type": "regex",
+   "stage": "manifest",
+   "value": "^missing required file: .+$"
+  },
+  {
+   "class": "EVIDENCE_DIR_UNLISTED_FILE",
+   "match_type": "regex",
+   "stage": "deep_evidence",
+   "value": "^unlisted file\\(s\\) in evidence directory: .+$"
+  },
+  {
+   "class": "NESTED_CHECKSUM_MISMATCH",
+   "match_type": "regex",
+   "stage": "nested_checksums",
+   "value": "^deep checksum mismatch for .+$"
+  },
+  {
+   "class": "MANIFEST_BINDING_MISMATCH",
+   "match_type": "regex",
+   "stage": "manifest_binding",
+   "value": "^manifest bundled_file_sha256 does not match bundled file .+$"
+  },
+  {
+   "class": "DECLARED_HASH_MISMATCH",
+   "match_type": "regex",
+   "stage": "hashes",
+   "value": "^checksum mismatch for .+$"
+  },
+  {
+   "class": "SOURCE_RUN_HASH_MISMATCH",
+   "match_type": "regex",
+   "stage": "source_run_binding",
+   "value": "^recorded source hash in .+ does not match .+$"
+  },
+  {
+   "class": "REPORT_NOT_CANONICAL",
+   "match_type": "exact",
+   "stage": "canonical_report",
+   "value": "companion_report not canonical"
+  },
+  {
+   "class": "UNKNOWN_TOP_LEVEL_ENTRY",
+   "match_type": "regex",
+   "stage": "manifest",
+   "value": "^unknown top-level entries: .+$"
+  }
+ ],
+ "rust_bundle": [
+  {
+   "class": "OK",
+   "match_type": "exact",
+   "stage": "complete",
+   "value": "RECEIPT_CHAIN_HASHES_RECOMPUTED"
+  },
+  {
+   "class": "MANIFEST_MISSING",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "MANIFEST_MISSING"
+  },
+  {
+   "class": "REQUIRED_FILE_MISSING",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "REQUIRED_FILE_MISSING"
+  },
+  {
+   "class": "UNKNOWN_TOP_LEVEL_ENTRY",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "CRITICAL_UNKNOWN_TOP_LEVEL_ENTRY"
+  },
+  {
+   "class": "MANIFEST_MALFORMED",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "MANIFEST_JSON_INVALID"
+  },
+  {
+   "class": "MANIFEST_MALFORMED",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "MANIFEST_NOT_AN_OBJECT"
+  },
+  {
+   "class": "MANIFEST_MALFORMED",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "MANIFEST_READ_ERROR"
+  },
+  {
+   "class": "SCHEMA_VERSION_UNSUPPORTED",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "SCHEMA_VERSION_UNSUPPORTED"
+  },
+  {
+   "class": "REQUIRED_FIELD_MISSING",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "REQUIRED_FIELD_MISSING"
+  },
+  {
+   "class": "UNKNOWN_REPORT_FIELD",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "CRITICAL_UNKNOWN_FIELD"
+  },
+  {
+   "class": "REFERENCED_FILE_MISSING",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "REFERENCED_FILE_MISSING"
+  },
+  {
+   "class": "REFERENCED_FILE_MISSING",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "REFERENCED_PATH_MISSING"
+  },
+  {
+   "class": "UNSAFE_PATH",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "REFERENCED_PATH_UNSAFE"
+  },
+  {
+   "class": "UNSAFE_PATH",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "CHECKSUMS_PATH_UNSAFE"
+  },
+  {
+   "class": "CHECKSUMS_MALFORMED",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "MALFORMED_CHECKSUMS_LINE"
+  },
+  {
+   "class": "CHECKSUMS_MALFORMED",
+   "match_type": "exact",
+   "stage": "hashes",
+   "value": "MALFORMED_DIGEST"
+  },
+  {
+   "class": "DECLARED_HASH_MISMATCH",
+   "match_type": "exact",
+   "stage": "hashes",
+   "value": "FILE_HASH_MISMATCH"
+  },
+  {
+   "class": "REQUIRED_PATH_UNDECLARED",
+   "match_type": "exact",
+   "stage": "hashes",
+   "value": "REQUIRED_PATH_UNDECLARED"
+  },
+  {
+   "class": "HASH_READ_ERROR",
+   "match_type": "exact",
+   "stage": "hashes",
+   "value": "HASH_READ_ERROR"
+  },
+  {
+   "class": "BUNDLE_READ_ERROR",
+   "match_type": "exact",
+   "stage": "manifest",
+   "value": "BUNDLE_READ_ERROR"
+  },
+  {
+   "class": "RUN_RECORD_MISSING",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RUN_RECORD_MISSING"
+  },
+  {
+   "class": "RUN_RECORD_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RUN_RECORD_JSON_INVALID"
+  },
+  {
+   "class": "RUN_RECORD_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RUN_RECORD_MALFORMED"
+  },
+  {
+   "class": "RUN_RECORD_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RUN_RECORD_READ_ERROR"
+  },
+  {
+   "class": "RECEIPTS_MISSING",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPTS_MISSING"
+  },
+  {
+   "class": "RECEIPT_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_MALFORMED"
+  },
+  {
+   "class": "RECEIPT_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_HASH_MALFORMED"
+  },
+  {
+   "class": "RECEIPT_SEQUENCE_BROKEN",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_ID_SEQUENCE_BROKEN"
+  },
+  {
+   "class": "RECEIPT_LINKAGE_BROKEN",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_LINKAGE_BROKEN"
+  },
+  {
+   "class": "RECEIPT_LINKAGE_BROKEN",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "GENESIS_PRIOR_HASH_INVALID"
+  },
+  {
+   "class": "RECEIPT_FIELD_MISMATCH",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_RUN_ID_MISMATCH"
+  },
+  {
+   "class": "RECEIPT_FIELD_MISMATCH",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "RECEIPT_MANIFEST_HASH_MISMATCH"
+  },
+  {
+   "class": "SESSION_CONTINUITY_BROKEN",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "SESSION_CONTINUITY_BROKEN"
+  },
+  {
+   "class": "RECEIPT_HASH_RECOMPUTATION_MISMATCH",
+   "match_type": "exact",
+   "stage": "canonical_recompute",
+   "value": "RECEIPT_HASH_RECOMPUTATION_MISMATCH"
+  },
+  {
+   "class": "CANONICALIZATION_ERROR",
+   "match_type": "exact",
+   "stage": "canonical_recompute",
+   "value": "RECEIPT_CANONICALIZATION_ERROR"
+  },
+  {
+   "class": "SEAL_MISSING",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "SEAL_MISSING"
+  },
+  {
+   "class": "SEAL_MISMATCH",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "SEAL_MISMATCH"
+  },
+  {
+   "class": "SEAL_MALFORMED",
+   "match_type": "exact",
+   "stage": "receipts",
+   "value": "SEAL_MALFORMED"
+  },
+  {
+   "class": "BUNDLE_PATH_INVALID",
+   "match_type": "exact",
+   "stage": "preflight",
+   "value": "BUNDLE_PATH_MISSING"
+  },
+  {
+   "class": "BUNDLE_PATH_INVALID",
+   "match_type": "exact",
+   "stage": "preflight",
+   "value": "BUNDLE_PATH_NOT_A_DIRECTORY"
+  },
+  {
+   "class": "USAGE_ERROR",
+   "match_type": "exact",
+   "stage": "preflight",
+   "value": "USAGE_ERROR"
+  }
+ ]
+}

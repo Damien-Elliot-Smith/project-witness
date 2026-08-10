@@ -1,6 +1,8 @@
 # Release Blocker Repair Ledger - Move 59 carried into Move 60
 
-Status: Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain future work.
+The table below is a historical Move 59/60 repair ledger. References to “current” status inside table cells describe that historical repair point; the current publication state is given by the status marker below.
+
+Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.
 
 | Blocker ID | Problem | Repair | Verification |
 |---|---|---|---|
@@ -14,4 +16,4 @@ Status: Local v1 Release. Roadmap complete through Move 60; Moves 61-70 remain f
 No external reviewer blocker was repaired because no external reviewer feedback is
 recorded in this package.
 
-Status exact marker: Roadmap complete through Move 60; Moves 61-70 remain future work.
+Status exact marker: Current publication state (2026-08-10): Roadmap One, Steps 1–70, is complete as a local review/demo stack. Move 70.6 and RT-004 are adopted post-completion repairs. Move 71 Python behaviour freeze is adopted. Rust-hardening Moves 72–85 are adopted. Move 85 v08 is the current adopted technical authority for this publication state. Project Witness is not production-ready.

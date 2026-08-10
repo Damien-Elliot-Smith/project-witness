@@ -8,12 +8,14 @@ bad() { printf "  FAIL  %s\n" "$1"; missing=$((missing + 1)); }
 contains() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then ok "$label"; else bad "$label"; fi; }
 forbid() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then bad "$label"; else ok "$label"; fi; }
 
-current_marker="Roadmap complete through Move 60; Moves 61-70 remain future work"
+# Move 70.5: marker updated to the Roadmap One completion state.
+# The authoritative current-state checker is tools/check_current_release_state.sh.
+current_marker="Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack."
 echo "Public explanation check"
 echo "------------------------"
 PUB="$ROOT/PUBLIC_EXPLANATION.md"; [ -f "$PUB" ] && ok "PUBLIC_EXPLANATION.md" || bad "PUBLIC_EXPLANATION.md"
 if [ -f "$PUB" ]; then
-contains "$PUB" "Local v1 Release" "states Local v1 Release"
+contains "$PUB" "local review/demo stack" "states local review/demo stack boundary"
 contains "$PUB" "$current_marker" "has current marker"
 contains "$PUB" "does not prove external truth" "states no external truth"
 contains "$PUB" "not production-ready" "states not production-ready"

@@ -1,0 +1,1973 @@
+{
+ "cases": [
+  {
+   "archive_file": "absolute_unix.zip",
+   "case_id": "absolute_unix",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ABSOLUTE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ABSOLUTE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_ABSOLUTE_PATH",
+    "reference": "absolute_unix",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "ads_colon.zip",
+   "case_id": "ads_colon",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ALTERNATE_DATA_STREAM",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ALTERNATE_DATA_STREAM",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_ALTERNATE_DATA_STREAM",
+    "reference": "ads_colon",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "ancestor_prefix_collision.zip",
+   "case_id": "ancestor_prefix_collision",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_FILE_DIRECTORY_COLLISION",
+    "reference": "ancestor_prefix_collision",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "backslash.zip",
+   "case_id": "backslash",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_BACKSLASH_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_BACKSLASH_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_BACKSLASH_PATH",
+    "reference": "backslash",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "bad_local_offset.zip",
+   "case_id": "bad_local_offset",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_OFFSET_INVALID",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_OFFSET_INVALID",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_OFFSET_INVALID",
+    "reference": "bad_local_offset",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "bad_method.zip",
+   "case_id": "bad_method",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "bad_method",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "bidi_control.zip",
+   "case_id": "bidi_control",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_BIDI_CHARACTER",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_BIDI_CHARACTER",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_BIDI_CHARACTER",
+    "reference": "bidi_control",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "case_collision.zip",
+   "case_id": "case_collision",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_CASE_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_CASE_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_CASE_COLLISION",
+    "reference": "case_collision",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "cd_eocd_gap.zip",
+   "case_id": "cd_eocd_gap",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "bytes between CD end and EOCD: unparsed region -> adopted rule rejects",
+    "reference": "cd_eocd_gap",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "chardev.zip",
+   "case_id": "chardev",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_SPECIAL_FILE_TYPE",
+    "reference": "chardev",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "clean.zip",
+   "case_id": "clean",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "entry_count": 3,
+    "normalized_outcome": "ACCEPTED",
+    "python": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    },
+    "rust": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_SAFETY_OK",
+    "reference": "clean",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_absolute_vs_dot.zip",
+   "case_id": "compete_absolute_vs_dot",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ABSOLUTE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_ABSOLUTE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_ABSOLUTE_PATH",
+    "reference": "compete_absolute_vs_dot",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_disk_vs_local.zip",
+   "case_id": "compete_disk_vs_local",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "compete_disk_vs_local",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_enc_vs_local.zip",
+   "case_id": "compete_enc_vs_local",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "compete_enc_vs_local",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_method_vs_local.zip",
+   "case_id": "compete_method_vs_local",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "compete_method_vs_local",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_traversal_vs_symlink.zip",
+   "case_id": "compete_traversal_vs_symlink",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "compete_traversal_vs_symlink",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_traversal_vs_windows.zip",
+   "case_id": "compete_traversal_vs_windows",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "compete_traversal_vs_windows",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_unc_vs_traversal.zip",
+   "case_id": "compete_unc_vs_traversal",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNC_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNC_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNC_PATH",
+    "reference": "compete_unc_vs_traversal",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_version_vs_local.zip",
+   "case_id": "compete_version_vs_local",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "COMPETING central version-needed 99 vs local 20: unsupported-feature gate runs BEFORE local-header validation -> UNSUPPORTED_FEATURE wins",
+    "reference": "compete_version_vs_local",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "compete_windows_vs_nonascii.zip",
+   "case_id": "compete_windows_vs_nonascii",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_WINDOWS_NAME_UNSAFE",
+    "reference": "compete_windows_vs_nonascii",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "control_char.zip",
+   "case_id": "control_char",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_CONTROL_CHARACTER",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_CONTROL_CHARACTER",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_CONTROL_CHARACTER",
+    "reference": "control_char",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "crc_mismatch.zip",
+   "case_id": "crc_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "crc_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "csize_mismatch.zip",
+   "case_id": "csize_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "csize_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "data_descriptor_both_set.zip",
+   "case_id": "data_descriptor_both_set",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "central AND local bit 3 set: flags AGREE, so not a mismatch -> UNSUPPORTED_FEATURE",
+    "reference": "data_descriptor_both_set",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "data_into_cd.zip",
+   "case_id": "data_into_cd",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "data_into_cd",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "dir_no_slash.zip",
+   "case_id": "dir_no_slash",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_FILE_DIRECTORY_COLLISION",
+    "reference": "dir_no_slash",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "directory_with_data.zip",
+   "case_id": "directory_with_data",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "directory_with_data",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "dos_creator.zip",
+   "case_id": "dos_creator",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "dos_creator",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "dot_component.zip",
+   "case_id": "dot_component",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "dot_component",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "duplicate_extra_tag.zip",
+   "case_id": "duplicate_extra_tag",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "duplicate_extra_tag",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "duplicate_name.zip",
+   "case_id": "duplicate_name",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_DUPLICATE_NAME",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_DUPLICATE_NAME",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_DUPLICATE_NAME",
+    "reference": "duplicate_name",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "encrypted.zip",
+   "case_id": "encrypted",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "encrypted",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "eocd_comment_mismatch.zip",
+   "case_id": "eocd_comment_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "eocd_comment_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "fifo.zip",
+   "case_id": "fifo",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_SPECIAL_FILE_TYPE",
+    "reference": "fifo",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "interior_gap.zip",
+   "case_id": "interior_gap",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNREFERENCED_DATA",
+    "reference": "interior_gap",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "local_flags_mismatch.zip",
+   "case_id": "local_flags_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "local_flags_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "local_name_mismatch.zip",
+   "case_id": "local_name_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "local_name_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "local_version_mismatch.zip",
+   "case_id": "local_version_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "local_version_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "malformed_extra.zip",
+   "case_id": "malformed_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "malformed_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "malformed_local_extra.zip",
+   "case_id": "malformed_local_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MALFORMED",
+    "reference": "malformed_local_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "malformed_uid_gid.zip",
+   "case_id": "malformed_uid_gid",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "malformed_uid_gid",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "nested_traversal.zip",
+   "case_id": "nested_traversal",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "nested_traversal",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "non_ascii.zip",
+   "case_id": "non_ascii",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNICODE_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNICODE_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNICODE_NAME_UNSAFE",
+    "reference": "non_ascii",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "nonzero_disk_start.zip",
+   "case_id": "nonzero_disk_start",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "nonzero_disk_start",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "not_a_zip.zip",
+   "case_id": "not_a_zip",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "not_a_zip",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "orphan_local_header.zip",
+   "case_id": "orphan_local_header",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNREFERENCED_DATA",
+    "reference": "orphan_local_header",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "overlapping_ranges.zip",
+   "case_id": "overlapping_ranges",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_LAYOUT_INVALID",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_LAYOUT_INVALID",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_LAYOUT_INVALID",
+    "reference": "overlapping_ranges",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "prefix_collision.zip",
+   "case_id": "prefix_collision",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_FILE_DIRECTORY_COLLISION",
+    "reference": "prefix_collision",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "repeated_separator.zip",
+   "case_id": "repeated_separator",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "repeated_separator",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "reserved_com1.zip",
+   "case_id": "reserved_com1",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_WINDOWS_NAME_UNSAFE",
+    "reference": "reserved_com1",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "reserved_con.zip",
+   "case_id": "reserved_con",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_WINDOWS_NAME_UNSAFE",
+    "reference": "reserved_con",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "sfx_stub.zip",
+   "case_id": "sfx_stub",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_MALFORMED",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_MALFORMED",
+    "reference": "sfx_stub",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "slash_file_mode.zip",
+   "case_id": "slash_file_mode",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_FILE_DIRECTORY_COLLISION",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_FILE_DIRECTORY_COLLISION",
+    "reference": "slash_file_mode",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "symlink.zip",
+   "case_id": "symlink",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SYMLINK_ENTRY",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SYMLINK_ENTRY",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_SYMLINK_ENTRY",
+    "reference": "symlink",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "trailing_dot_windows.zip",
+   "case_id": "trailing_dot_windows",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_NAME_UNSAFE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_WINDOWS_NAME_UNSAFE",
+    "reference": "trailing_dot_windows",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "traversal.zip",
+   "case_id": "traversal",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_PATH_TRAVERSAL",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_PATH_TRAVERSAL",
+    "reference": "traversal",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "unc_path.zip",
+   "case_id": "unc_path",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNC_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNC_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNC_PATH",
+    "reference": "unc_path",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "unicode_path_extra.zip",
+   "case_id": "unicode_path_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "unicode_path_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "unknown_extra.zip",
+   "case_id": "unknown_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "unknown_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "unknown_local_extra.zip",
+   "case_id": "unknown_local_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "unknown_local_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "usize_mismatch.zip",
+   "case_id": "usize_mismatch",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "usize_mismatch",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "ut_flags_disagree.zip",
+   "case_id": "ut_flags_disagree",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "ut_flags_disagree",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "ut_mtime_disagree.zip",
+   "case_id": "ut_mtime_disagree",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_LOCAL_HEADER_MISMATCH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_LOCAL_HEADER_MISMATCH",
+    "reference": "ut_mtime_disagree",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "valid_sfx_prefix.zip",
+   "case_id": "valid_sfx_prefix",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNREFERENCED_DATA",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "SFX prefix with ALL offsets repaired: archive parses, prefix bytes unreferenced -> UNREFERENCED_DATA (contrast sfx_stub which corrupts offsets -> MALFORMED)",
+    "reference": "valid_sfx_prefix",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "windows_drive.zip",
+   "case_id": "windows_drive",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_DRIVE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_WINDOWS_DRIVE_PATH",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_WINDOWS_DRIVE_PATH",
+    "reference": "windows_drive",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "zero_ftype.zip",
+   "case_id": "zero_ftype",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_SPECIAL_FILE_TYPE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_SPECIAL_FILE_TYPE",
+    "reference": "zero_ftype",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "archive_file": "zip64_extra.zip",
+   "case_id": "zip64_extra",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "normalized_outcome": "REJECTED",
+    "python": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    },
+    "rust": {
+     "exit_code": 1,
+     "reason_class": "ARCHIVE_UNSUPPORTED_FEATURE",
+     "stage": "archive",
+     "verdict": "FAIL"
+    }
+   },
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted-contract case -> ARCHIVE_UNSUPPORTED_FEATURE",
+    "reference": "zip64_extra",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "real_v20",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "entry_count": 970,
+    "normalized_outcome": "ACCEPTED",
+    "python": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    },
+    "rust": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "expected_sha256": "1248bc46fa555cc50ed7b63c9284baffd1e95a6972cdfbc4a40a0201fea81aba",
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted real archive accepted, 970 entries, hash-pinned",
+    "reference": "real_v20",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "real_archive_key": "real_v20",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "real_705",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "entry_count": 819,
+    "normalized_outcome": "ACCEPTED",
+    "python": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    },
+    "rust": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "expected_sha256": "72e38ffd8338a978bf5d59d2fc9f0f06847092eab5f6a828077adef709c0f348",
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted real archive accepted, 819 entries, hash-pinned",
+    "reference": "real_705",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "real_archive_key": "real_705",
+   "rust_scope": "in_scope"
+  },
+  {
+   "case_id": "real_move78",
+   "category": "AGREEMENT_CASE",
+   "expected": {
+    "entry_count": 935,
+    "normalized_outcome": "ACCEPTED",
+    "python": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    },
+    "rust": {
+     "exit_code": 3,
+     "reason_class": "ARCHIVE_OK",
+     "stage": "archive",
+     "verdict": "INCONCLUSIVE"
+    }
+   },
+   "expected_sha256": "6030148c2c1bb373ad69393563e8e2e3078dff93e9f446d728edd18ea3c45252",
+   "lane": "archive",
+   "provenance": {
+    "justification": "adopted real archive accepted, 935 entries, hash-pinned",
+    "reference": "real_move78",
+    "source_contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)"
+   },
+   "python_scope": "in_scope",
+   "real_archive_key": "real_move78",
+   "rust_scope": "in_scope"
+  }
+ ],
+ "contract": "Move 78 v10 adopted ZipGuard contract (zipguard.rs REASON-CODE TAXONOMY + inspect_archive check order)",
+ "lane": "archive"
+}
