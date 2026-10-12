@@ -85,9 +85,13 @@ compares the live Roadmap One `src/` against this retained Roadmap One source pa
   `stage_manifest_json_invalid` and `stage_report_field_missing_repaired`.
   `SYSTEM_AGREEMENT_RESULT: FAIL` / `SYSTEM_AGREEMENT_REASON: BEHAVIOURAL_DIVERGENCE_DETECTED`
   are expected evidence for those known divergences, not a Move 85 adoption failure.
-- The Rust verifier detects the demonstrated top-level tamper but does not detect
-  the demonstrated nested evidence tamper at
-  `coordinator_output/aletheia_bundle/evidence/evidence_001.bin`; the Python lane does detect it.
+- The Rust verifier now detects the demonstrated nested evidence tamper at
+  `coordinator_output/aletheia_bundle/evidence/evidence_001.bin` (FAIL,
+  `NESTED_CHECKSUM_MISMATCH`), as the Python lane does. This was added after
+  Move 85 and is covered by Rust unit tests and by the agreement harness
+  (the five nested cases are now AGREEMENT_CASEs; 79/79 shared cases agree
+  on Linux x86_64). It has not been through a Move adoption gate or a
+  Termux run.
 - Held Rust build/runtime evidence establishes Android/Termux AArch64 only.
   Linux x86_64, Linux AArch64, and Windows x86_64 remain unestablished.
   The Android/Termux AArch64 binary is not a generic Linux AArch64 binary.

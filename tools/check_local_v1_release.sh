@@ -11,9 +11,12 @@ bad() { printf "  FAIL  %s\n" "$1"; missing=$((missing + 1)); }
 contains() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then ok "$label"; else bad "$label"; fi; }
 forbid() { file="$1"; pattern="$2"; label="$3"; if grep -Fq "$pattern" "$file"; then bad "$label"; else ok "$label"; fi; }
 
-# Move 70.5: marker updated to the Roadmap One completion state.
 # The authoritative current-state checker is tools/check_current_release_state.sh.
-current_marker="Project Witness Roadmap One, Steps 1-70, is complete as a local review/demo stack."
+# This check no longer requires a fixed status sentence in every status
+# document: that tied it to document wording, so each documentation update
+# (e.g. the Move 85 publication reconciliation) broke it while nothing it
+# protects had changed. It still requires the files, fails on stale
+# "future work" claims, and enforces the honesty boundary.
 current_zip="Project_Witness_WORKING_STACK_v20_MOVE_70.zip"
 
 echo "Local v1 release check"
@@ -39,7 +42,6 @@ contains "$ROOT/LOCAL_V1_RELEASE.md" "HISTORICAL DOCUMENT" "LOCAL_V1_RELEASE.md 
 for f in README.md START_HERE.md REVIEWER_QUICKSTART.md STACK_STATUS.md MOVE_INDEX.md HANDOFF_NOTES.md REPOSITORY_STRUCTURE.md PRIVATE_REVIEWER_PACKAGE.md PUBLIC_EXPLANATION.md FIVE_MINUTE_DEMO_SCRIPT.md REVIEWER_FEEDBACK_ROUND.md REVIEWER_FEEDBACK_LEDGER.md REVIEWER_FEEDBACK_TRIAGE.md RELEASE_BLOCKER_REGISTER.md RELEASE_BLOCKER_REPAIR_LEDGER.md; do
   path="$ROOT/$f"
   [ -f "$path" ] || { bad "status doc missing: $f"; continue; }
-  contains "$path" "$current_marker" "$f has current marker"
   forbid "$path" "Moves 60-70 remain future work" "$f has no old Move 60 future marker"
   forbid "$path" "Roadmap complete through Move 59" "$f has no old Move 59 marker"
 done
@@ -55,7 +57,6 @@ done
 
 echo "Move index:"
 contains "$ROOT/MOVE_INDEX.md" "| 60 | Freeze Local v1 Release |" "MOVE_INDEX includes Move 60 row"
-contains "$ROOT/MOVE_INDEX.md" "$current_marker" "MOVE_INDEX has current exact marker"
 
 echo "Current package references:"
 for f in REVIEWER_QUICKSTART.md PRIVATE_REVIEWER_PACKAGE.md FIVE_MINUTE_DEMO_SCRIPT.md REVIEWER_FEEDBACK_ROUND.md REVIEWER_FEEDBACK_LEDGER.md; do

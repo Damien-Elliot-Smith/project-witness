@@ -31,6 +31,7 @@ use std::path::{Path, PathBuf};
 use crate::hashes;
 use crate::json_escape;
 use crate::manifest;
+use crate::nested;
 use crate::receipts;
 use crate::sha256;
 use crate::zipguard;
@@ -171,12 +172,13 @@ impl CheckRecord {
 }
 
 /// The adopted bundle check sequence, in adopted order.
-const BUNDLE_CHECKS: [&str; 5] = [
+const BUNDLE_CHECKS: [&str; 6] = [
     "bundle_path_exists",
     "bundle_path_is_directory",
     "manifest_structure",
     "declared_top_level_hashes",
     "receipt_chain",
+    "nested_integrity",
 ];
 
 // The adopted `evaluate_archive` performs EXACTLY ONE check:
@@ -585,10 +587,12 @@ pub fn report_bundle(path: &Path) -> (String, i32) {
         Ok(count) => count,
         Err((code, _detail)) => {
             checks.push(CheckRecord::failed(BUNDLE_CHECKS[3], &code));
-            checks.push(CheckRecord::not_run(
-                BUNDLE_CHECKS[4],
-                skipped_because(BUNDLE_CHECKS[3], &code),
-            ));
+            for name in BUNDLE_CHECKS.iter().skip(4) {
+                checks.push(CheckRecord::not_run(
+                    *name,
+                    skipped_because(BUNDLE_CHECKS[3], &code),
+                ));
+            }
             return (
                 build_report(
                     "verify_bundle",
@@ -618,6 +622,38 @@ pub fn report_bundle(path: &Path) -> (String, i32) {
                 BUNDLE_CHECKS[4],
                 Some(("receipts_verified", receipt_count)),
             ));
+        }
+        Err((code, _detail)) => {
+            checks.push(CheckRecord::failed(BUNDLE_CHECKS[4], &code));
+            checks.push(CheckRecord::not_run(
+                BUNDLE_CHECKS[5],
+                skipped_because(BUNDLE_CHECKS[4], &code),
+            ));
+            return (
+                build_report(
+                    "verify_bundle",
+                    "bundle_dir",
+                    digest_value.as_deref(),
+                    digest_state,
+                    DIGEST_SCOPE_BUNDLE,
+                    file_count,
+                    non_regular,
+                    &checks,
+                    VERDICT_FAIL,
+                    &code,
+                    EXIT_FAIL,
+                ),
+                EXIT_FAIL,
+            );
+        }
+    }
+
+    match nested::verify_nested(path) {
+        Ok(summary) => {
+            checks.push(CheckRecord::passed(
+                BUNDLE_CHECKS[5],
+                Some(("nested_entries_verified", summary.entries_verified)),
+            ));
             (
                 build_report(
                     "verify_bundle",
@@ -636,7 +672,7 @@ pub fn report_bundle(path: &Path) -> (String, i32) {
             )
         }
         Err((code, _detail)) => {
-            checks.push(CheckRecord::failed(BUNDLE_CHECKS[4], &code));
+            checks.push(CheckRecord::failed(BUNDLE_CHECKS[5], &code));
             (
                 build_report(
                     "verify_bundle",

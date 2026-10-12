@@ -470,6 +470,66 @@
    "match_type": "exact",
    "stage": "preflight",
    "value": "USAGE_ERROR"
+  },
+  {
+   "class": "NESTED_CHECKSUM_MISMATCH",
+   "match_type": "exact",
+   "stage": "nested_checksums",
+   "value": "NESTED_CHECKSUM_MISMATCH"
+  },
+  {
+   "class": "REFERENCED_FILE_MISSING",
+   "match_type": "exact",
+   "stage": "nested_checksums",
+   "value": "NESTED_FILE_MISSING"
+  },
+  {
+   "class": "CHECKSUMS_MALFORMED",
+   "match_type": "exact",
+   "stage": "nested_checksums",
+   "value": "NESTED_CHECKSUMS_MALFORMED"
+  },
+  {
+   "class": "UNSAFE_PATH",
+   "match_type": "exact",
+   "stage": "nested_checksums",
+   "value": "NESTED_PATH_UNSAFE"
+  },
+  {
+   "class": "HASH_READ_ERROR",
+   "match_type": "exact",
+   "stage": "nested_checksums",
+   "value": "NESTED_READ_ERROR"
+  },
+  {
+   "class": "SOURCE_RUN_HASH_MISMATCH",
+   "match_type": "exact",
+   "stage": "source_run_binding",
+   "value": "SOURCE_RUN_HASH_MISMATCH"
+  },
+  {
+   "class": "MANIFEST_BINDING_MISMATCH",
+   "match_type": "exact",
+   "stage": "manifest_binding",
+   "value": "MANIFEST_BINDING_MISMATCH"
+  },
+  {
+   "class": "MANIFEST_BINDING_MALFORMED",
+   "match_type": "exact",
+   "stage": "manifest_binding",
+   "value": "MANIFEST_BINDING_MALFORMED"
+  },
+  {
+   "class": "REFERENCED_FILE_MISSING",
+   "match_type": "exact",
+   "stage": "manifest_binding",
+   "value": "MANIFEST_BINDING_FILE_MISSING"
+  },
+  {
+   "class": "EVIDENCE_DIR_UNLISTED_FILE",
+   "match_type": "exact",
+   "stage": "deep_evidence",
+   "value": "EVIDENCE_DIR_UNLISTED_FILE"
   }
  ]
 }

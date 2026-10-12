@@ -54,6 +54,7 @@ BUNDLE_CHECKS = (
     "manifest_structure",
     "declared_top_level_hashes",
     "receipt_chain",
+    "nested_integrity",
 )
 # The adopted evaluate_archive performs exactly one check. v01 invented an
 # archive_path_readable check and then reported a second executed result

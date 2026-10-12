@@ -20,8 +20,8 @@ provenance, and the comparison is three-way.
 
 ## Case categories (declared in the frozen corpus BEFORE execution)
 
-- `AGREEMENT_CASE` (74) — both in scope; expected == python == rust
-- `SINGLE_IMPLEMENTATION_CASE` (9) — one in scope; the other is
+- `AGREEMENT_CASE` (79) — both in scope; expected == python == rust
+- `SINGLE_IMPLEMENTATION_CASE` (4) — one in scope; the other is
   OUT_OF_SCOPE, run as an **observation** with a complete declared spec,
   never counted as agreement
 - `KNOWN_DIVERGENCE_CASE` (2) — both in scope, both reject, but at
@@ -46,9 +46,11 @@ its adopted contract, so no implementation is reopened. They are
 
 ## Capability gaps (reported, not closed) — BOTH directions
 
-- **6 Python-only**: RT-004 deep verification (nested checksums, Aletheia
-  manifest binding, evidence-directory completeness, Sentinel source-run
-  binding, report canonicality) is not implemented in Rust at Move 78.
+- **1 Python-only**: report canonicality (`tamper_top_level_report`).
+  The other five RT-004 deep-verification cases (nested checksums,
+  Aletheia manifest binding, evidence-directory completeness, Sentinel
+  source-run binding) were Python-only at Move 78 and are AGREEMENT_CASEs
+  since Rust `nested.rs`.
 - **3 Rust-only**: receipt-chain verification. Companion's bundle
   verifier contains **no receipt-chain logic** — with declared hashes
   repaired it accepts bundles whose chain is provably broken. Rust

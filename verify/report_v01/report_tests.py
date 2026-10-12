@@ -133,6 +133,8 @@ def accepted_bundle_report(**over):
                observed={"declared_hashes_verified": 7}),
         _check("receipt_chain", "PASSED",
                observed={"receipts_verified": 3}),
+        _check("nested_integrity", "PASSED",
+               observed={"nested_entries_verified": 40}),
     ]
     record = {
         "checks": checks,
@@ -169,6 +171,7 @@ def failing_bundle_report(**over):
         _check("manifest_structure", "FAILED", reason=reason),
         _check("declared_top_level_hashes", "NOT_RUN", not_run=skipped),
         _check("receipt_chain", "NOT_RUN", not_run=skipped),
+        _check("nested_integrity", "NOT_RUN", not_run=skipped),
     ]
     record = accepted_bundle_report()
     record.update({"checks": checks, "exit_code": 1,

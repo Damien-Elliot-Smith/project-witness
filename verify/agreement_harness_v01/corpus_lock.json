@@ -87,9 +87,9 @@
   "zip64_extra"
  ],
  "counts": {
-  "AGREEMENT_CASE": 74,
+  "AGREEMENT_CASE": 79,
   "KNOWN_DIVERGENCE_CASE": 2,
-  "SINGLE_IMPLEMENTATION_CASE": 9,
+  "SINGLE_IMPLEMENTATION_CASE": 4,
   "archive": 70,
   "bundle": 15,
   "total": 85
@@ -98,9 +98,9 @@
   "corpus/archive_cases.json": "0541f2ec962fa56e796cbd79653bbc7b245f8ee9c4da867accb105d3888f1c09",
   "corpus/build_archives.py": "21c63df396aafd6c11ec9e0fb1d44df46632b42d80965638695bde5a469e596b",
   "corpus/build_bundle_cases.py": "fd6fbb83d971779f95944c4c1caf5f51399ee20b1510323b3283f48e21b89e06",
-  "corpus/bundle_cases.json": "27e7dd3025e785b8a17a7f63713b09a3b291399c408a2c21edae3c5138596823",
+  "corpus/bundle_cases.json": "ecb719539f4091039c78f1d0bc94aa033300fdbb902c06ed197cf11c850367ec",
   "oracles/zipguard_oracle.py": "34bc72146f886b491a1f75e11cc3685ad343eeb72968c6b719ffd910679f213f",
-  "reason_map.json": "82ee48fcd21e89a9503df193bb9e6b2b087550bd0259e1cdd2dd1f32db917ed6"
+  "reason_map.json": "84c49d1530668ad0cf0ae8cb545c9416b3c20a4cf41e66443c93bc775f2143ce"
  },
  "known_divergence_ids": [
   "stage_manifest_json_invalid",

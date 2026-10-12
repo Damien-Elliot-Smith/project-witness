@@ -48,13 +48,19 @@ absolute; '.'/'..' components before Windows-hostile names).
 Fails closed on zip64, encryption, unsupported compression, multi-disk
 metadata, Unicode Path extra fields, and ALL non-ASCII filenames
 (Unicode normalization and case folding are not implemented, so
-collision safety cannot be proven for them). Manifest/seal recomputation, nested checksums
-and manifest bindings remain unimplemented; verdict stays INCONCLUSIVE.
+collision safety cannot be proven for them). Nested evidence integrity
+(src/nested.rs, the Rust port of the Python RT-004 deep layer) runs after
+the receipt chain: every nested *checksums.txt entry is re-hashed, the
+Aletheia evidence_manifest.json bundled_file_sha256 binding and the
+Sentinel source-run binding are checked, and the evidence directory must
+hold no unlisted file. A tampered nested evidence file is FAIL
+(NESTED_CHECKSUM_MISMATCH). Manifest/seal recomputation remains
+unimplemented; a clean bundle's verdict stays INCONCLUSIVE.
 Usage: witness-verify verify <bundle-dir>
 Output: one JSON object per run with verifier, version, verdict,
 reason_code, detail. Verdicts FAIL / INCONCLUSIVE only - no code path
-can emit PASS; nested component checksums, manifest bindings and
-receipt chains ARE implemented (Moves 76-77). Exit codes: 1 FAIL, 2 usage
+can emit PASS; receipt chains (Moves 76-77) and nested component
+checksums and manifest bindings (nested.rs) ARE implemented. Exit codes: 1 FAIL, 2 usage
 error, 3 INCONCLUSIVE; 0 is reserved for a real PASS and is
 unreachable at this stage.
 NOTE: this status section is checked mechanically against the crate
