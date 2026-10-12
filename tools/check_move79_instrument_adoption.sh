@@ -107,7 +107,7 @@ fail=0
 ok(){ printf "  OK    %s\n" "$1"; }
 bad(){ printf "  FAIL  %s\n" "$1"; fail=1; }
 
-export EXPECT_TOTAL=85 EXPECT_AGREE=74 EXPECT_PY_ONLY=6 EXPECT_RS_ONLY=3 EXPECT_DIV=2
+export EXPECT_TOTAL=85 EXPECT_AGREE=79 EXPECT_PY_ONLY=1 EXPECT_RS_ONLY=3 EXPECT_DIV=2
 export EXPECT_DIV_IDS="stage_manifest_json_invalid stage_report_field_missing_repaired"
 
 echo "==========================================================="

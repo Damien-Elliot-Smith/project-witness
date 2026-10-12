@@ -88,9 +88,10 @@ compares the live Roadmap One `src/` against this retained Roadmap One source pa
 - The Rust verifier now detects the demonstrated nested evidence tamper at
   `coordinator_output/aletheia_bundle/evidence/evidence_001.bin` (FAIL,
   `NESTED_CHECKSUM_MISMATCH`), as the Python lane does. This was added after
-  Move 85 and is covered by Rust unit tests; it has not been through a Move
-  adoption gate or a Termux run, and the agreement corpus still records the
-  five nested cases as Python-only.
+  Move 85 and is covered by Rust unit tests and by the agreement harness
+  (the five nested cases are now AGREEMENT_CASEs; 79/79 shared cases agree
+  on Linux x86_64). It has not been through a Move adoption gate or a
+  Termux run.
 - Held Rust build/runtime evidence establishes Android/Termux AArch64 only.
   Linux x86_64, Linux AArch64, and Windows x86_64 remain unestablished.
   The Android/Termux AArch64 binary is not a generic Linux AArch64 binary.
