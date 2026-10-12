@@ -9,9 +9,8 @@
 //! Depth honesty: this verifies TOP-LEVEL declared hashes only. Nested
 //! component checksum files, the Aletheia manifest binding, and the
 //! Sentinel source-run binding (the Python RT-004 deep-verification
-//! layer) are NOT implemented here yet. A bundle passing this stage is
-//! therefore still INCONCLUSIVE - claiming otherwise would recreate in
-//! Rust the exact depth illusion RT-004 repaired in Python.
+//! layer) are checked separately in nested.rs. Passing this stage alone
+//! proves nothing about nested evidence.
 
 use std::fs;
 use std::path::Path;

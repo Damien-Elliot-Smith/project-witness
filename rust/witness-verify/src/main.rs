@@ -3,9 +3,11 @@
 //! Step 78 state: the CLI validates the manifest layer (Move 74),
 //! top-level declared file hashes (Move 75), the receipt chain by
 //! declared values and recomputed canonical hashes (Moves 76-77), and
-//! inspects ZIP archives for extraction-time safety (Move 78). Manifest
-//! and seal hash recomputation, nested component checksums, and manifest
-//! bindings are NOT implemented.
+//! inspects ZIP archives for extraction-time safety (Move 78). Nested
+//! component checksums, the Aletheia manifest binding, the Sentinel
+//! source-run binding and evidence-directory completeness are checked
+//! after the receipt chain (nested.rs, the Python RT-004 deep layer).
+//! Manifest and seal hash recomputation are NOT implemented.
 //!
 //! HONESTY PROPERTY: no code path can emit a PASS verdict. Every
 //! successful stage yields INCONCLUSIVE with a stage-specific reason,
@@ -22,6 +24,7 @@ mod canonical;
 mod hashes;
 mod json;
 mod manifest;
+mod nested;
 mod receipts;
 mod report;
 mod sha256;
@@ -125,19 +128,32 @@ fn evaluate_bundle(path: &Path) -> (String, i32) {
             return (verdict_line(VERDICT_FAIL, &code, &detail), EXIT_FAIL);
         }
     };
-    match receipts::verify_receipt_chain(path) {
-        Ok(receipt_count) => (
+    let receipt_count = match receipts::verify_receipt_chain(path) {
+        Ok(count) => count,
+        Err((code, detail)) => {
+            return (verdict_line(VERDICT_FAIL, &code, &detail), EXIT_FAIL);
+        }
+    };
+    match nested::verify_nested(path) {
+        Ok(summary) => (
             verdict_line(
                 VERDICT_INCONCLUSIVE,
                 "RECEIPT_CHAIN_HASHES_RECOMPUTED",
                 &format!(
                     "manifest structure valid, {} declared top-level hashes \
-                     verified, and {}-receipt chain verified with per-receipt \
-                     canonical hash RECOMPUTATION; manifest/seal hash \
-                     recomputation, nested component checksums, manifest \
-                     bindings and archive safety are not implemented yet, \
-                     so the bundle cannot be declared valid",
-                    hash_count, receipt_count
+                     verified, {}-receipt chain verified with per-receipt \
+                     canonical hash RECOMPUTATION, and {} entries in {} \
+                     nested checksum files verified (manifest binding \
+                     checked: {}, evidence files accounted for: {}); \
+                     manifest/seal hash recomputation and archive safety \
+                     are not implemented yet, so the bundle cannot be \
+                     declared valid",
+                    hash_count,
+                    receipt_count,
+                    summary.entries_verified,
+                    summary.nested_files,
+                    summary.manifest_binding_checked,
+                    summary.evidence_files
                 ),
             ),
             EXIT_INCONCLUSIVE,
@@ -322,6 +338,52 @@ mod tests {
             &sentinel_run_json(),
         );
         dir
+    }
+
+    /// Permanent regression for the 2026-10-12 evaluation finding: one
+    /// byte appended to the nested evidence file of the frozen Move 71
+    /// reference bundle must turn the verdict to FAIL. Before the nested
+    /// layer existed, the clean and the tampered bundle printed the same
+    /// INCONCLUSIVE line.
+    #[test]
+    fn nested_evidence_tamper_in_reference_bundle_fails() {
+        fn copy_tree(src: &Path, dst: &Path) {
+            fs::create_dir_all(dst).unwrap();
+            for entry in fs::read_dir(src).unwrap() {
+                let entry = entry.unwrap();
+                let to = dst.join(entry.file_name());
+                if entry.file_type().unwrap().is_dir() {
+                    copy_tree(&entry.path(), &to);
+                } else {
+                    fs::copy(entry.path(), &to).unwrap();
+                }
+            }
+        }
+        let reference = Path::new(env!("CARGO_MANIFEST_DIR")).join(
+            "../../freeze_record/python_behaviour_freeze_v01/reference_bundle",
+        );
+        let dir = temp_bundle("nested_tamper");
+        copy_tree(&reference, &dir);
+
+        let (clean_line, clean_code) = evaluate_bundle(&dir);
+        assert_eq!(clean_code, EXIT_INCONCLUSIVE, "{}", clean_line);
+
+        let evidence = dir.join(
+            "coordinator_output/aletheia_bundle/evidence/evidence_001.bin",
+        );
+        let mut data = fs::read(&evidence).unwrap();
+        data.push(b'x');
+        fs::write(&evidence, data).unwrap();
+        let (line, code) = evaluate_bundle(&dir);
+        let (report_line, report_code) = report::report_bundle(&dir);
+        fs::remove_dir_all(&dir).ok();
+
+        assert_eq!(code, EXIT_FAIL, "{}", line);
+        assert!(line.contains("\"verdict\": \"FAIL\""), "{}", line);
+        assert!(line.contains("NESTED_CHECKSUM_MISMATCH"), "{}", line);
+        assert_ne!(line, clean_line);
+        assert_eq!(report_code, EXIT_FAIL, "{}", report_line);
+        assert!(report_line.contains("NESTED_CHECKSUM_MISMATCH"), "{}", report_line);
     }
 
     #[test]
